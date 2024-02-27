@@ -9,10 +9,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v2
 
-      - name: Use Go 1.13
-        uses: actions/setup-go@v5
+      - name: Use Go
+        uses: actions/setup-go@v4
         with:
           go-version: 1.13.x
 
@@ -20,13 +20,12 @@ jobs:
         run: |
           go get github.com/tmedwards/tweego
           export PATH=$PATH:$(go env GOPATH)/bin
-          mkdir -p dist && touch dist/index.html
-          tweego ./story -o dist/index.html
+          mkdir -p ${{vars.OUTPUT_DIRECTORY}} && touch ${{vars.OUTPUT_DIRECTORY}}/${{vars.OUTPUT_FILENAME}}
+          tweego ./story -o ${{vars.OUTPUT_DIRECTORY}}/${{vars.OUTPUT_FILENAME}}
 
-
-      - name: Deploy
+      - name: Deploy to Pages
         uses: peaceiris/actions-gh-pages@v3
-        env:
+        with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: ./dist/
+          publish_branch: pages
+          publish_dir: ./${{vars.OUTPUT_DIRECTORY}}/
