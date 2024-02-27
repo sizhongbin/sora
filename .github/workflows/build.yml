@@ -9,19 +9,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v2
 
       - name: Use Go 1.13
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@v4
         with:
           go-version: 1.13.x
-          cache: false
 
       - name: build game
         run: |
           go get github.com/tmedwards/tweego
           export PATH=$PATH:$(go env GOPATH)/bin
-          tweego -o dist/index.html story/ 
+          tweego ./story -o dist/index.html
 
 
       - name: Deploy
@@ -29,4 +28,4 @@ jobs:
         env:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: ./dist
+          PUBLISH_DIR: ./dist/
