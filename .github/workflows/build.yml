@@ -21,7 +21,7 @@ jobs:
         run: |
           go get github.com/tmedwards/tweego
           export PATH=$PATH:$(go env GOPATH)/bin
-          tweego story -o index.html 
+          tweego story -o dist/index.html 
 
 
       - name: Deploy
@@ -29,4 +29,4 @@ jobs:
         env:
           PERSONAL_TOKEN: ${{ secrets.GH_PAT }}
           PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: ./
+          PUBLISH_DIR: ./dist
