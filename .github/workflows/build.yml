@@ -14,7 +14,7 @@ jobs:
       - name: Setup Golang with cache
         uses: magnetikonline/action-golang-cache@v4
         with:
-          go-version: 1.13.x
+          go-version-file: https://raw.githubusercontent.com/tmedwards/tweego/master/go.mod
       
       - name: build game
         run: |
