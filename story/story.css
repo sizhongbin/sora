@@ -1,0 +1,6 @@
+/*
+ * 屏蔽侧边栏
+ */
+#ui-bar {
+  display: none;
+}

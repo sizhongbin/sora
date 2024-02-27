@@ -1,0 +1,15 @@
+:: StoryData
+{
+  "ifid": "905862E7-4E79-440E-A878-E36ADDB47AE8"
+}
+
+:: StoryTitle
+测试标题
+
+:: Start
+第一个句子
+[[This is a link|Next Passage]]
+
+:: Next Passage
+第二个句子
+[[This is a link|Start]]
