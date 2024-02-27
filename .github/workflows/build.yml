@@ -20,6 +20,7 @@ jobs:
         run: |
           go get github.com/tmedwards/tweego
           export PATH=$PATH:$(go env GOPATH)/bin
+          mkdir -p dist && touch dist/index.html
           tweego ./story -o dist/index.html
 
 
