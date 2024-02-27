@@ -9,17 +9,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Use Go
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@v5
         with:
           go-version: 1.13.x
-          cache: true
-          cache-dependency-path: "**/go.sum"
+          cache: false
 
       - name: build game
         run: |
+          go run hello.go
           go get github.com/tmedwards/tweego
           export PATH=$PATH:$(go env GOPATH)/bin
           mkdir -p ${{vars.OUTPUT_DIRECTORY}} && touch ${{vars.OUTPUT_DIRECTORY}}/${{vars.OUTPUT_FILENAME}}
