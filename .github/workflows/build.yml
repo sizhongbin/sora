@@ -19,12 +19,4 @@ jobs:
       - name: build game
         run: |
           go get github.com/tmedwards/tweego
-          export PATH=$PATH:$(go env GOPATH)/bin
-          mkdir -p ${{vars.OUTPUT_DIRECTORY}} && touch ${{vars.OUTPUT_DIRECTORY}}/${{vars.OUTPUT_FILENAME}}
-          tweego -h
-      - name: Deploy to Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: pages
-          publish_dir: ./${{vars.OUTPUT_DIRECTORY}}/
+
