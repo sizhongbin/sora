@@ -20,7 +20,7 @@ jobs:
       - name: build game
         run: |
           go get github.com/tmedwards/tweego
-          tweego story -o dist/index.html 
+          tweego ./story -o ./index.html 
 
 
       - name: Deploy
@@ -28,4 +28,4 @@ jobs:
         env:
           PERSONAL_TOKEN: ${{ secrets.GH_PAT }}
           PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: ./dist
+          PUBLISH_DIR: ./
