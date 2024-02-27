@@ -7,9 +7,9 @@
 测试标题
 
 :: Start
-第一个句子
+第一个句子测试一下
 [[This is a link|Next Passage]]
 
 :: Next Passage
-第二个句子
+第二个句子测试一下
 [[This is a link|Start]]
