@@ -19,4 +19,5 @@ jobs:
       - name: build game
         run: |
           go version 
+          go get .
 
