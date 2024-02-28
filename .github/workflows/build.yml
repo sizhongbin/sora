@@ -21,4 +21,6 @@ jobs:
           extract: true
 
       - name: test run
-        run: ls
+        run: |
+          ls
+          tweego -h
