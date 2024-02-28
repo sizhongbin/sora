@@ -7,16 +7,18 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
+      - name: Check out repo
       - uses: actions/checkout@v4
 
-      - name: Download a file
-        uses: carlosperate/download-file-action@v2
+      - name: Clone tmedwards/tweego
+        uses: GuillaumeFalourd/clone-github-repo-action@v2.3 
         with:
-          file-url: 'https://github.com/videlais/extwee/raw/develop/build/extwee.exe'
+          owner: 'tmedwards'
+          repository: 'tweego'
           
       - name: build game
         run: |
-          ./extwee -h
+          ls -l
 
