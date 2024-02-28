@@ -18,5 +18,5 @@ jobs:
           
       - name: build game
         run: |
-          extwee -h
+          ./extwee -h
 
