@@ -23,4 +23,5 @@ jobs:
       - name: test run
         run: |
           ls
+          chmod 777 tweego
           ./tweego -v
