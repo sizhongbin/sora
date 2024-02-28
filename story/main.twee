@@ -1,6 +1,9 @@
 :: StoryData
 {
-  "ifid": "905862E7-4E79-440E-A878-E36ADDB47AE8"
+  "ifid": "905862E7-4E79-440E-A878-E36ADDB47AE8",
+  "format": "SugarCube",
+	"format-version": "2.36.1",
+	"start": "Start"
 }
 
 :: StoryTitle
