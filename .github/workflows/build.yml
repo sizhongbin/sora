@@ -29,5 +29,5 @@ jobs:
           cd tweego
           go get
           go install
-          tweego -v
+          ls
 
