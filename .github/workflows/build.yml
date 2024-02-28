@@ -11,22 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Golang with cache
-        uses: magnetikonline/action-golang-cache@v4
-        with:
-          go-version: 1.13.x
-
       - name: test
-        run: ls
-      
-      - name: build game
-        run: |
-          go version 
-          go get github.com/tmedwards/tweego
-
-      - name: Deploy to Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: schmiddim/action-wget-unzip@v2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: pages
-          publish_dir: ./${{vars.OUTPUT_DIRECTORY}}/
+          url: 'https://github.com/tmedwards/tweego/releases/download/v2.1.1/tweego-2.1.1-linux-x64.zip'
+          destination: .
+
