@@ -15,14 +15,15 @@ jobs:
         uses: magnetikonline/action-golang-cache@v4
         with:
           go-version-file: https://raw.githubusercontent.com/tmedwards/tweego/master/go.mod
+
+      - name: test
+        run: ls
       
       - name: build game
         run: |
           go version 
           go get github.com/tmedwards/tweego
-          export PATH=$PATH:$(go env GOPATH)/bin
-          mkdir -p ${{vars.OUTPUT_DIRECTORY}} && touch ${{vars.OUTPUT_DIRECTORY}}/${{vars.OUTPUT_FILENAME}}
-          tweego -h
+
       - name: Deploy to Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
