@@ -29,5 +29,6 @@ jobs:
           cd tweego
           go get
           go install
+          cd ..
+          tweego story -o index.html
           ls
-
