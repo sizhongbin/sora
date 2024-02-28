@@ -14,7 +14,7 @@ jobs:
       - name: Setup Golang with cache
         uses: magnetikonline/action-golang-cache@v4
         with:
-          go-version-file: 1.13.x
+          go-version: 1.13.x
 
       - name: test
         run: ls
