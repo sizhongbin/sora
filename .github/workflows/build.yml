@@ -21,7 +21,7 @@ jobs:
           extract: true
 
       - name: test run
-        shell: bash
+        shell: sh
         run: |
           chmod 777 tweego
           ls -l
