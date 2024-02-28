@@ -18,6 +18,7 @@ jobs:
           repository: "tmedwards/tweego"
           latest: true
           fileName: "*-linux-x64.zip"
+          extract: true
 
       - name: test run
         run: ls
