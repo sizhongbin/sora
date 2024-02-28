@@ -17,6 +17,7 @@ jobs:
         with:
           owner: 'tmedwards'
           repository: 'tweego'
+          branch: 'master'
           
       - name: Build game
         run: |
