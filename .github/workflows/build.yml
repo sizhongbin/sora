@@ -13,5 +13,5 @@ jobs:
 
       - name: build game
         run: |
-          npx extwee
+          npx extwee -h
 
