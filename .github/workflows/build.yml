@@ -30,6 +30,7 @@ jobs:
           go get
           go install
           cd ..
+          mkdir -p dist && touch dist/index.html
           tweego story -o dist/index.html
 
       - name: Deploy to GitHub Pages
