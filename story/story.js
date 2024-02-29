@@ -1,15 +1,4 @@
 /*
- * 导入octokit
-
-(function ($) {
-  $(document.createElement('script'))
-    .attr('type', 'module')
-    .html('import { Octokit, App } from "https://esm.sh/octokit";')
-    .appendTo(document.head);
-})(jQuery);
-*/
-
-/*
  * 初始化octokit
  */
 setup.initOctokit = async function () {
@@ -46,7 +35,7 @@ setup.initOctokit = async function () {
       'X-GitHub-Api-Version': '2022-11-28'
     }
   });
-  
+
   */
   // 更新comment
   /*

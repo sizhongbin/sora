@@ -1,11 +1,18 @@
-/*
- * 屏蔽侧边栏
- */
-/*
-#ui-bar {
-  display: none;
-}
-*/
 html {
   font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
+
+html,
+body,
+#main {
+  height: 100%;
+}
+
+#version {
+  height: 20px;
+  text-align: right;
+}
+#passages {
+  height: calc(100% - 20px);
+  overflow: auto;
 }
