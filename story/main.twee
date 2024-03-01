@@ -13,6 +13,16 @@
 <div id="main" class="pure-g">
   <div id="version" class="pure-u-1" data-passage="Version"></div>
   <div id="passages" class="pure-u-1"></div>
+  <div id="menu" class="pure-u-1">
+    <div class="pure-g">
+      <div class="pure-u-1-2"><div id="menu-1" class="menu-box"></div></div>
+      <div class="pure-u-1-2"><div id="menu-2" class="menu-box"></div></div>
+      <div class="pure-u-1-2"><div id="menu-3" class="menu-box"></div></div>
+      <div class="pure-u-1-2"><div id="menu-4" class="menu-box"></div></div>
+      <div class="pure-u-1-2"><div id="menu-5" class="menu-box"></div></div>
+      <div class="pure-u-1-2"><div id="menu-6" class="menu-box"></div></div>
+    </div>
+  </div>
 </div>
 
 :: Start

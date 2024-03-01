@@ -12,7 +12,21 @@ body,
   height: 20px;
   text-align: right;
 }
+
+#menu {
+  height: 174px;
+}
+
+.menu-box {
+  height: 48px;
+  text-align: center;
+  border: solid 1px;
+  margin: 5px;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
 #passages {
-  height: calc(100% - 20px);
+  height: calc(100% - 194px);
   overflow: auto;
 }
