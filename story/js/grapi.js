@@ -7,11 +7,11 @@
  * 初始化octokit
  */
 setup.initOctokit = async function () {
-    let { Octokit } = await import('https://esm.sh/octokit');
+  setup.setLoading();  
+  let { Octokit } = await import('https://esm.sh/octokit');
+  setup.setLoading(false); 
     console.log('run initOctokit()');
-    return new Octokit({
-      auth: atob('Z2l0aHViX3BhdF8xMUFOUDZLRVkwV2FYVjZEdDkwRE9HX2dlTHI2UmJKMVF6alo2c0Y3VHVVVVRpVUJ6MEg5a29UVk40Wm5aZzdoSWRXWlc3SE5BQWhqeUgyeWZt')
-    });
+    return new Octokit({ });
 }
 
 /*

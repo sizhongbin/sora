@@ -7,7 +7,7 @@
 }
 
 :: StoryTitle
-测试标题
+Sora
 
 :: StoryInterface
 <div id="main" class="pure-g">
@@ -26,7 +26,7 @@
 </div>
 
 :: Start
-第一个句子测试一下1
+<<run setup.setMenu(1,'1')>>第一个句子测试一下1
 第一个句子测试一下2
 第一个句子测试一下1
 第一个句子测试一下2
@@ -69,8 +69,11 @@
 [[This is a link|Next Passage]]
 
 :: Next Passage
-第二个句子测试一下
+<<run setup.setMenu()>>第二个句子测试一下
 [[This is a link|Start]]
+
+:: Vending
+露天商店
 
 :: Version
 v0.0.1
