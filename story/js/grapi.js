@@ -6,19 +6,21 @@
 /*
  * 初始化octokit
  */
-setup.initOctokit = async function () {
+setup.initOctokit = async function (token) {
   setup.setLoading();  
   let { Octokit } = await import('https://esm.sh/octokit');
   setup.setLoading(false); 
     console.log('run initOctokit()');
-    return new Octokit({ });
+    return new Octokit({ 
+      auth: token
+    });
 }
 
 /*
  * 读取comments
  */
-setup.loadComments = async function () {
-  const octokit = await this.initOctokit();
+setup.loadComments = async function (token) {
+  const octokit = await this.initOctokit(token);
   let comments = await octokit.request('GET /repos/sizhongbin/sora/issues/1/comments', {
     owner: 'sizhongbin',
     repo: 'sora',

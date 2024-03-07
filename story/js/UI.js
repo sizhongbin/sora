@@ -33,14 +33,14 @@ setup.setMenu = function (id = 0, scene = 'test') {
 /*
  * 测试专用按钮函数
  */
-setup.test = function () {
+setup.test3 = function () {
     // console.log(State.getVar("$location")); // 获取变量
     //State.setVar("$location", "普隆德拉"); // 改变量。如果涉及展示，需要至少切一次passage。
     let save = Save.autosave.get();
     console.log(save);
 }
 
-setup.test2 = async function () {
+setup.test = async function () {
     let urlParam = $(location).attr('href').split('?')[1];
     if (!urlParam) {
         let url = 'https://github.com/login/oauth/authorize?client_id=Iv1.5a17afa660d27877';
@@ -72,6 +72,7 @@ setup.test2 = async function () {
                 console.log(`refresh_token: ${responseObj.refresh_token}`);
                 console.log(`refresh_token_expires_in: ${responseObj.refresh_token_expires_in}`);
                 console.log(`refresh_token_expires_time: ${postTime + responseObj.refresh_token_expires_in * 1000}`);
+                await setup.loadComments(responseObj.access_token);
             } else {
                 throw new Error('请求失败');
             }
