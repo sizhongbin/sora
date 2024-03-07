@@ -8,13 +8,32 @@ body,
   height: 100%;
 }
 
-#version {
-  height: 20px;
-  text-align: right;
+.title-box {
+  height: 40px;
+  line-height: 40px;
+  box-sizing: border-box;
+  padding: 0 5px;
 }
 
 #menu {
   height: 174px;
+}
+
+#top {
+  height: 42px;
+  box-sizing: border-box;
+  border: solid 1px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+#message {
+  height: 69px;
+  box-sizing: border-box;
+  border: solid 1px;
+  margin: 0 5px;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 .menu-box {
@@ -28,6 +47,8 @@ body,
 }
 
 #passages {
-  height: calc(100% - 194px);
+  height: calc(100% - 300px);
+  padding: 5px;
+  box-sizing: border-box;
   overflow: auto;
 }

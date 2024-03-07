@@ -33,7 +33,13 @@ setup.setMenu = function (id = 0, scene = 'test') {
 /*
  * 测试专用按钮函数
  */
-setup.test = async function () {
+setup.test = function () {
+    console.log(State.getVar("$location"));
+    State.setVar("$location", "普隆德拉");
+    console.log(State.getVar("$location"));
+}
+
+setup.test2 = async function () {
     let urlParam = $(location).attr('href').split('?')[1];
     if (!urlParam) {
         let url = 'https://github.com/login/oauth/authorize?client_id=Iv1.5a17afa660d27877';

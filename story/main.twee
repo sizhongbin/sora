@@ -11,7 +11,14 @@ Sora
 
 :: StoryInterface
 <div id="main" class="pure-g">
-  <div id="version" class="pure-u-1" data-passage="Version"></div>
+  <div id="top" class="pure-u-1" >
+    <div class="pure-g">
+      <div class="pure-u-1-2 title-box" id="location" data-passage="Location"></div>
+      <div class="pure-u-1-4 title-box" id="time" data-passage="Time"></div>
+      <div class="pure-u-1-4 title-box" id="version" data-passage="Version"></div>
+    </div>
+  </div>
+  <div id="message" class="pure-u-1" data-passage="Message"></div>
   <div id="passages" class="pure-u-1"></div>
   <div id="menu" class="pure-u-1">
     <div class="pure-g">
@@ -26,7 +33,11 @@ Sora
 </div>
 
 :: Start
-<<run setup.setMenu(1,'1')>>第一个句子测试一下1
+<<set $location to "初心者修炼场">>
+<<goto "Next Passage">>
+
+:: Next Passage
+<<run setup.setMenu()>>第一个句子测试一下1
 第一个句子测试一下2
 第一个句子测试一下1
 第一个句子测试一下2
@@ -68,12 +79,19 @@ Sora
 第一个句子测试一下2
 [[This is a link|Next Passage]]
 
-:: Next Passage
-<<run setup.setMenu()>>第二个句子测试一下
-[[This is a link|Start]]
-
 :: Vending
 露天商店
 
+:: Location
+<<= $location>>
+
+:: Time
+08:30
+
 :: Version
 v0.0.1
+
+:: Message
+消息第一行
+消息第二行
+消息第三行
