@@ -34,9 +34,10 @@ setup.setMenu = function (id = 0, scene = 'test') {
  * 测试专用按钮函数
  */
 setup.test = function () {
-    console.log(State.getVar("$location"));
-    State.setVar("$location", "普隆德拉");
-    console.log(State.getVar("$location"));
+    // console.log(State.getVar("$location")); // 获取变量
+    //State.setVar("$location", "普隆德拉"); // 改变量。如果涉及展示，需要至少切一次passage。
+    let save = Save.autosave.get();
+    console.log(save);
 }
 
 setup.test2 = async function () {

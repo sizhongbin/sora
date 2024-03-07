@@ -33,7 +33,8 @@ Sora
 </div>
 
 :: Start
-<<set $location to "初心者修炼场">>
+<<set $game_location to "？？？">>
+<<set $game_time to "??:??">>
 <<goto "Next Passage">>
 
 :: Next Passage
@@ -83,10 +84,10 @@ Sora
 露天商店
 
 :: Location
-<<= $location>>
+<<= $game_location>>
 
 :: Time
-08:30
+<<= $game_time>>
 
 :: Version
 v0.0.1
