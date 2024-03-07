@@ -47,7 +47,7 @@ body,
 }
 
 #passages {
-  height: calc(100% - 300px);
+  height: calc(100% - 295px);
   padding: 5px;
   box-sizing: border-box;
   overflow: auto;
