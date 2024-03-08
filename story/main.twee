@@ -42,8 +42,8 @@ Sora
 <<goto "0">>
 
 :: 0
-你忽然醒了过来。窗外一片漆黑。
-现在几点了？
+<<type 40ms>>你忽然醒了过来。窗外一片漆黑。
+现在几点了？<</type>>
 <<run setup.setMainMenu([{title:'互动',goto:'0-1'}])>>
 
 :: 0-1 [nosave]
@@ -51,8 +51,8 @@ Sora
 <<run setup.setSubMenu([{title:'手机',goto:'1'}],'0')>>
 
 :: 1
-手机显示现在是00:00。
-还早。继续睡吧。
+<<type 40ms>>手机显示现在是00:00。
+还早。继续睡吧。<</type>>
 <<set $game_time to "00:00">>
 <<run setup.setMainMenu([{title:'互动',goto:'1-1'}])>>
 
