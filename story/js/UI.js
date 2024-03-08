@@ -7,40 +7,77 @@ setup.setLoading = function (toggle = true) {
 }
 
 /*
- * 设置按钮
+ * 设置一级菜单按钮，不可返回
  */
-setup.setMenu = function (id = 0, scene = 'test') {
-    console.log('setup.setMenu(' + id + ',' + scene + ')');
-    $('.menu-box').off('click');
-    $('.menu-box').html('');
-    if (id == 0) {
-        $('#menu-5').html('Back');
-        $('#menu-5').on('click', Engine.backward);
-        $('#menu-6').html('Test');
-        $('#menu-6').on('click', this.test);
+setup.setMainMenu = function (menuObjs = 0) {
+    console.log(menuObjs);
+    $('.main-menu-box').off('click');
+    $('.main-menu-box').html('');
+    $('.main-menu-box').css('visibility', 'hidden');
+    $('.sub-menu-box').off('click');
+    $('#sub-menu-container').html('');
+    $('#sub-menu-container').css('visibility', 'hidden');
+    if (menuObjs == 0) {
+        console.log('setMainMenu for Test')
+        $('#menu-4').html('Back');
+        $('#menu-4').on('click', Engine.backward);
+        $('#menu-4').css('visibility', 'visible');
+        $('#menu-5').html('Test');
+        $('#menu-5').on('click', this.test);
+        $('#menu-5').css('visibility', 'visible');
     }
     else {
-        switch (scene) {
-            case '1': {
-                $('#menu-' + id).html('1');
-                console.log(1)
-                break;
-            }
+        console.log('setMainMenu');
+        for (let i = 0; i < menuObjs.length; i++) {
+            $('#menu-' + i).html(menuObjs[i].title);
+            $('#menu-' + i).on('click', function () { Engine.play(menuObjs[i].goto); });
+            $('#menu-' + i).css('visibility', 'visible');
         }
     }
 }
 
 /*
- * 测试专用按钮函数
+ * 设置下级菜单按钮，可返回上级菜单
  */
-setup.test3 = function () {
+setup.setSubMenu = function (menuObjs = 0, backto = State.expired[State.expired.length - 1]) {
+    console.log(menuObjs);
+    $('.main-menu-box').off('click');
+    $('.main-menu-box').html('');
+    $('.main-menu-box').css('visibility', 'hidden');
+    $('.sub-menu-box').off('click');
+    $('#sub-menu-container').html('');
+    $('#sub-menu-container').css('visibility', 'hidden');
+    if (menuObjs == 0) {
+        console.log('setSubMenu for Test')
+        $('#sub-menu-container').append('<div class="pure-u-1-2"><div id="sub-menu-0" class="sub-menu-box"></div></div>');
+        $('#sub-menu-0').html('Test');
+        $('#sub-menu-0').on('click', this.test);
+    }
+    else {
+        console.log('setSubMenu');
+        for (let i = 0; i < menuObjs.length; i++) {
+            $('#sub-menu-container').append('<div class="pure-u-1-2"><div id="sub-menu-' + i + '" class="sub-menu-box"></div></div>');
+            $('#sub-menu-' + i).html(menuObjs[i].title);
+            $('#sub-menu-' + i).on('click', function () { Engine.play(menuObjs[i].goto); });
+        }
+    }
+    $('#sub-menu-container').append('<div class="pure-u-1"><div id="sub-menu-back" class="sub-menu-box"></div></div>');
+    $('#sub-menu-back').html('Back');
+    $('#sub-menu-back').on('click', function () { Engine.play(backto); });
+    $('#sub-menu-container').css('visibility', 'visible');
+}
+
+/*
+ * 测试-打印存档
+ */
+setup.test = function () {
     // console.log(State.getVar("$location")); // 获取变量
     //State.setVar("$location", "普隆德拉"); // 改变量。如果涉及展示，需要至少切一次passage。
     let save = Save.autosave.get();
     console.log(save);
 }
 
-setup.test = async function () {
+setup.test3 = async function () {
     let urlParam = $(location).attr('href').split('?')[1];
     if (!urlParam) {
         let url = 'https://github.com/login/oauth/authorize?client_id=Iv1.5a17afa660d27877';

@@ -18,70 +18,53 @@ Sora
       <div class="pure-u-1-4 title-box" id="version" data-passage="Version"></div>
     </div>
   </div>
-  <div id="message" class="pure-u-1" data-passage="Message"></div>
   <div id="passages" class="pure-u-1"></div>
-  <div id="menu" class="pure-u-1">
+  <div id="display" class="pure-u-1" data-passage="Display"></div>
+  <div id="main-menu" class="pure-u-1">
     <div class="pure-g">
-      <div class="pure-u-1-2"><div id="menu-1" class="menu-box"></div></div>
-      <div class="pure-u-1-2"><div id="menu-2" class="menu-box"></div></div>
-      <div class="pure-u-1-2"><div id="menu-3" class="menu-box"></div></div>
-      <div class="pure-u-1-2"><div id="menu-4" class="menu-box"></div></div>
-      <div class="pure-u-1-2"><div id="menu-5" class="menu-box"></div></div>
-      <div class="pure-u-1-2"><div id="menu-6" class="menu-box"></div></div>
+      <div class="pure-u-1-2"><div id="menu-0" class="main-menu-box"></div></div>
+      <div class="pure-u-1-2"><div id="menu-1" class="main-menu-box"></div></div>
+      <div class="pure-u-1-2"><div id="menu-2" class="main-menu-box"></div></div>
+      <div class="pure-u-1-2"><div id="menu-3" class="main-menu-box"></div></div>
+      <div class="pure-u-1-2"><div id="menu-4" class="main-menu-box"></div></div>
+      <div class="pure-u-1-2"><div id="menu-5" class="main-menu-box"></div></div>
     </div>
+  </div>
+  <div id="sub-menu" class="pure-u-1">
+    <div id="sub-menu-container" class="pure-g"></div>
   </div>
 </div>
 
 :: Start
-<<set $game_location to "？？？">>
+<<set $game_location to "你的房间">>
 <<set $game_time to "??:??">>
-<<goto "Next Passage">>
+<<set $game_version to "V0.1">>
+<<goto "0">>
 
-:: Next Passage
-<<run setup.setMenu()>>第一个句子测试一下1
-第一个句子测试一下2
-第一个句子测试一下1
-第一个句子测试一下2
-第一个句子测试一下1
-第一个句子测试一下2
-第一个句子测试一下1
-第一个句子测试一下2
-第一个句子测试一下1
-第一个句子测试一下2
-第一个句子测试一下1
-第一个句子测试一下2
-第一个句子测试一下1
-第一个句子测试一下2
-第一个句子测试一下1
-第一个句子测试一下2
-第一个句子测试一下1
-第一个句子测试一下2
-第一个句子测试一下1
-第一个句子测试一下2
-第一个句子测试一下1
-第一个句子测试一下2
-第一个句子测试一下1
-第一个句子测试一下2
-第一个句子测试一下1
-第一个句子测试一下2
-第一个句子测试一下1
-第一个句子测试一下2
-第一个句子测试一下1
-第一个句子测试一下2
-第一个句子测试一下1
-第一个句子测试一下2
-第一个句子测试一下1
-第一个句子测试一下2
-第一个句子测试一下1
-第一个句子测试一下2
-第一个句子测试一下1
-第一个句子测试一下2
-第一个句子测试一下1
-第一个句子测试一下2
-[[This is a link|Next Passage]]
+:: 0
+你忽然醒了过来。窗外一片漆黑。
+现在几点了？
+<<run setup.setMainMenu([{title:'互动',goto:'0-1'}])>>
 
-:: Vending
-露天商店
+:: 0-1 [nosave]
+要和什么互动？
+<<run setup.setSubMenu([{title:'手机',goto:'1'}],'0')>>
+
+:: 1
+手机显示现在是00:00。
+还早。继续睡吧。
+<<set $game_time to "00:00">>
+<<run setup.setMainMenu([{title:'互动',goto:'1-1'}])>>
+
+:: 1-1 [nosave]
+要和什么互动？
+<<run setup.setSubMenu([{title:'床',goto:'2'}],'1')>>
+
+:: 2
+2
+
+:: Vending [nosave]
+<<run setup.setMainMenu()>>露天商店
 
 :: Location
 <<= $game_location>>
@@ -90,9 +73,11 @@ Sora
 <<= $game_time>>
 
 :: Version
-v0.0.1
+<<= $game_version>>
 
-:: Message
-消息第一行
-消息第二行
-消息第三行
+:: Display
+<<switch State.current.title>>
+<<case '0'>>0
+<<case '0-1'>>0-1
+<<default>>
+<</switch>>
