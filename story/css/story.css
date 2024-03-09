@@ -55,10 +55,12 @@ body,
   box-sizing: border-box;
   border-radius: 5px;
   background-color: #222;
+  visibility: hidden;
 }
 
 #sub-menu-container {
   overflow: auto;
+  visibility: hidden;
 }
 
 .sub-menu-box {
