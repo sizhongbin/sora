@@ -7,18 +7,27 @@ setup.setLoading = function (toggle = true) {
 }
 
 /*
- * 设置继续按钮，放在一级菜单末尾
+ * 清空菜单
  */
-setup.setContinue = function (goto) {
-    console.log(goto);
+setup.clearMenu = function () {
     $('.main-menu-box').off('click');
     $('.main-menu-box').html('');
     $('.main-menu-box').css('visibility', 'hidden');
     $('.sub-menu-box').off('click');
     $('#sub-menu-container').html('');
     $('#sub-menu-container').css('visibility', 'hidden');
+}
+
+/*
+ * 设置继续按钮，放在一级菜单末尾
+ */
+setup.setContinue = function (goto) {
+    console.log(goto);
     $('#menu-5').html('继续');
-    $('#menu-5').on('click', function () { Engine.play(goto); });
+    $('#menu-5').on('click', function () {
+      setup.clearMenu();
+      Engine.play(goto); 
+    });
     $('#menu-5').css('visibility', 'visible');
 }
 
