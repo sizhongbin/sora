@@ -36,26 +36,28 @@ setup.setContinue = function (goto) {
  */
 setup.setMainMenu = function (menuObjs = 0) {
     console.log(menuObjs);
-    $('.main-menu-box').off('click');
-    $('.main-menu-box').html('');
-    $('.main-menu-box').css('visibility', 'hidden');
-    $('.sub-menu-box').off('click');
-    $('#sub-menu-container').html('');
-    $('#sub-menu-container').css('visibility', 'hidden');
     if (menuObjs == 0) {
         console.log('setMainMenu for Test')
         $('#menu-4').html('Back');
-        $('#menu-4').on('click', Engine.backward);
+        $('#menu-4').on('click', function(){
+          setup.clearMenu();
+          Engine.play(State.expired[State.expired.length - 1]);
+        });
         $('#menu-4').css('visibility', 'visible');
         $('#menu-5').html('Test');
-        $('#menu-5').on('click', this.test);
+        $('#menu-5').on('click', function(){
+          setup.clearMenu();
+          setup.test();
+        });
         $('#menu-5').css('visibility', 'visible');
     }
     else {
         console.log('setMainMenu');
         for (let i = 0; i < menuObjs.length; i++) {
             $('#menu-' + i).html(menuObjs[i].title);
-            $('#menu-' + i).on('click', function () { Engine.play(menuObjs[i].goto); });
+            $('#menu-' + i).on('click', function () { 
+              setup.clearMenu();
+              Engine.play(menuObjs[i].goto); });
             $('#menu-' + i).css('visibility', 'visible');
         }
     }
@@ -66,29 +68,30 @@ setup.setMainMenu = function (menuObjs = 0) {
  */
 setup.setSubMenu = function (menuObjs = 0, backto = State.expired[State.expired.length - 1]) {
     console.log(menuObjs);
-    $('.main-menu-box').off('click');
-    $('.main-menu-box').html('');
-    $('.main-menu-box').css('visibility', 'hidden');
-    $('.sub-menu-box').off('click');
-    $('#sub-menu-container').html('');
-    $('#sub-menu-container').css('visibility', 'hidden');
     if (menuObjs == 0) {
         console.log('setSubMenu for Test')
         $('#sub-menu-container').append('<div class="pure-u-1-2"><div id="sub-menu-0" class="sub-menu-box"></div></div>');
         $('#sub-menu-0').html('Test');
-        $('#sub-menu-0').on('click', this.test);
+        $('#sub-menu-0').on('click', function() {
+          setup.clearMenu();
+          setup.test();
+        });
     }
     else {
         console.log('setSubMenu');
         for (let i = 0; i < menuObjs.length; i++) {
             $('#sub-menu-container').append('<div class="pure-u-1-2"><div id="sub-menu-' + i + '" class="sub-menu-box"></div></div>');
             $('#sub-menu-' + i).html(menuObjs[i].title);
-            $('#sub-menu-' + i).on('click', function () { Engine.play(menuObjs[i].goto); });
+            $('#sub-menu-' + i).on('click', function () { 
+              setup.clearMenu();
+              Engine.play(menuObjs[i].goto); });
         }
     }
     $('#sub-menu-container').append('<div class="pure-u-1"><div id="sub-menu-back" class="sub-menu-box"></div></div>');
     $('#sub-menu-back').html('Back');
-    $('#sub-menu-back').on('click', function () { Engine.play(backto); });
+    $('#sub-menu-back').on('click', function () { 
+      setup.clearMenu();
+      Engine.play(backto); });
     $('#sub-menu-container').css('visibility', 'visible');
 }
 
