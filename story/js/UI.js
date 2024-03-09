@@ -18,7 +18,7 @@ setup.setContinue = function (goto) {
     $('#sub-menu-container').html('');
     $('#sub-menu-container').css('visibility', 'hidden');
     $('#menu-5').html('继续');
-    $('#menu-5').on('click', function () { Engine.play(menuObjs[i].goto); });
+    $('#menu-5').on('click', function () { Engine.play(goto); });
     $('#menu-5').css('visibility', 'visible');
 }
 
