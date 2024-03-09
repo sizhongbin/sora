@@ -54,7 +54,7 @@ $(document).on(':typingcomplete', function () {
 现在几点了？<</type>>
 <<script>>
 $(document).on(':typingcomplete', function () {
-  run setup.setMainMenu([{title:'手机',goto:'2'}])
+  setup.setMainMenu([{title:'手机',goto:'2'}]);
 });
 <</script>>
 
