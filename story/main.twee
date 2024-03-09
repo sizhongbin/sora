@@ -42,19 +42,21 @@ Sora
 <<goto "0-1">>
 
 :: 0-1
-<<type 40ms>>你忽然睁开双眼。
+<<type 40ms>>你忽然睁开双眼。<</type>>
 <<script>>
 $(document).on(':typingstop', function () {
+  $(document).off(':typingstop');
   setup.setContinue('0-2');
 });
 <</script>>
-<</type>>
+
 
 :: 0-2
 <<type 40ms>>屋内没有一点光，你什么都看不见。
 现在几点了
 <<script>>
 $(document).on(':typingstop', function () {
+  $(document).off(':typingstop');
   setup.setMainMenu([{title:'手机',goto:'1'}]);
 });
 <</script>>
