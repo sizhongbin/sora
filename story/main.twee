@@ -42,23 +42,25 @@ Sora
 <<goto "0-1">>
 
 :: 0-1
-<<type 40ms>>你忽然睁开双眼。<</type>>
+<<type 40ms>>你忽然睁开双眼。
 <<script>>
-$(document).on(':typingcomplete', function () {
+$(document).on(':typingstop', function () {
   setup.setContinue('0-2');
 });
 <</script>>
+<</type>>
 
 :: 0-2
 <<type 40ms>>屋内没有一点光，你什么都看不见。
-现在几点了？<</type>>
+现在几点了
 <<script>>
-$(document).on(':typingcomplete', function () {
-  setup.setMainMenu([{title:'手机',goto:'2'}]);
+$(document).on(':typingstop', function () {
+  setup.setMainMenu([{title:'手机',goto:'1'}]);
 });
 <</script>>
+<</type>>
 
-:: 2
+:: 1
 <<type 40ms>>手机显示现在是00:00。
 还早。继续睡吧。<</type>>
 <<set $game_time to "00:00">>
