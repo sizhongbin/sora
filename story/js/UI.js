@@ -7,6 +7,22 @@ setup.setLoading = function (toggle = true) {
 }
 
 /*
+ * 设置继续按钮，放在一级菜单末尾
+ */
+setup.setContinue = function (goto) {
+    console.log(goto);
+    $('.main-menu-box').off('click');
+    $('.main-menu-box').html('');
+    $('.main-menu-box').css('visibility', 'hidden');
+    $('.sub-menu-box').off('click');
+    $('#sub-menu-container').html('');
+    $('#sub-menu-container').css('visibility', 'hidden');
+    $('#menu-5').html('继续');
+    $('#menu-5').on('click', function () { Engine.play(menuObjs[i].goto); });
+    $('#menu-5').css('visibility', 'visible');
+}
+
+/*
  * 设置一级菜单按钮，不可返回
  */
 setup.setMainMenu = function (menuObjs = 0) {

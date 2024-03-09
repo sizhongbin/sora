@@ -39,18 +39,26 @@ Sora
 <<set $game_location to "你的房间">>
 <<set $game_time to "??:??">>
 <<set $game_version to "V0.1">>
-<<goto "0">>
+<<goto "0-1">>
 
-:: 0
-<<type 40ms>>你忽然醒了过来。窗外一片漆黑。
+:: 0-1
+<<type 40ms>>你忽然睁开双眼。<</type>>
+<<script>>
+$(document).on(':typingcomplete', function () {
+  setup.setContinue('0-2');
+});
+<</script>>
+
+:: 0-2
+<<type 40ms>>屋内没有一点光，你什么都看不见。
 现在几点了？<</type>>
-<<run setup.setMainMenu([{title:'互动',goto:'0-1'}])>>
+<<script>>
+$(document).on(':typingcomplete', function () {
+  run setup.setMainMenu([{title:'手机',goto:'2'}])
+});
+<</script>>
 
-:: 0-1 [nosave]
-要和什么互动？
-<<run setup.setSubMenu([{title:'手机',goto:'1'}],'0')>>
-
-:: 1
+:: 2
 <<type 40ms>>手机显示现在是00:00。
 还早。继续睡吧。<</type>>
 <<set $game_time to "00:00">>
