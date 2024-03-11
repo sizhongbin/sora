@@ -22,6 +22,7 @@ setup.clearMenu = function () {
  * 设置继续按钮，放在一级菜单末尾
  */
 setup.setContinue = function (goto) {
+    $(document).off(':typingstop');
     console.log(goto);
     $('#menu-5').html('继续');
     $('#menu-5').on('click', function () {
@@ -35,6 +36,7 @@ setup.setContinue = function (goto) {
  * 设置一级菜单按钮，不可返回
  */
 setup.setMainMenu = function (menuObjs = 0) {
+    $(document).off(':typingstop');
     console.log(menuObjs);
     if (menuObjs == 0) {
         console.log('setMainMenu for Test')
