@@ -43,42 +43,71 @@ Sora
 
 :: 0-1
 <<type 40ms>>你忽然睁开双眼。<</type>>
-<<run setup.setContinue('0-2')>>
+<<run setup.setContinue("0-2")>>
 
 :: 0-2
 <<type 40ms>>天还没亮，屋里一片漆黑。
 现在几点了？<</type>>
-<<run setup.setMainMenu([{title:'手机',goto:'1'}])>>
+<<run setup.setMainMenu([{title:"手机",goto:"1"}])>>
 
 :: 1
 <<type 40ms>>你点亮手机屏幕，上面显示着00:00。
 还早。接着睡吧。<</type>>
 <<set $game_time to "00:00">>
-<<run setup.setMainMenu([{title:'睡觉',goto:'2-1'}])>>
+<<run setup.setMainMenu([{title:"睡觉",goto:"2-1"}])>>
 
 :: 2-1
 <<type 40ms>>……<</type>>
 <<set $game_time to "00:05">>
-<<run setup.setContinue('2-2')>>
+<<run setup.setContinue("2-2")>>
 
 :: 2-2
 <<type 40ms>>…………<</type>>
 <<set $game_time to "00:10">>
-<<run setup.setContinue('2-3')>>
+<<run setup.setContinue("2-3")>>
 
 :: 2-3
 <<type 40ms>>………………<</type>>
 <<set $game_time to "00:15">>
-<<run setup.setContinue('2-4')>>
+<<run setup.setContinue("2-4")>>
 
 :: 2-4
 <<type 40ms>>你感觉脑袋很清醒，完全睡不着。
 起来喝杯水尿个尿好了。<</type>>
-<<run setup.setMainMenu([{title:'起床',goto:'3-1'}])>>
+<<run setup.setMainMenu([{title:"起床",goto:"3-1"}])>>
 
 :: 3-1
-3
+<<type 40ms>>站起来的瞬间，
+你就意识到自己大概正在做梦。<</type>>
+<<set $game_time to "??:??">>
+<<set $game_location to "？？？">>
+<<run setup.setContinue("3-2")>>
 
+:: 3-2
+<<type 40ms>>眼前是一片阳光下的原野。
+地上长满了小草，嫩嫩的、绿绿的，看不到边。<</type>>
+<<run setup.setContinue("3-3")>>
+
+:: 3-3
+<<type 40ms>>你被吓得够呛，想坐回到床上，但床已经消失不见。
+你猝不及防，摔了个四仰八叉。<</type>>
+<<run setup.setContinue("3-4")>>
+
+:: 3-4
+<<type 40ms>>然而你完全没感觉到疼。
+你愣愣地看着蔚蓝的天空，感受着草地的柔软。<</type>>
+<<run setup.setContinue("3-5")>>
+
+:: 3-5
+<<type 40ms>>你迟钝地发现，
+身上的睡衣睡裤已不知何时变成了朴素的棉布衣物。<</type>>
+<<run setup.setContinue("3-6")>>
+
+:: 3-6
+<<type 40ms>>你使劲儿掐了自己一下，感觉很疼。
+你忍不住开始想，
+这波怕不是穿越了吧？<</type>>
+<<run setup.setMainMenu([{title:'待续',goto:'3-6'}])>>
 
 :: Vending [nosave]
 <<run setup.setMainMenu()>>露天商店
@@ -94,7 +123,7 @@ Sora
 
 :: Display
 <<switch State.current.title>>
-<<case '0'>>0
-<<case '0-1'>>0-1
+<<case "0">>0
+<<case "0-1">>0-1
 <<default>>
 <</switch>>
