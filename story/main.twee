@@ -46,34 +46,34 @@ Sora
 <<run setup.setContinue("0-2")>>
 
 :: 0-2
-<<type 40ms>>天还没亮，屋里一片漆黑。
+<<type 40ms>>天似乎还没亮，房间里只有朦胧的微光。
 现在几点了？<</type>>
 <<run setup.setMainMenu([{title:"手机",goto:"1"}])>>
 
 :: 1
-<<type 40ms>>你点亮手机屏幕，上面显示着00:00。
-还早。接着睡吧。<</type>>
+<<type 40ms>>你点亮手机屏幕，上面显示着06:00。
+时间还早。再睡会儿吧。<</type>>
 <<set $game_time to "00:00">>
 <<run setup.setMainMenu([{title:"睡觉",goto:"2-1"}])>>
 
 :: 2-1
 <<type 40ms>>……<</type>>
-<<set $game_time to "00:05">>
+<<set $game_time to "06:05">>
 <<run setup.setContinue("2-2")>>
 
 :: 2-2
 <<type 40ms>>…………<</type>>
-<<set $game_time to "00:10">>
+<<set $game_time to "06:10">>
 <<run setup.setContinue("2-3")>>
 
 :: 2-3
 <<type 40ms>>………………<</type>>
-<<set $game_time to "00:15">>
+<<set $game_time to "06:15">>
 <<run setup.setContinue("2-4")>>
 
 :: 2-4
-<<type 40ms>>你感觉脑袋很清醒，完全睡不着。
-起来喝杯水尿个尿好了。<</type>>
+<<type 40ms>>你感觉脑袋异常清醒，完全睡不着。
+今天就早点起床吧。<</type>>
 <<run setup.setMainMenu([{title:"起床",goto:"3-1"}])>>
 
 :: 3-1
@@ -84,8 +84,8 @@ Sora
 <<run setup.setContinue("3-2")>>
 
 :: 3-2
-<<type 40ms>>眼前是一片阳光下的原野。
-地上长满了小草，嫩嫩的、绿绿的，看不到边。<</type>>
+<<type 40ms>>你的眼前是一片阳光下的原野。
+地上长满了草，嫩嫩的、绿绿的，看不到边。<</type>>
 <<run setup.setContinue("3-3")>>
 
 :: 3-3
@@ -94,18 +94,18 @@ Sora
 <<run setup.setContinue("3-4")>>
 
 :: 3-4
-<<type 40ms>>然而你完全没感觉到疼。
-你愣愣地看着蔚蓝的天空，感受着草地的柔软。<</type>>
+<<type 40ms>>然而你几乎没感觉到疼，
+背后传来的，是草地柔软的触感。<</type>>
 <<run setup.setContinue("3-5")>>
 
 :: 3-5
-<<type 40ms>>你迟钝地发现，
+<<type 40ms>>这时，你才迟钝地发现，
 身上的睡衣睡裤已不知何时变成了朴素的棉布衣物。<</type>>
 <<run setup.setContinue("3-6")>>
 
 :: 3-6
 <<type 40ms>>你使劲儿掐了自己一下，感觉很疼。
-你忍不住开始想，
+你愣愣地看着蔚蓝的天空，
 这波怕不是穿越了吧？<</type>>
 <<run setup.setMainMenu([{title:'待续',goto:'3-6'}])>>
 
