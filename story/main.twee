@@ -7,15 +7,16 @@
 }
 
 :: StoryTitle
-Sora
+Sora V0.1
 
 :: StoryInterface
 <div id="main" class="pure-g">
   <div id="top" class="pure-u-1" >
     <div class="pure-g">
-      <div class="pure-u-1-2 title-box" id="location" data-passage="Location"></div>
-      <div class="pure-u-1-4 title-box" id="time" data-passage="Time"></div>
-      <div class="pure-u-1-4 title-box" id="version" data-passage="Version"></div>
+      <div class="pure-u-2-5 title-box" id="location" data-passage="Location"></div>
+      <div class="pure-u-1-5 title-box" id="time" data-passage="Time"></div>
+      <div class="pure-u-1-5 title-box" id="day" data-passage="Day"></div>
+      <div class="pure-u-1-5 title-box" id="network" data-passage="Network"></div>
     </div>
   </div>
   <div id="passages" class="pure-u-1"></div>
@@ -38,7 +39,8 @@ Sora
 :: Start
 <<set $game_location to "你的房间">>
 <<set $game_time to "??:??">>
-<<set $game_version to "V0.1">>
+<<set $game_day to "？？">>
+<<set $game_network to "离线">>
 <<goto "0-1">>
 
 :: 0-1
@@ -53,7 +55,8 @@ Sora
 :: 1
 <<type 40ms>>你点亮手机屏幕，上面显示着06:00。
 时间还早。再睡会儿吧。<</type>>
-<<set $game_time to "00:00">>
+<<set $game_time to "06:00">>
+<<set $game_day to "周五">>
 <<run setup.setMainMenu([{title:"睡觉",goto:"2-1"}])>>
 
 :: 2-1
@@ -81,6 +84,7 @@ Sora
 你就意识到自己大概正在做梦。<</type>>
 <<set $game_time to "??:??">>
 <<set $game_location to "？？？">>
+<<set $game_day to "？？">>
 <<run setup.setContinue("3-2")>>
 
 :: 3-2
@@ -107,7 +111,71 @@ Sora
 <<type 40ms>>你使劲儿掐了自己一下，感觉很疼。
 你愣愣地看着蔚蓝的天空，
 这波怕不是穿越了吧？<</type>>
-<<run setup.setMainMenu([{title:'待续',goto:'3-6'}])>>
+<<set $genericCounter1 to 0>>
+<<run setup.setMainMenu([{title:'探索',goto:'4-1'},{title:'摆烂',goto:'4-2'}])>>
+
+
+:: 4-1
+<<type 40ms>>你随便挑了一个方向前进。
+不知走了多久，眼前的景色没有任何变化，也没见着其他人。<</type>>
+<<set $genericCounter1 += 1>>
+<<if $genericCounter1 lt 2>>
+  <<run setup.setMainMenu([{title:'摆烂',goto:'4-2'}])>>
+<<else>>
+  <<run setup.setContinue("4-3")>>
+<</if>>
+
+:: 4-2
+<<type 40ms>>你躺平在草地上，
+脑子里想着一些有的没的，
+心情时悲时喜，不知躺了多久。<</type>>
+<<set $genericCounter1 += 1>>
+<<if $genericCounter1 lt 2>>
+  <<run setup.setMainMenu([{title:'探索',goto:'4-1'}])>>
+<<else>>
+  <<run setup.setContinue("4-3")>>
+<</if>>
+
+:: 4-3
+<<type 40ms>>耳边忽然传来熟悉的手机闹铃声。
+你正想去找，手机已经自己出现在了你的手上。<</type>>
+<<set $genericCounter1 to 0>>
+<<run setup.setContinue("4-4")>>
+
+:: 4-4
+<<type 40ms>>7点，是你设定的每日重复闹钟时间。
+你下意识地点了停止。<</type>>
+<<run setup.setContinue("4-5")>>
+
+:: 4-5
+<<type 40ms>>朦胧的微光重新占据了整个空间。
+蓝天消失了，原野也消失了。<</type>>
+<<run setup.setContinue("4-6")>>
+
+:: 4-6
+<<type 40ms>>你睁着双眼，
+眼前毫无疑问是你熟悉的房间。<</type>>
+<<set $game_location to "你的房间">>
+<<set $game_time to "07:00">>
+<<set $game_day to "周五">>
+<<run setup.setContinue("4-7")>>
+
+:: 4-7
+<<type 40ms>>穿越？穿个球啊！
+你用脚趾头使劲儿抠着床垫，
+脸上一阵火烧。<</type>>
+<<run setup.setContinue("4-8")>>
+
+:: 4-8
+<<type 40ms>>梦醒了。
+该上班了。<</type>>
+<<run setup.setMainMenu([{title:'上班',goto:'5'}])>>
+
+:: 5
+<<type 40ms>>打工人的日常，不值一提。
+下班了，要干点什么？<</type>>
+<<set $game_time to "18:00">>
+<<run setup.setMainMenu([{title:'待续',goto:'5'}])>>
 
 :: Vending [nosave]
 <<run setup.setMainMenu()>>露天商店
@@ -118,8 +186,11 @@ Sora
 :: Time
 <<= $game_time>>
 
-:: Version
-<<= $game_version>>
+:: Day
+<<= $game_day>>
+
+:: Network
+<<= $game_network>>
 
 :: Display
 <<switch State.current.title>>
