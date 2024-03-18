@@ -1,0 +1,8 @@
+:: origin
+<<if !$mapOriginName>><<set $mapOriginName to "？？？">><</if>>
+<<goto "originDisplay">>
+
+:: originDisplay
+<ul>
+<li>所在地：【<<= $mapOriginName>>】</li>
+</ul>
