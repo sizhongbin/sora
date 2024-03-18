@@ -36,7 +36,7 @@ body,
   border-radius: 5px;
 }
 
-#passages {
+#messages {
   height: 94px;
   box-sizing: border-box;
   border: solid 1px;
@@ -75,14 +75,14 @@ body,
   opacity: 0.8;
 }
 
-#display {
+#passages {
   height: calc(100% - 320px);
   padding: 5px;
   box-sizing: border-box;
   overflow-y: auto;
 }
 
-#display::-webkit-scrollbar {
+#passages::-webkit-scrollbar {
   width: 5px;
   height: 13px;
   -webkit-border-radius: 5px;
@@ -90,7 +90,7 @@ body,
   border-radius: 5px;
 }
 
-#display::-webkit-scrollbar-thumb {
+#passages::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.5);
   background-clip: padding-box;
   -webkit-border-radius: 5px;
@@ -99,7 +99,7 @@ body,
   min-height: 28px;
 }
 
-#display::-webkit-scrollbar-thumb:hover {
+#passages::-webkit-scrollbar-thumb:hover {
   background-color: rgba(255, 255, 255, 0.5);
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
