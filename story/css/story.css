@@ -80,20 +80,24 @@ body,
   width: 100%;
   padding: 5px;
   box-sizing: border-box;
-  overflow-y: auto;
 }
 
-#passages::-webkit-scrollbar {
+.passage {
+  overflow-y: auto;
+  height: 100%;
+}
+
+.passage::-webkit-scrollbar {
   width: 5px;
   height: 13px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  -webkit-appearance: none;
+  appearance: none;
 }
 
-#passages::-webkit-scrollbar-thumb {
-  background-color: rgba(241, 212, 212, 0.5);
+.passage::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.5);
   background-clip: padding-box;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -101,7 +105,7 @@ body,
   min-height: 28px;
 }
 
-#passages::-webkit-scrollbar-thumb:hover {
+.passage::-webkit-scrollbar-thumb:hover {
   background-color: rgba(255, 255, 255, 0.5);
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
