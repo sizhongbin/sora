@@ -89,8 +89,6 @@ body,
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  border: 5px solid transparent;
-  background-clip: content-box;
 }
 
 #passages::-webkit-scrollbar-thumb {
@@ -107,4 +105,8 @@ body,
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+}
+
+#passages::-webkit-scrollbar-thumb:vertical {
+  min-height: 28px;
 }
