@@ -13,9 +13,10 @@ Sora V0.1
 <div id="main" class="pure-g">
   <div id="top" class="pure-u-1" >
     <div class="pure-g">
-      <div class="pure-u-2-5 title-box" id="location" data-passage="Location"></div>
-      <div class="pure-u-2-5 title-box" id="time" data-passage="Time"></div>
-      <div class="pure-u-1-5 title-box" id="network" data-passage="Network"></div>
+      <div class="pure-u-3-24 title-box" id="name" data-passage="Name"></div>
+      <div class="pure-u-7-24 title-box" id="hp" data-passage="HP"></div>
+      <div class="pure-u-7-24 title-box" id="sp" data-passage="SP"></div>
+      <div class="pure-u-7-24 title-box" id="time" data-passage="Time"></div>
     </div>
   </div>
   <div id="messages" class="pure-u-1"></div>
@@ -38,20 +39,27 @@ Sora V0.1
 
 :: Start
 <<set $game_version to "0.1">>
+<<set $game_location to "origin">>
+<<set $game_hp_left to 30>>
+<<set $game_hp_max to 30>>
+<<set $game_sp_left to 30>>
+<<set $game_sp_max to 30>>
+<<set $game_time_left to 300>>
+<<set $game_time_max to 300>>
 <<goto $game_location>>
 
-:: Location
-<<= $game_location>>
+:: Name
+你
+
+:: SP
+<<= $game_sp_left>>/<<= $game_sp_max>>
+
+:: HP
+<<= $game_hp_left>>/<<= $game_hp_max>>
 
 :: Time
-<<= $game_time_left>> / <<= $game_time_max>>
-
-:: Network
-<<= $game_network>>
+<<= $game_time_left>>/<<= $game_time_max>>
 
 :: Patch
-<<run alert($game_version)>>
-<<set $game_location to "origin">>
-<<set $game_time_left to "---">>
-<<set $game_time_max to "---">>
-<<set $game_network to "离线">>
+<<run alert("test")>>
+
