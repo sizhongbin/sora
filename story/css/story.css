@@ -89,6 +89,7 @@ body,
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+  -webkit-appearance: none;
 }
 
 #passages::-webkit-scrollbar-thumb {
@@ -105,8 +106,4 @@ body,
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-}
-
-#passages::-webkit-scrollbar-thumb:vertical {
-  min-height: 28px;
 }
