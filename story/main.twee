@@ -33,6 +33,7 @@ Sora V0.1
   <div id="sub-menu" class="pure-u-1">
     <div id="sub-menu-container" class="pure-g"></div>
   </div>
+  <div style="display:none" data-passage="Patch"></div>
 </div>
 
 :: Start
@@ -50,3 +51,6 @@ Sora V0.1
 
 :: Network
 <<= $game_network>>
+
+:: Patch
+<<run alert("test")>>
