@@ -37,10 +37,7 @@ Sora V0.1
 </div>
 
 :: Start
-<<set $game_location to "origin">>
-<<set $game_time_left to "---">>
-<<set $game_time_max to "---">>
-<<set $game_network to "离线">>
+<<set $game_version to "0.1">>
 <<goto $game_location>>
 
 :: Location
@@ -53,4 +50,8 @@ Sora V0.1
 <<= $game_network>>
 
 :: Patch
-<<run alert("test")>>
+<<run alert($game_version)>>
+<<set $game_location to "origin">>
+<<set $game_time_left to "---">>
+<<set $game_time_max to "---">>
+<<set $game_network to "离线">>
