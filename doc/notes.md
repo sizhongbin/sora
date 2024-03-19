@@ -185,3 +185,34 @@ cloudflares支持tcp连接。
 
 :: Vending [nosave]
 <<run setup.setMainMenu()>>露天商店
+
+
+
+    setup.setMainMenu([
+        {
+            title: "探索",
+            func: function () {
+                alert('探索');
+            }
+        },
+        {
+            title: "对话",
+            func: function () {
+                setup.clearMenu();
+                setup.setSubMenu([
+                {
+                    title: "卫兵",
+                    func: function () {
+                        alert('卫兵');
+                    }
+                }
+                ], "origin")
+            }
+        },
+        {
+            title: "移动",
+            func: function () {
+                alert('移动');
+            }
+        },
+    ]);

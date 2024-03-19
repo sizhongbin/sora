@@ -58,10 +58,7 @@ setup.setMainMenu = function (menuObjs = 0) {
     console.log('setMainMenu');
     for (let i = 0; i < menuObjs.length; i++) {
       $('#menu-' + i).html(menuObjs[i].title);
-      $('#menu-' + i).on('click', function () {
-        setup.clearMenu();
-        Engine.play(menuObjs[i].goto);
-      });
+      $('#menu-' + i).on('click', menuObjs[i].func);
       $('#menu-' + i).css('visibility', 'visible');
     }
   }
@@ -86,17 +83,14 @@ setup.setSubMenu = function (menuObjs = 0, backto = State.expired[State.expired.
     for (let i = 0; i < menuObjs.length; i++) {
       $('#sub-menu-container').append('<div class="pure-u-1-2"><div id="sub-menu-' + i + '" class="sub-menu-box"></div></div>');
       $('#sub-menu-' + i).html(menuObjs[i].title);
-      $('#sub-menu-' + i).on('click', function () {
-        setup.clearMenu();
-        Engine.play(menuObjs[i].goto);
-      });
+      $('#sub-menu-' + i).on('click', menuObjs[i].func);
     }
   }
   $('#sub-menu-container').append('<div class="pure-u-1"><div id="sub-menu-back" class="sub-menu-box"></div></div>');
   $('#sub-menu-back').html('Back');
   $('#sub-menu-back').on('click', function () {
     setup.clearMenu();
-    Engine.play(backto);
+    Engine.play(backto, true);
   });
   $('#sub-menu-container').css('visibility', 'visible');
 }

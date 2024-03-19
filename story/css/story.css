@@ -48,16 +48,15 @@ body,
   overflow: hidden;
 }
 
-.main-menu-box {
+.main-menu-box button{
   height: 48px;
-  line-height: 48px;
+  width: calc(100% - 10px);
   text-align: center;
   border: solid 1px;
   margin: 5px;
   box-sizing: border-box;
   border-radius: 5px;
   background-color: #222;
-  visibility: hidden;
 }
 
 #sub-menu-container {
@@ -91,10 +90,6 @@ body,
 
 .mapStatus {
   text-indent: 2em;
-}
-
-.mapInfoTag {
-  text-align: center;
 }
 
 .mapInfoList {

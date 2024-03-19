@@ -21,25 +21,12 @@ Sora V0.1
   </div>
   <div id="messages" class="pure-u-1"></div>
   <div id="passages" class="pure-u-1"></div>
-  <div id="main-menu" class="pure-u-1">
-    <div class="pure-g">
-      <div class="pure-u-1-2"><div id="menu-0" class="main-menu-box"></div></div>
-      <div class="pure-u-1-2"><div id="menu-1" class="main-menu-box"></div></div>
-      <div class="pure-u-1-2"><div id="menu-2" class="main-menu-box"></div></div>
-      <div class="pure-u-1-2"><div id="menu-3" class="main-menu-box"></div></div>
-      <div class="pure-u-1-2"><div id="menu-4" class="main-menu-box"></div></div>
-      <div class="pure-u-1-2"><div id="menu-5" class="main-menu-box"></div></div>
-    </div>
-  </div>
-  <div id="sub-menu" class="pure-u-1">
-    <div id="sub-menu-container" class="pure-g"></div>
-  </div>
   <div style="display:none" data-passage="Patch"></div>
 </div>
 
 :: Start
 <<set $game_version to "0.1">>
-<<set $game_location to "origin">>
+<<set $game_location to "Origin">>
 <<set $game_hp_left to 30>>
 <<set $game_hp_max to 30>>
 <<set $game_sp_left to 30>>
@@ -62,5 +49,3 @@ HP: <<= $game_hp_left>> / <<= $game_hp_max>>
 FP: <<= $game_fp_left>> / <<= $game_fp_max>>
 
 :: Patch
-
-
