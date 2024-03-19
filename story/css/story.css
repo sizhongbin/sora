@@ -63,12 +63,11 @@ body,
 
 #sub-menu-container {
   overflow: auto;
-  visibility: hidden;
 }
 
-.sub-menu-box {
+.sub-menu-box button{
   height: 48px;
-  line-height: 48px;
+  width: calc(100% - 10px);
   text-align: center;
   border: solid 1px;
   margin: 5px;
