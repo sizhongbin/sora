@@ -67,6 +67,7 @@ FP: <<= $game_fp_left>> / <<= $game_fp_max>>
     <<button "对话">>
       <<run console.log($mapChat)>>
       <<toggleclass "#main-menu" "hide">>
+      <<toggleclass "#sub-menu" "hide">>
     <</button>>
 </div></div>
 <div class="pure-u-1-2"><div id="menu-2" class="main-menu-box">
@@ -92,3 +93,9 @@ FP: <<= $game_fp_left>> / <<= $game_fp_max>>
 <</if>>
 
 :: SubMenu
+<div class="pure-u-1"><div id="sub-menu-back" class="sub-menu-box">
+    <<button "返回">>
+      <<toggleclass "#main-menu" "hide">>
+      <<toggleclass "#sub-menu" "hide">>
+    <</button>>
+</div></div>
