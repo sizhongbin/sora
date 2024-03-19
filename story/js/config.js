@@ -2,6 +2,7 @@ Config.saves.autosave = true; // 自动存档
 Config.saves.autoload = true; // 自动读档
 Config.history.maxStates = 1; // 可回溯历史数 
 Config.history.controls = false; // 不允许UI操作
+Config.passages.nobr = true;
 Config.saves.isAllowed = function () {
     if (tags().includes('nosave')) {
         console.log('nosave');

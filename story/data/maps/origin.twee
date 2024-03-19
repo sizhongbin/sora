@@ -1,8 +1,42 @@
 :: origin
 <<if !$mapOriginName>><<set $mapOriginName to "？？？">><</if>>
+<div class="pure-g">
+    <span class="pure-u-1">【所在地】<<= $mapOriginName>></span>
+    <span class="mapStatus pure-u-1">眼前是一片阳光下的原野。</span>
+    <span class="mapStatus pure-u-1">地上长满了草，嫩嫩的、绿绿的，看不到边。</span>
+    <span class="mapStatus pure-u-1">你不知道这里是哪里，但显然不是你的房间。</span>
+    <span class="pure-u-1">【所在地信息】</span>
+    <div class="pure-u-1-3 mapInfoTag">
+        <<link "人物">>
+            <<if !$mapOriginNpc1>><<set $mapOriginNpc1 to "？？？">><</if>>
+            <<replace "#mapInfo">>
+                <span class="pure-u-1"><ul><li>人物：</li></ul></span>
+                <span class="pure-u-1-3">- <<= $mapOriginNpc1>></span>
+            <</replace>>
+        <</link>>
+    </div>
+    <div class="pure-u-1-3 mapInfoTag">
+        <<link "魔物">>
+        <<replace "#mapInfo">>
+            <span class="pure-u-1"><ul><li>魔物：</li></ul></span>
+            <span class="pure-u-1-3">无</span>
+        <</replace>>
+        <</link>>
+    </div>
+    <div class="pure-u-1-3 mapInfoTag">
+        <<link "出入口">>
+            <<if !$mapOriginExit1>><<set $mapOriginExit1 to "？？？">><</if>>
+            <<replace "#mapInfo">>
+               <span class="pure-u-1"><ul><li>出入口：</li></ul></span>
+               <span class="pure-u-1-3">- <<= $mapOriginExit1>></span>
+            <</replace>>
+        <</link>>
+    </div>
+</div>
+<div id="mapInfo" class="pure-g"></div>
+<<run setup.setMainMenu([{title:"探索",goto:"originSearch"}])>>
+
+:: originSearch
 <<goto "originDisplay">>
 
-:: originDisplay
-<ul>
-<li>所在地：【<<= $mapOriginName>>】</li>
-</ul>
+

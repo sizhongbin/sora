@@ -88,3 +88,15 @@ body,
   overflow-y: auto;
   height: 100%;
 }
+
+.mapStatus {
+  text-indent: 2em;
+}
+
+.mapInfoTag {
+  text-align: center;
+}
+
+.mapInfoList {
+  text-align: center;
+}
