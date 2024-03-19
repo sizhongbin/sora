@@ -46,6 +46,7 @@ Sora V0.1
 <<set $game_sp_max to 30>>
 <<set $game_time_left to 300>>
 <<set $game_time_max to 300>>
+<<set $game_network to "离线">>
 <<goto $game_location>>
 
 :: Name
