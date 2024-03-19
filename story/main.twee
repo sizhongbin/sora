@@ -24,10 +24,10 @@ Sora V0.1
   <div id="main-menu" class="pure-u-1">
     <div id="main-menu-container" class="pure-g" data-passage="MainMenu"></div>
   </div>
-  <div id="sub-menu" class="pure-u-1">
+  <div id="sub-menu" class="pure-u-1 hide">
     <div id="sub-menu-container" class="pure-g" data-passage="SubMenu"></div>
   </div>
-  <div style="display:none" data-passage="Patch"></div>
+  <div class="hide" data-passage="Patch"></div>
 </div>
 
 :: StoryInit
@@ -66,6 +66,7 @@ FP: <<= $game_fp_left>> / <<= $game_fp_max>>
 <div class="pure-u-1-2"><div id="menu-1" class="main-menu-box">
     <<button "对话">>
       <<run console.log($mapChat)>>
+      <<toggleclass "#main-menu" "hide">>
     <</button>>
 </div></div>
 <div class="pure-u-1-2"><div id="menu-2" class="main-menu-box">

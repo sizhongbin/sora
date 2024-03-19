@@ -97,3 +97,7 @@ body,
 .mapInfoList {
   text-align: center;
 }
+
+.hide {
+  display: none;
+}
