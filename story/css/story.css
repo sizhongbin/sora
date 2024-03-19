@@ -21,12 +21,14 @@ body,
   position: fixed;
   bottom: 0;
   left: 0;
+  max-width: 568px;
 }
 
 #sub-menu {
   position: fixed;
   bottom: 0;
   left: 0;
+  max-width: 568px;
 }
 
 #top {
