@@ -84,6 +84,7 @@ FP: <<= $game_fp_left>> / <<= $game_fp_max>>
           <<append "#sub-menu-container">>
             <div class="pure-u-1-2"><div class="sub-menu-box">
               <<button $game_mapChatable[_i].title $game_location+"Chat"+$game_mapChatable[_i].passage>>
+                <<run $("#sub-menu-container").empty()>>
               <</button>>
             </div></div>
           <</append>>
@@ -122,7 +123,6 @@ FP: <<= $game_fp_left>> / <<= $game_fp_max>>
       <<button "结束" $game_location>>
         <<toggleclass "#main-menu" "hide">>
         <<toggleclass "#sub-menu" "hide">>
-        <<run $("#sub-menu-container").empty()>>
       <</button>>    
     <<else>>
       <<button "返回">>
