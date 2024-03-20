@@ -91,7 +91,7 @@
 /* 刷新数据 */
 <<goto "Origin">>
 
-:: OriginChatGuardian [nosave]
-<<run setup.setContinue("Origin")>>
+:: OriginChatGuardian [nosave chat]
+CHAT GUARDIAN
 
 :: OriginMoveTraining [nosave]
