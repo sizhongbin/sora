@@ -92,6 +92,9 @@
 <<goto "Origin">>
 
 :: OriginChatGuardian [nosave chat]
-CHAT GUARDIAN
+[卫兵]
+……
+
+
 
 :: OriginMoveTraining [nosave]
