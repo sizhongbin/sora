@@ -123,6 +123,7 @@ FP: <<= $game_fp_left>> / <<= $game_fp_max>>
       <<button "结束" $game_location>>
         <<toggleclass "#main-menu" "hide">>
         <<toggleclass "#sub-menu" "hide">>
+        <<run $("#sub-menu-container").empty()>>
       <</button>>    
     <<else>>
       <<button "返回">>

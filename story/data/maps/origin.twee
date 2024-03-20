@@ -93,7 +93,5 @@
 
 :: OriginChatGuardian [nosave chat]
 CHAT GUARDIAN
-<<toggleclass "#main-menu" "hide">>
-<<toggleclass "#sub-menu" "hide">>
 
 :: OriginMoveTraining [nosave]
