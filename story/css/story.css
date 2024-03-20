@@ -92,12 +92,12 @@ body,
   height: 100%;
 }
 
-.mapStatus {
+.map-status {
   text-indent: 2em;
 }
 
-.mapInfoList {
-  text-align: center;
+#map-info {
+  padding-left: 2em;
 }
 
 .hide {

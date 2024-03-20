@@ -19,7 +19,9 @@ Sora V0.1
       <div class="pure-u-3-24 title-box" id="network" data-passage="Network"></div>
     </div>
   </div>
-  <div id="messages" class="pure-u-1"></div>
+  <div id="messages" class="pure-u-1">
+    <div id="messages-container" class="pure-g"></div>
+  </div>
   <div id="passages" class="pure-u-1"></div>
   <div id="main-menu" class="pure-u-1">
     <div id="main-menu-container" class="pure-g" data-passage="Menu"></div>
@@ -33,7 +35,7 @@ Sora V0.1
 
 :: StoryInit
 <<set $game_version to "0.1">>
-<<set $game_location to "Origin">>
+<<set $game_location to "">>
 <<set $game_hp_left to 30>>
 <<set $game_hp_max to 30>>
 <<set $game_sp_left to 30>>
@@ -41,12 +43,18 @@ Sora V0.1
 <<set $game_fp_left to 300>>
 <<set $game_fp_max to 300>>
 <<set $game_network to "离线">>
-<<set $game_mapChat to []>>
+<<set $game_mapName to "">>
+<<set $game_mapType to "">>
+<<set $game_mapStatus to []>>
+<<set $game_mapNpc to []>>
 <<set $game_mapExit to []>>
-<<set $game_subMenu to []>>
+<<set $game_mapMobs to []>>
+<<set $game_mapChatable to []>>
+<<set $game_mapMovable to []>>
+<<set $game_mapFightable to []>>
 
 :: Start
-<<goto $game_location>>
+<<goto "Origin">>
 
 :: Network
 <<= $game_network>>
@@ -63,49 +71,50 @@ FP: <<= $game_fp_left>> / <<= $game_fp_max>>
 :: Patch
 
 :: Menu
-<<if tags().includes("field")>>
-<div class="pure-u-1-2"><div id="menu-0" class="main-menu-box">
-    <<button "探索" $game_location+"Search">><</button>>
-</div></div>
-<div class="pure-u-1-2"><div id="menu-1" class="main-menu-box">
-    <<button "对话">>
-      <<run console.log($game_mapChat)>>
-      <<run $("#sub-menu-container").empty()>>
-      <<for _i to 0; _i lt $game_mapChat.length; _i++>>
-        <<append "#sub-menu-container">>
-          <div class="pure-u-1-2"><div class="sub-menu-box">
-            <<button $game_mapChat[_i].title $game_location+$game_mapChat[_i].passage>>
+<<if $game_mapType eq "field">>
+  <div class="pure-u-1-2"><div id="menu-0" class="main-menu-box">
+      <<button "探索" $game_location+"Search">>
+        <<run $("#messages-container").empty()>>
+      <</button>>
+  </div></div>
+  <div class="pure-u-1-2"><div id="menu-1" class="main-menu-box">
+      <<button "对话">>
+        <<run console.log($game_mapChatable)>>
+        <<for _i to 0; _i lt $game_mapChatable.length; _i++>>
+          <<append "#sub-menu-container">>
+            <div class="pure-u-1-2"><div class="sub-menu-box">
+              <<button $game_mapChatable[_i].title $game_location+"Chat"+$game_mapChatable[_i].passage>>
 
-            <</button>>
-          </div></div>
-        <</append>>
-      <</for>>
-      <<run console.log($("#sub-menu").offset().top)>>
-      <<toggleclass "#main-menu" "hide">>
-      <<toggleclass "#sub-menu" "hide">>
-      <<run $("#sub-menu").scrollTop(0)>>
-    <</button>>
-</div></div>
-<div class="pure-u-1-2"><div id="menu-2" class="main-menu-box">
-    <<button "移动">>
+              <</button>>
+            </div></div>
+          <</append>>
+        <</for>>
+        <<run console.log($("#sub-menu").offset().top)>>
+        <<toggleclass "#main-menu" "hide">>
+        <<toggleclass "#sub-menu" "hide">>
+        <<run $("#sub-menu").scrollTop(0)>>
+      <</button>>
+  </div></div>
+  <div class="pure-u-1-2"><div id="menu-2" class="main-menu-box">
+      <<button "移动">>
 
-    <</button>>
-</div></div>
-<div class="pure-u-1-2"><div id="menu-3" class="main-menu-box">
-    <<button "道具">>
+      <</button>>
+  </div></div>
+  <div class="pure-u-1-2"><div id="menu-3" class="main-menu-box">
+      <<button "道具">>
 
-    <</button>>
-</div></div>
-<div class="pure-u-1-2"><div id="menu-4" class="main-menu-box">
-    <<button "休息">>
+      <</button>>
+  </div></div>
+  <div class="pure-u-1-2"><div id="menu-4" class="main-menu-box">
+      <<button "休息">>
 
-    <</button>>
-</div></div>
-<div class="pure-u-1-2"><div id="menu-5" class="main-menu-box">
-    <<button "系统">>
+      <</button>>
+  </div></div>
+  <div class="pure-u-1-2"><div id="menu-5" class="main-menu-box">
+      <<button "系统">>
 
-    <</button>>
-</div></div>
+      <</button>>
+  </div></div>
 <</if>>
 
 :: SubMenuBack
@@ -113,5 +122,101 @@ FP: <<= $game_fp_left>> / <<= $game_fp_max>>
     <<button "返回">>
       <<toggleclass "#main-menu" "hide">>
       <<toggleclass "#sub-menu" "hide">>
+      <<run $("#sub-menu-container").empty()>>
     <</button>>
 </div></div>
+
+:: Display
+/* 地图信息展示 */
+<div class="pure-g">
+
+    /* 所在地名 */
+    <span class="pure-u-1">【所在地】<<= $game_mapName>></span>
+
+    /* 所在地简介 */
+    <div class="map-status pure-g">
+        <<for _i to 0; _i < $game_mapStatus.length; _i++>>
+          <span class="pure-u-1">$game_mapStatus[_i]</span>
+        <</for>>
+    </div>
+
+    /* 所在地信息 */
+    <span class="pure-u-2-5">【所在地信息】</span>
+
+    /* 人物标签 */
+    <div class="pure-u-1-5">
+        <<link "人物">>
+            <<run $("#map-info").empty()>>
+            <<append "#map-info">>
+                <span class="pure-u-1"><ul><li>人物：</li></ul></span>        
+            <</append>>
+            <<for _i to 0; _i lt $game_mapNpc.length; _i++>>
+                <<set _included to false>>
+                <<for _j to 0; _j lt $game_mapChatable.length; _j++>>
+                    <<if $game_mapChatable[_j].passage eq $game_mapNpc[_i].passage>>
+                        <<set _included to true>>
+                        <<append "#map-info">>
+                            <span class="pure-u-1-3">- <<= $game_mapNpc[_i].title>></span>
+                        <</append>>
+                        <<break>>
+                    <</if>>
+                <</for>>
+                <<if not _included>>
+                    <<append "#map-info">>
+                      <span class="pure-u-1-3">- ？？？</span>
+                    <</append>>
+                <</if>>
+            <</for>>
+            <<if $game_mapNpc.length eq 0>>
+                <<append "#map-info">>
+                    <span class="pure-u-1-3">无</span>
+                <</append>>
+            <</if>>
+        <</link>>
+    </div>
+
+    /* 魔物标签 */
+    <div class="pure-u-1-5">
+        <<link "魔物">>
+        <<replace "#map-info">>
+            <span class="pure-u-1"><ul><li>魔物：</li></ul></span>
+            <span class="pure-u-1-3">无</span>
+        <</replace>>
+        <</link>>
+    </div>
+
+    /* 出入口标签 */
+    <div class="pure-u-1-5">
+        <<link "出入口">>
+            <<run $("#map-info").empty()>>
+            <<append "#map-info">>
+                <span class="pure-u-1"><ul><li>出入口：</li></ul></span>        
+            <</append>>
+            <<for _i to 0; _i lt $game_mapExit.length; _i++>>
+                <<set _included to false>>
+                <<for _j to 0; _j lt $game_mapMovable.length; _j++>>
+                    <<if $game_mapMovable[_j].passage eq $game_mapExit[_i].passage>>
+                        <<set _included to true>>
+                        <<append "#map-info">>
+                            <span class="pure-u-1-3">- <<= $game_mapExit[_i].title>></span>
+                        <</append>>
+                        <<break>>
+                    <</if>>
+                <</for>>
+                <<if not _included>>
+                    <<append "#map-info">>
+                      <span class="pure-u-1-3">- ？？？</span>
+                    <</append>>
+                <</if>>
+            <</for>>
+            <<if $game_mapExit.length eq 0>>
+                <<append "#map-info">>
+                    <span class="pure-u-1-3">无</span>
+                <</append>>
+            <</if>>
+        <</link>>
+    </div>
+</div>
+
+/* 地图信息子栏目展示 */
+<div id="map-info" class="pure-g"></div>
