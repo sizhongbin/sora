@@ -1,18 +1,21 @@
 :: Origin [field]
 /* 地图名初始化 */
-<<if !$mapOriginName>><<set $mapOriginName to "？？？">><</if>>
+<<if !$map_OriginName>><<set $map_OriginName to "？？？">><</if>>
 
 /* 二级菜单初始化 */
-<<if !$mapOriginChat>><<set $mapOriginChat to []>><</if>>
-<<if !$mapOriginExit>><<set $mapOriginExit to []>><</if>>
-<<set $mapChat to $mapOriginChat>>
-<<set $mapExit to $mapOriginExit>>
+<<if !$map_OriginChat>><<set $map_OriginChat to []>><</if>>
+<<if !$map_OriginExit>><<set $map_OriginExit to []>><</if>>
+<<set $game_mapChat to $map_OriginChat>>
+<<set $game_mapExit to $map_OriginExit>>
+
+/* NPC初始化 */
+<<set $map_OriginNpc1 to {title:"卫兵",passage:"Guardian"}>>
 
 /* 地图信息展示 */
 <div class="pure-g">
 
     /* 所在地名 */
-    <span class="pure-u-1">【所在地】<<= $mapOriginName>></span>
+    <span class="pure-u-1">【所在地】<<= $map_OriginName>></span>
 
     /* 所在地简介 */
     <span class="mapStatus pure-u-1">眼前是一片阳光下的原野。</span>
@@ -25,10 +28,10 @@
     /* 人物标签 */
     <div class="pure-u-1-5">
         <<link "人物">>
-            <<if !$mapOriginNpc1>><<set $mapOriginNpc1 to "？？？">><</if>>
+            <<if !$map_OriginNpc1>><<set $map_OriginNpc1 to "？？？">><</if>>
             <<replace "#mapInfo">>
                 <span class="pure-u-1"><ul><li>人物：</li></ul></span>
-                <span class="pure-u-1-3">- <<= $mapOriginNpc1>></span>
+                <span class="pure-u-1-3">- <<= $map_OriginNpc1>></span>
             <</replace>>
         <</link>>
     </div>
@@ -46,10 +49,10 @@
     /* 出入口标签 */
     <div class="pure-u-1-5">
         <<link "出入口">>
-            <<if !$mapOriginExit1>><<set $mapOriginExit1 to "？？？">><</if>>
+            <<if !$map_OriginExit1>><<set $map_OriginExit1 to "？？？">><</if>>
             <<replace "#mapInfo">>
                <span class="pure-u-1"><ul><li>出入口：</li></ul></span>
-               <span class="pure-u-1-3">- <<= $mapOriginExit1>></span>
+               <span class="pure-u-1-3">- <<= $map_OriginExit1>></span>
             <</replace>>
         <</link>>
     </div>
@@ -59,10 +62,13 @@
 <div id="mapInfo" class="pure-g"></div>
 
 :: OriginSearch [nosave]
-<<if !$mapOriginChat.includes("卫兵")>>
-    <<run $mapOriginChat.push({title:"卫兵",passage:"Guardian"})>>
-    <<run console.log("setchat")>>
-<</if>>
+<<if $map_OriginChat.length eq 0>><<run $map_OriginChat.push($map_OriginNpc1)>><</if>>
+<<for _i to 0; _i lt $map_OriginChat.length; _i++>>
+    <<if $map_OriginChat[_i].passage neq $map_OriginNpc1.passage>>
+        <<run $map_OriginChat.push($map_OriginNpc1)>>
+        <<run console.log("setchat")>>
+    <</if>>
+<</for>>
 <<goto "Origin">>
 
 :: OriginGuardian [nosave]

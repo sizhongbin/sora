@@ -22,10 +22,11 @@ Sora V0.1
   <div id="messages" class="pure-u-1"></div>
   <div id="passages" class="pure-u-1"></div>
   <div id="main-menu" class="pure-u-1">
-    <div id="main-menu-container" class="pure-g" data-passage="MainMenu"></div>
+    <div id="main-menu-container" class="pure-g" data-passage="Menu"></div>
   </div>
   <div id="sub-menu" class="pure-u-1 hide">
-    <div id="sub-menu-container" class="pure-g" data-passage="SubMenu"></div>
+    <div id="sub-menu-container" class="pure-g"></div>
+    <div class="pure-g" data-passage="SubMenuBack"></div>
   </div>
   <div class="hide" data-passage="Patch"></div>
 </div>
@@ -40,6 +41,9 @@ Sora V0.1
 <<set $game_fp_left to 300>>
 <<set $game_fp_max to 300>>
 <<set $game_network to "离线">>
+<<set $game_mapChat to []>>
+<<set $game_mapExit to []>>
+<<set $game_subMenu to []>>
 
 :: Start
 <<goto $game_location>>
@@ -58,16 +62,28 @@ FP: <<= $game_fp_left>> / <<= $game_fp_max>>
 
 :: Patch
 
-:: MainMenu
+:: Menu
 <<if tags().includes("field")>>
 <div class="pure-u-1-2"><div id="menu-0" class="main-menu-box">
     <<button "探索" $game_location+"Search">><</button>>
 </div></div>
 <div class="pure-u-1-2"><div id="menu-1" class="main-menu-box">
     <<button "对话">>
-      <<run console.log($mapChat)>>
+      <<run console.log($game_mapChat)>>
+      <<run $("#sub-menu-container").empty()>>
+      <<for _i to 0; _i lt $game_mapChat.length; _i++>>
+        <<append "#sub-menu-container">>
+          <div class="pure-u-1-2"><div class="sub-menu-box">
+            <<button $game_mapChat[_i].title $game_location+$game_mapChat[_i].passage>>
+
+            <</button>>
+          </div></div>
+        <</append>>
+      <</for>>
+      <<run console.log($("#sub-menu").offset().top)>>
       <<toggleclass "#main-menu" "hide">>
       <<toggleclass "#sub-menu" "hide">>
+      <<run $("#sub-menu").scrollTop(0)>>
     <</button>>
 </div></div>
 <div class="pure-u-1-2"><div id="menu-2" class="main-menu-box">
@@ -92,7 +108,7 @@ FP: <<= $game_fp_left>> / <<= $game_fp_max>>
 </div></div>
 <</if>>
 
-:: SubMenu
+:: SubMenuBack
 <div class="pure-u-1"><div id="sub-menu-back" class="sub-menu-box">
     <<button "返回">>
       <<toggleclass "#main-menu" "hide">>
