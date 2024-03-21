@@ -127,7 +127,7 @@ FP: <<= $game_fp_left>> / <<= $game_fp_max>>
 :: SubMenuBack
 <div class="pure-u-1"><div id="sub-menu-back" class="sub-menu-box">
     <<if tags().includes("chat")>>
-      <<button "结束" $game_location>>
+      <<button "结束" $game_map.id>>
         <<toggleclass "#main-menu" "hide">>
         <<toggleclass "#sub-menu" "hide">>
         <<run $("#sub-menu-container").empty()>>
@@ -146,12 +146,12 @@ FP: <<= $game_fp_left>> / <<= $game_fp_max>>
 <div class="pure-g">
 
     /* 所在地名 */
-    <span class="pure-u-1">【所在地】<<= $game_mapName>></span>
+    <span class="pure-u-1">【所在地】<<= $game_map.name>></span>
 
     /* 所在地简介 */
     <div class="map-status pure-g">
-        <<for _i to 0; _i < $game_mapStatus.length; _i++>>
-          <span class="pure-u-1">$game_mapStatus[_i]</span>
+        <<for _i to 0; _i < $game_map.status.length; _i++>>
+          <span class="pure-u-1">$game_map.status[_i]</span>
         <</for>>
     </div>
 
@@ -165,13 +165,13 @@ FP: <<= $game_fp_left>> / <<= $game_fp_max>>
             <<append "#map-info">>
                 <span class="pure-u-1"><ul><li>人物：</li></ul></span>        
             <</append>>
-            <<for _i to 0; _i lt $game_mapNpc.length; _i++>>
+            <<for _i to 0; _i lt $game_map.npc.length; _i++>>
                 <<set _included to false>>
                 <<for _j to 0; _j lt $game_mapChatable.length; _j++>>
-                    <<if $game_mapChatable[_j].passage eq $game_mapNpc[_i].passage>>
+                    <<if $game_mapChatable[_j].passage eq $game_map.npc[_i].passage>>
                         <<set _included to true>>
                         <<append "#map-info">>
-                            <span class="pure-u-1-3">- <<= $game_mapNpc[_i].title>></span>
+                            <span class="pure-u-1-3">- <<= $game_map.npc[_i].title>></span>
                         <</append>>
                         <<break>>
                     <</if>>
@@ -182,7 +182,7 @@ FP: <<= $game_fp_left>> / <<= $game_fp_max>>
                     <</append>>
                 <</if>>
             <</for>>
-            <<if $game_mapNpc.length eq 0>>
+            <<if $game_map.npc.length eq 0>>
                 <<append "#map-info">>
                     <span class="pure-u-1-3">无</span>
                 <</append>>
@@ -207,13 +207,13 @@ FP: <<= $game_fp_left>> / <<= $game_fp_max>>
             <<append "#map-info">>
                 <span class="pure-u-1"><ul><li>出入口：</li></ul></span>        
             <</append>>
-            <<for _i to 0; _i lt $game_mapExit.length; _i++>>
+            <<for _i to 0; _i lt $game_map.exit.length; _i++>>
                 <<set _included to false>>
                 <<for _j to 0; _j lt $game_mapMovable.length; _j++>>
-                    <<if $game_mapMovable[_j].passage eq $game_mapExit[_i].passage>>
+                    <<if $game_mapMovable[_j].passage eq $game_map.exit[_i].passage>>
                         <<set _included to true>>
                         <<append "#map-info">>
-                            <span class="pure-u-1-3">- <<= $game_mapExit[_i].title>></span>
+                            <span class="pure-u-1-3">- <<= $game_map.exit[_i].title>></span>
                         <</append>>
                         <<break>>
                     <</if>>
@@ -224,7 +224,7 @@ FP: <<= $game_fp_left>> / <<= $game_fp_max>>
                     <</append>>
                 <</if>>
             <</for>>
-            <<if $game_mapExit.length eq 0>>
+            <<if $game_map.exit.length eq 0>>
                 <<append "#map-info">>
                     <span class="pure-u-1-3">无</span>
                 <</append>>
