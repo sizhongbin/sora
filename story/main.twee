@@ -258,15 +258,14 @@ FP: <<= $game_fp_left>> / <<= $game_fp_max>>
         <<capture _i>>
           <<if $game_chattingObj.chat[_i].pre()>>
             <ul><li>
-              <<link $game_chattingObj.chat[_i].question "Chat">>
-                <<set $game_chattingContents to $game_chattingObj.chat[_i].answer>>
-                <<run $game_chattingObj.chat[_i].post()>>
-              <</link>>
+                <<link $game_chattingObj.chat[_i].question $game_chattingObj.chat[_i].forwarding>>
+                  <<set $game_chattingContents to $game_chattingObj.chat[_i].answer>>
+                  <<run $game_chattingObj.chat[_i].post()>>
+                <</link>>
             </li></ul>
           <</if>>
         <</capture>>
       <</for>>
     </span>
   </div>
-
 </div>

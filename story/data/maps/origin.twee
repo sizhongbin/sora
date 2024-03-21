@@ -1,14 +1,22 @@
 :: Origin [nosave]
-/* 地图数据初始化 */
+/* 地图名 */
 <<if !$map_OriginName>><<set $map_OriginName to "？？？">><</if>>
+
+/* 地图类型 */
 <<if !$map_OriginType>><<set $map_OriginType to "field">><</if>>
+
+/* 地图开关 */
 <<if !$map_OriginToggle1>><<set $map_OriginToggle1 to false>><</if>>
+
+/* 地图状态描述 */
 <<if !$map_OriginStatus>>
     <<set $map_OriginStatus to []>>
     <<run $map_OriginStatus.push("眼前是一片阳光下的原野。")>>
     <<run $map_OriginStatus.push("地上长满了草，嫩嫩的、绿绿的，看不到边。")>>
     <<run $map_OriginStatus.push("你不知道这里是哪里，但显然不是你的房间。")>>
 <</if>>
+
+/* 地图NPC */
 <<if !$map_OriginNpc>>
     <<set $map_OriginNpc to []>>
     <<run $map_OriginNpc.push(
@@ -33,7 +41,7 @@
                     post: function () {
                         State.setVar("$map_OriginToggle1", true);
                     },
-                    forwarding: false
+                    forwarding: "Chat"
                 },
                 {
                     question: "初心者修炼场？",
@@ -47,12 +55,14 @@
                     post: function () {
                         
                     },
-                    forwarding: false
+                    forwarding: "Chat"
                 },
             ]
         }
     )>>
 <</if>>
+
+/* 地图出入口 */
 <<if !$map_OriginExit>>
     <<set $map_OriginExit to []>>
     <<run $map_OriginExit.push(
@@ -63,6 +73,8 @@
         }
     )>>
 <</if>>
+
+/* 地图魔物 */
 <<if !$map_OriginMobs>>
     <<set $map_OriginMobs to []>>
 <</if>>
@@ -84,7 +96,7 @@
 <<set $game_mapMovable to $map_OriginMovable>>
 <<set $game_mapFightable to $map_OriginFightable>>
 
-/* 展示 */
+/* 展示地图 */
 <<goto "Map">>
 
 /* 探索 */
@@ -137,8 +149,3 @@
 
 /* 刷新数据 */
 <<goto "Origin">>
-
-:: OriginChatGuardian [nosave chat]
-
-
-:: OriginMoveTraining [nosave]

@@ -6,6 +6,16 @@ setup.setLoading = function (toggle = true) {
   else $('html').removeAttr('data-init');
 }
 
+
+
+
+
+
+
+
+
+
+
 /*
  * 清空菜单
  */
