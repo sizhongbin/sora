@@ -1,4 +1,4 @@
-:: Origin [nosave]
+:: MapOrigin [nosave]
 <<run console.log(setup.map.origin)>>
 
 /* 地图名 */
@@ -103,7 +103,7 @@
 <<goto "Map">>
 
 /* 探索 */
-:: OriginSearch [nosave]
+:: MapOriginSearch [nosave]
 <<set _messages to []>>
 /* 判断是否探索到NPC */
 <<for _i to 0; _i lt $map_OriginNpc.length; _i++>>

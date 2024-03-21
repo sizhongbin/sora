@@ -57,7 +57,7 @@ Sora V0.1
 <<set $game_chattingContents to []>>
 
 :: Start
-<<goto "Origin">>
+<<goto "MapOrigin">>
 
 :: Network
 <<= $game_network>>
