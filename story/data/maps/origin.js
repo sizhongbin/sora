@@ -1,6 +1,9 @@
 if (!setup.map) setup.map = new Object();
 setup.map.origin = new Object();
 
+/* 地图ID */
+setup.map.origin.id = "Origin"
+
 /* 地图名 */
 setup.map.origin.name = "？？？";
 
