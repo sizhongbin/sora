@@ -82,11 +82,12 @@
 <</if>>
 
 /* 地图探索记录初始化 */
-<<if !$map_OriginChatable>><<set $map_OriginChatable to []>><</if>>
-<<if !$map_OriginMovable>><<set $map_OriginMovable to []>><</if>>
-<<if !$map_OriginFightable>><<set $map_OriginFightable to []>><</if>>
+<<if !$map_OriginChatable>><<set $map_OriginChatable to new Array()>><</if>>
+<<if !$map_OriginMovable>><<set $map_OriginMovable to new Array()>><</if>>
+<<if !$map_OriginFightable>><<set $map_OriginFightable to new Array()>><</if>>
 
 /* 地图设定 */
+<<set $game_map to setup.map.origin>>
 <<set $game_location to "Origin">>
 <<set $game_mapName to $map_OriginName>>
 <<set $game_mapType to $map_OriginType>>
