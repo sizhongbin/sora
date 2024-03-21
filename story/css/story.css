@@ -92,7 +92,8 @@ body,
   height: 100%;
 }
 
-.map-status {
+.map-status,
+.chat-contents{
   text-indent: 2em;
 }
 

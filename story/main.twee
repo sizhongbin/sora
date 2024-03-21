@@ -52,6 +52,8 @@ Sora V0.1
 <<set $game_mapChatable to []>>
 <<set $game_mapMovable to []>>
 <<set $game_mapFightable to []>>
+<<set $game_chattingObj to {}>>
+<<set $game_chattingContents to []>>
 
 :: Start
 <<goto "Origin">>
@@ -83,9 +85,13 @@ FP: <<= $game_fp_left>> / <<= $game_fp_max>>
         <<for _i to 0; _i lt $game_mapChatable.length; _i++>>
           <<append "#sub-menu-container">>
             <div class="pure-u-1-2"><div class="sub-menu-box">
-              <<button $game_mapChatable[_i].title $game_location+"Chat"+$game_mapChatable[_i].passage>>
-                <<run $("#sub-menu-container").empty()>>
-              <</button>>
+              <<capture _i>>
+                <<button $game_mapChatable[_i].title "Chat">>
+                  <<run $("#sub-menu-container").empty()>>
+                  <<set $game_chattingObj to $game_mapChatable[_i]>>
+                  <<set $game_chattingContents to $game_mapChatable[_i].desc>>
+                <</button>>
+              <</capture>>
             </div></div>
           <</append>>
         <</for>>
@@ -134,7 +140,7 @@ FP: <<= $game_fp_left>> / <<= $game_fp_max>>
     <</if>>
 </div></div>
 
-:: Display
+:: Map
 /* 地图信息展示 */
 <div class="pure-g">
 
@@ -228,3 +234,39 @@ FP: <<= $game_fp_left>> / <<= $game_fp_max>>
 
 /* 地图信息子栏目展示 */
 <div id="map-info" class="pure-g"></div>
+
+:: Chat [nosave chat]
+/* 聊天信息展示 */
+<div class="pure-g">
+
+  /* NPC名 */
+  <span class="pure-u-1">【<<= $game_chattingObj.title>>】</span>
+
+  /* 聊天内容 */
+  <div class="chat-contents pure-g">
+      <<for _i to 0; _i < $game_chattingContents.length; _i++>>
+        <span class="pure-u-1">$game_chattingContents[_i]</span>
+      <</for>>
+  </div>
+
+  <span class="pure-u-1">&nbsp;</span>
+
+    /* 选项 */
+  <div class="chat-contents pure-g">
+    <span class="pure-u-1">
+      <<for _i to 0; _i < $game_chattingObj.chat.length; _i++>>
+        <<capture _i>>
+          <<if $game_chattingObj.chat[_i].pre()>>
+            <ul><li>
+              <<link $game_chattingObj.chat[_i].question "Chat">>
+                <<set $game_chattingContents to $game_chattingObj.chat[_i].answer>>
+                <<run $game_chattingObj.chat[_i].post()>>
+              <</link>>
+            </li></ul>
+          <</if>>
+        <</capture>>
+      <</for>>
+    </span>
+  </div>
+
+</div>
