@@ -151,4 +151,4 @@
 <</if>>
 
 /* 刷新数据 */
-<<goto "Origin">>
+<<goto "MapOrigin">>
