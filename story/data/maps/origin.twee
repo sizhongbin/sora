@@ -1,5 +1,5 @@
 :: Origin [nosave]
-<<run console.log(setup.map.origin.name)>>
+<<run console.log(setup.map.origin)>>
 
 /* 地图名 */
 <<if !$map_OriginName>><<set $map_OriginName to "？？？">><</if>>
