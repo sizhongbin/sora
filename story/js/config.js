@@ -18,7 +18,7 @@ $(document).one(':storyready', function (ev) {
         console.debug("Force loading");
         Save.autosave.load(); // 刷新浏览器强制读档
     }
-    if (Story.get(State.passage).tags.includes("chat")) {
+    if (Story.get(State.passage).tags.includes("sub")) {
         $("#main-menu").toggleClass("hide");
         $("#sub-menu").toggleClass("hide");
     } // 如果读档时是对话窗口，需要显示子菜单隐藏主菜单

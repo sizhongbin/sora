@@ -47,6 +47,8 @@ Sora V0.1
 <<set $gameMapRecord to new Object()>>
 <<set $gameChatting to new Object()>>
 <<set $gameChattingContents to new Array()>>
+<<set $gameMoving to new Object()>>
+<<set $gameMovingDesc to new Array()>>
 
 :: Start [nosave]
 <<run console.debug("> Start")>>
@@ -101,7 +103,23 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
   </div></div>
   <div class="pure-u-1-2"><div id="menu-2" class="main-menu-box">
       <<button "移动">>
-
+        <<for _i to 0; _i lt $gameMapRecord.movable.length; _i++>>
+          <<append "#sub-menu-container">>
+            <div class="pure-u-1-2"><div class="sub-menu-box">
+              <<capture _i>>
+                <<button $gameMapRecord.movable[_i].name "Move">>
+                  <<run $("#sub-menu-container").empty()>>
+                  <<set $gameMoving to $gameMapRecord.movable[_i]>>
+                  <<set $gameMovingDesc to $gameMapRecord.movable[_i].desc>>
+                <</button>>
+              <</capture>>
+            </div></div>
+          <</append>>
+        <</for>>
+        <<run console.log($("#sub-menu").offset().top)>>
+        <<toggleclass "#main-menu" "hide">>
+        <<toggleclass "#sub-menu" "hide">>
+        <<run $("#sub-menu").scrollTop(0)>>
       <</button>>
   </div></div>
   <div class="pure-u-1-2"><div id="menu-3" class="main-menu-box">
@@ -124,11 +142,17 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
 :: SubMenuBack
 <div class="pure-u-1"><div id="sub-menu-back" class="sub-menu-box">
     <<if tags().includes("chat")>>
-      <<button "结束" $gameMap.id>>
+      <<button "结束对话" $gameMap.id>>
         <<toggleclass "#main-menu" "hide">>
         <<toggleclass "#sub-menu" "hide">>
         <<run $("#sub-menu-container").empty()>>
       <</button>>    
+    <<elseif tags().includes("move")>>
+      <<button "返回" $gameMap.id>>
+        <<toggleclass "#main-menu" "hide">>
+        <<toggleclass "#sub-menu" "hide">>
+        <<run $("#sub-menu-container").empty()>>
+      <</button>>   
     <<else>>
       <<button "返回">>
         <<toggleclass "#main-menu" "hide">>
@@ -148,9 +172,9 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
     <span class="pure-u-1">【所在地】<<= $gameMap.name>></span>
 
     /* 所在地简介 */
-    <div class="map-status pure-g">
-        <<for _i to 0; _i < $gameMap.status.length; _i++>>
-          <span class="pure-u-1">$gameMap.status[_i]</span>
+    <div class="map-desc pure-g">
+        <<for _i to 0; _i < $gameMap.desc.length; _i++>>
+          <span class="pure-u-1">$gameMap.desc[_i]</span>
         <</for>>
     </div>
 
@@ -257,7 +281,7 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
 /* 地图信息子栏目展示 */
 <div id="map-info" class="pure-g"></div>
 
-:: Chat [chat]
+:: Chat [chat sub]
 /* 聊天信息展示 */
 <div class="pure-g">
 
@@ -293,7 +317,7 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
 </div>
 
 /* 探索 */
-:: Search
+:: Search [search]
 <<set _messages to []>>
 /* 判断是否探索到NPC */
 <<for _i to 0; _i lt $gameMap.npc.length; _i++>>
@@ -361,3 +385,35 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
 
 /* 刷新数据 */
 <<goto $gameMap.id>>
+
+/* 移动 */
+:: Move [move sub]
+<div class="pure-g">
+
+  /* 出入口名 */
+  <span class="pure-u-1">【<<= $gameMoving.name>>】</span>
+
+  /* 聊天内容 */
+  <div class="chat-contents pure-g">
+      <<for _i to 0; _i < $gameMovingDesc.length; _i++>>
+        <span class="pure-u-1">$gameMovingDesc[_i]</span>
+      <</for>>
+  </div>
+
+  <span class="pure-u-1">&nbsp;</span>
+
+    /* 选项 */
+  <div class="chat-contents pure-g">
+    <span class="pure-u-1">
+      <<if $gameMoving.pre()>>
+        <ul><li>
+            <<link "前往" $gameMoving.id>>
+              <<run $gameMoving.post()>>
+            <</link>>
+        </li></ul>
+      <<else>>
+        <span class="red">$gameMoving.refuse</span>
+      <</if>>
+    </span>
+  </div>
+</div>

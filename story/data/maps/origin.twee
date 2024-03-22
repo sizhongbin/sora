@@ -3,11 +3,15 @@
 <<run console.debug("Map Data Object:")>>
 <<run console.debug(setup.map.origin)>>
 
-/* 地图开关记录初始化 */
+/* 地图开关记录初始化
 <<if !$mapOriginToggle1>>
     <<run console.debug("Init $mapOriginToggle1")>>
     <<set $mapOriginToggle1 to false>>
 <</if>>
+<<if !$mapOriginToggle2>>
+    <<run console.debug("Init $mapOriginToggle2")>>
+    <<set $mapOriginToggle2 to false>>
+<</if>> */
 
 /* 地图探索记录初始化 */
 <<if !$mapOriginRecord>>

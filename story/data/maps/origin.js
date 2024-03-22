@@ -11,15 +11,15 @@ setup.map.origin.name = "？？？";
 setup.map.origin.type = "field";
 
 /* 地图状态描述 */
-setup.map.origin.status = new Array();
-setup.map.origin.status.push("眼前是一片阳光下的原野。");
-setup.map.origin.status.push("地上长满了草，嫩嫩的、绿绿的，看不到边。");
-setup.map.origin.status.push("你不知道这里是哪里，但显然不是你的房间。");
+setup.map.origin.desc = new Array();
+setup.map.origin.desc.push("眼前是一片阳光下的原野。");
+setup.map.origin.desc.push("地上长满了草，嫩嫩的、绿绿的，看不到边。");
+setup.map.origin.desc.push("你不知道这里是哪里，但显然不是你的房间。");
 
 /* 地图NPC */
 setup.map.origin.npc = new Array();
 setup.map.origin.npc.push({
-  id: "OriginGuardian",
+  id: "npcOriginGuardian",
   name: "卫兵",
   odds: 100,
   desc: [
@@ -36,7 +36,7 @@ setup.map.origin.npc.push({
         return true;
       },
       post: function() {
-        State.setVar("$map_OriginToggle1", true);
+        State.setVar("$mapOriginToggle1", true);
       },
       forwarding: "Chat"
     }, {
@@ -46,10 +46,10 @@ setup.map.origin.npc.push({
           "初心者修炼场是免费的冒险者培育设施。如果你也想成为冒险者的话，不妨进去看看。"
         ],
       pre: function() {
-        return State.getVar("$map_OriginToggle1");
+        return State.getVar("$mapOriginToggle1");
       },
       post: function() {
-
+        State.setVar("$mapOriginToggle2", true);
       },
       forwarding: "Chat"
     },
@@ -59,9 +59,20 @@ setup.map.origin.npc.push({
 /* 地图出入口 */
 setup.map.origin.exit = new Array();
 setup.map.origin.exit.push({
-  id: "MapTraining",
+  id: "mapTraining",
   name: "奇怪的城堡",
-  odds: 100
+  odds: 100,
+  desc: [
+    "一座中世纪时期的欧洲风格城堡，你只在影视作品里见过。",
+    "在你居住的地方不可能有这样的城堡。"
+  ],
+  pre: function() {
+    return State.getVar("$mapOriginToggle2");
+  },
+  post: function() {
+
+  },
+  refuse: "门口站着卫兵，你不敢直接进去。"
 });
 
 /* 地图魔物 */

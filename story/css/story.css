@@ -92,7 +92,7 @@ body,
   height: 100%;
 }
 
-.map-status,
+.map-desc,
 .chat-contents{
   text-indent: 2em;
 }
@@ -107,4 +107,8 @@ body,
 
 .yellow {
   color: yellow;
+}
+
+.red {
+  color: red;
 }

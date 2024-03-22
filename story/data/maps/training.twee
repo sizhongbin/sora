@@ -1,0 +1,2 @@
+:: mapTraining [nosave]
+<<run console.debug("> Enter mapTraining")>>
