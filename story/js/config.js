@@ -14,7 +14,10 @@ $(document).on(":passagedisplay", () => {
     State.expired.splice(0, Math.max(State.expired.length - 100, 0));
 }); // 限制过期历史数
 $(document).one(':storyready', function (ev) {
-    if (Save.autosave.has()) Save.autosave.load(); // 刷新浏览器强制读档
+    if (Save.autosave.has()) {
+        console.debug("Force loading");
+        Save.autosave.load(); // 刷新浏览器强制读档
+    }
     if (Story.get(State.passage).tags.includes("chat")) {
         $("#main-menu").toggleClass("hide");
         $("#sub-menu").toggleClass("hide");

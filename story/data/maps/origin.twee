@@ -1,22 +1,25 @@
-:: mapOrigin
-<<run console.log("> Enter mapOrigin")>>
-<<run console.log("Map Data Object:")>>
-<<run console.log(setup.map.origin)>>
+:: mapOrigin [nosave]
+<<run console.debug("> Enter mapOrigin")>>
+<<run console.debug("Map Data Object:")>>
+<<run console.debug(setup.map.origin)>>
 
 /* 地图开关记录初始化 */
-<<if !$mapOriginToggle1>><<set $mapOriginToggle1 to false>><</if>>
+<<if !$mapOriginToggle1>>
+    <<run console.debug("Init $mapOriginToggle1")>>
+    <<set $mapOriginToggle1 to false>>
+<</if>>
 
 /* 地图探索记录初始化 */
 <<if !$mapOriginRecord>>
-    <<run console.log("no $mapOriginRecord")>>
+    <<run console.debug("Init $mapOriginRecord")>>
     <<set $mapOriginRecord to {chatable:[],movable:[],fightable:[]}>>
 <</if>>
 
 /* 地图设定 */
+<<run console.debug("Set $gameMap and $gameMapRecord")>>
 <<set $gameMap to setup.map.origin>>
 <<set $gameMapRecord to $mapOriginRecord>>
 
-<<run console.log("> Goto Map")>>
-
 /* 展示地图 */
+<<run console.debug("> Goto Map")>>
 <<goto "Map">>

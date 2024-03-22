@@ -45,28 +45,31 @@ Sora V0.1
 <<set $gameNetwork to "离线">>
 <<set $gameMap to new Object()>>
 <<set $gameMapRecord to new Object()>>
-<<set $gameMapRecord.chatable to new Array()>>
-<<set $gameMapRecord.movable to new Array()>>
-<<set $gameMapRecord.fightable to new Array()>>
 <<set $gameChatting to new Object()>>
 <<set $gameChattingContents to new Array()>>
 
-:: Start
+:: Start [nosave]
+<<run console.debug("> Start")>>
 <<goto "mapOrigin">>
 
 :: Network
+<<run console.debug("> Display Network")>>
 <<= $gameNetwork>>
 
 :: SP
+<<run console.debug("> Display SP")>>
 SP: <<= $gameSpLeft>> / <<= $gameSpMax>>
 
 :: HP
+<<run console.debug("> Display HP")>>
 HP: <<= $gameHpLeft>> / <<= $gameHpMax>>
 
 :: FP
+<<run console.debug("> Display FP")>>
 FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
 
 :: Patch
+<<run console.debug("> Apply Patch")>>
 
 :: Menu
 <<if $gameMap.type eq "field">>
@@ -136,6 +139,8 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
 </div></div>
 
 :: Map
+<<run console.debug("> Enter Map")>>
+
 /* 地图信息展示 */
 <div class="pure-g">
 
@@ -187,10 +192,32 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
     /* 魔物标签 */
     <div class="pure-u-1-5">
         <<link "魔物">>
-        <<replace "#map-info">>
-            <span class="pure-u-1"><ul><li>魔物：</li></ul></span>
-            <span class="pure-u-1-3">无</span>
-        <</replace>>
+          <<run $("#map-info").empty()>>
+              <<append "#map-info">>
+                  <span class="pure-u-1"><ul><li>魔物：</li></ul></span>        
+              <</append>>
+              <<for _i to 0; _i lt $gameMap.mobs.length; _i++>>
+                  <<set _included to false>>
+                  <<for _j to 0; _j lt $gameMapRecord.fightable.length; _j++>>
+                      <<if $gameMapRecord.fightable[_j].id eq $gameMap.mobs[_i].id>>
+                          <<set _included to true>>
+                          <<append "#map-info">>
+                              <span class="pure-u-1-3">- <<= $gameMap.mobs[_i].name>></span>
+                          <</append>>
+                          <<break>>
+                      <</if>>
+                  <</for>>
+                  <<if not _included>>
+                      <<append "#map-info">>
+                        <span class="pure-u-1-3">- ？？？</span>
+                      <</append>>
+                  <</if>>
+              <</for>>
+              <<if $gameMap.mobs.length eq 0>>
+                  <<append "#map-info">>
+                      <span class="pure-u-1-3">无</span>
+                  <</append>>
+              <</if>>
         <</link>>
     </div>
 
@@ -269,35 +296,52 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
 :: Search
 <<set _messages to []>>
 /* 判断是否探索到NPC */
-<<for _i to 0; _i lt setup.map.origin.npc.length; _i++>>
+<<for _i to 0; _i lt $gameMap.npc.length; _i++>>
     <<set _included to false>>
     <<for _j to 0; _j lt $gameMapRecord.chatable.length; _j++>>
-        <<if $gameMapRecord.chatable[_j].id eq setup.map.origin.npc[_i].id>>
+        <<if $gameMapRecord.chatable[_j].id eq $gameMap.npc[_i].id>>
             <<set _included to true>>
             <<break>>
         <</if>>
     <</for>>
-    <<if not _included and random(99) lt setup.map.origin.npc[_i].odds>>
-        <<run $gameMapRecord.chatable.push(setup.map.origin.npc[_i])>>
+    <<if not _included and random(99) lt $gameMap.npc[_i].odds>>
+        <<run $gameMapRecord.chatable.push($gameMap.npc[_i])>>
         <<run State.setVar("$"+$gameMap.id+"Record", $gameMapRecord)>>
-        <<run _messages.push("你发现了" + setup.map.origin.npc[_i].name + "。")>>
+        <<run _messages.push("你发现了 " + $gameMap.npc[_i].name + " 。")>>
         <<removeclass "#messages-container" "empty">>
     <</if>>
 <</for>>
 
 /* 判断是否探索到出入口 */
-<<for _i to 0; _i lt setup.map.origin.exit.length; _i++>>
+<<for _i to 0; _i lt $gameMap.exit.length; _i++>>
     <<set _included to false>>
     <<for _j to 0; _j lt $gameMapRecord.movable.length; _j++>>
-        <<if $gameMapRecord.movable[_j].id eq setup.map.origin.exit[_i].id>>
+        <<if $gameMapRecord.movable[_j].id eq $gameMap.exit[_i].id>>
             <<set _included to true>>
             <<break>>
         <</if>>
     <</for>>
-    <<if not _included and random(99) lt setup.map.origin.exit[_i].odds>>
-        <<run $gameMapRecord.movable.push(setup.map.origin.exit[_i])>>
+    <<if not _included and random(99) lt $gameMap.exit[_i].odds>>
+        <<run $gameMapRecord.movable.push($gameMap.exit[_i])>>
         <<run State.setVar("$"+$gameMap.id+"Record", $gameMapRecord)>>
-        <<run _messages.push("你发现了" + setup.map.origin.exit[_i].name + "。")>>
+        <<run _messages.push("你发现了 " + $gameMap.exit[_i].name + " 。")>>
+        <<removeclass "#messages-container" "empty">>
+    <</if>>
+<</for>>
+
+/* 判断是否探索到魔物 */
+<<for _i to 0; _i lt $gameMap.mobs.length; _i++>>
+    <<set _included to false>>
+    <<for _j to 0; _j lt $gameMapRecord.fightable.length; _j++>>
+        <<if $gameMapRecord.fightable[_j].id eq $gameMap.mobs[_i].id>>
+            <<set _included to true>>
+            <<break>>
+        <</if>>
+    <</for>>
+    <<if not _included and random(99) lt $gameMap.mobs[_i].odds>>
+        <<run $gameMapRecord.fightable.push($gameMap.mobs[_i])>>
+        <<run State.setVar("$"+$gameMap.id+"Record", $gameMapRecord)>>
+        <<run _messages.push("你发现了 " + $gameMap.mobs[_i].name + " 。")>>
         <<removeclass "#messages-container" "empty">>
     <</if>>
 <</for>>
@@ -305,20 +349,15 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
 /* 打印信息 */
 <<if _messages.length eq 0>>
     <<append "#messages-container">>
-        <span class="pure-u-1">没有新的发现。</span>
+        <span class="pure-u-1 yellow">你没有新的发现。</span>
     <</append>>
 <<else>>
     <<for _i to 0; _i lt _messages.length; _i++>>
         <<append "#messages-container">>
-            <span class="pure-u-1">_messages[_i]</span>
+            <span class="pure-u-1 yellow">_messages[_i]</span>
         <</append>>
     <</for>>
 <</if>>
-
-<<run console.log("$gameMapRecord: ")>>
-<<run console.log($gameMapRecord)>>
-<<run console.log("$mapOriginRecord: ")>>
-<<run console.log($mapOriginRecord)>>
 
 /* 刷新数据 */
 <<goto $gameMap.id>>
