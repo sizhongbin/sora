@@ -1,154 +1,22 @@
-:: MapOrigin [nosave]
+:: mapOrigin
+<<run console.log("> Enter mapOrigin")>>
+<<run console.log("Map Data Object:")>>
 <<run console.log(setup.map.origin)>>
 
-/* 地图名 */
-<<if !$map_OriginName>><<set $map_OriginName to "？？？">><</if>>
-
-/* 地图类型 */
-<<if !$map_OriginType>><<set $map_OriginType to "field">><</if>>
-
-/* 地图开关 */
-<<if !$map_OriginToggle1>><<set $map_OriginToggle1 to false>><</if>>
-
-/* 地图状态描述 */
-<<if !$map_OriginStatus>>
-    <<set $map_OriginStatus to []>>
-    <<run $map_OriginStatus.push("眼前是一片阳光下的原野。")>>
-    <<run $map_OriginStatus.push("地上长满了草，嫩嫩的、绿绿的，看不到边。")>>
-    <<run $map_OriginStatus.push("你不知道这里是哪里，但显然不是你的房间。")>>
-<</if>>
-
-/* 地图NPC */
-<<if !$map_OriginNpc>>
-    <<set $map_OriginNpc to []>>
-    <<run $map_OriginNpc.push(
-        {
-            title: "卫兵",
-            passage: "Guardian",
-            odds: 100,
-            desc: [
-                "一名站得笔直的卫兵，身上穿着你没见过的军服，手中拿着一根款式简朴的长枪。",
-                "枪尖在阳光下反射着刺眼的光，看起来不像是Cosplay道具。"
-            ],
-            chat: [
-                {
-                    question: "这里是哪儿？",
-                    answer: [
-                        "你迷路了吗？",
-                        "这里是卢恩·米德加兹王国的初心者修炼场。"
-                    ],
-                    pre: function () {
-                        return true;
-                    },
-                    post: function () {
-                        State.setVar("$map_OriginToggle1", true);
-                    },
-                    forwarding: "Chat"
-                },
-                {
-                    question: "初心者修炼场？",
-                    answer: [
-                        "你不知道吗？",
-                        "初心者修炼场是免费的冒险者培育设施。如果你也想成为冒险者的话，不妨进去看看。"
-                    ],
-                    pre: function () {
-                        return State.getVar("$map_OriginToggle1");
-                    },
-                    post: function () {
-                        
-                    },
-                    forwarding: "Chat"
-                },
-            ]
-        }
-    )>>
-<</if>>
-
-/* 地图出入口 */
-<<if !$map_OriginExit>>
-    <<set $map_OriginExit to []>>
-    <<run $map_OriginExit.push(
-        {
-            title: "奇怪的城堡",
-            passage: "Training",
-            odds: 100
-        }
-    )>>
-<</if>>
-
-/* 地图魔物 */
-<<if !$map_OriginMobs>>
-    <<set $map_OriginMobs to []>>
-<</if>>
+/* 地图开关记录初始化 */
+<<if !$mapOriginToggle1>><<set $mapOriginToggle1 to false>><</if>>
 
 /* 地图探索记录初始化 */
-<<if !$map_OriginChatable>><<set $map_OriginChatable to new Array()>><</if>>
-<<if !$map_OriginMovable>><<set $map_OriginMovable to new Array()>><</if>>
-<<if !$map_OriginFightable>><<set $map_OriginFightable to new Array()>><</if>>
+<<if !$mapOriginRecord>>
+    <<run console.log("no $mapOriginRecord")>>
+    <<set $mapOriginRecord to {chatable:[],movable:[],fightable:[]}>>
+<</if>>
 
 /* 地图设定 */
-<<set $game_map to setup.map.origin>>
-<<set $game_location to "Origin">>
-<<set $game_mapName to $map_OriginName>>
-<<set $game_mapType to $map_OriginType>>
-<<set $game_mapStatus to $map_OriginStatus>>
-<<set $game_mapNpc to $map_OriginNpc>>
-<<set $game_mapExit to $map_OriginExit>>
-<<set $game_mapMobs to $map_OriginMobs>>
-<<set $game_mapChatable to $map_OriginChatable>>
-<<set $game_mapMovable to $map_OriginMovable>>
-<<set $game_mapFightable to $map_OriginFightable>>
+<<set $gameMap to setup.map.origin>>
+<<set $gameMapRecord to $mapOriginRecord>>
+
+<<run console.log("> Goto Map")>>
 
 /* 展示地图 */
 <<goto "Map">>
-
-/* 探索 */
-:: MapOriginSearch [nosave]
-<<set _messages to []>>
-/* 判断是否探索到NPC */
-<<for _i to 0; _i lt $map_OriginNpc.length; _i++>>
-    <<set _included to false>>
-    <<for _j to 0; _j lt $map_OriginChatable.length; _j++>>
-        <<if $map_OriginChatable[_j].passage eq $map_OriginNpc[_i].passage>>
-            <<set _included to true>>
-            <<break>>
-        <</if>>
-    <</for>>
-    <<if not _included and random(99) lt $map_OriginNpc[_i].odds>>
-        <<run $map_OriginChatable.push($map_OriginNpc[_i])>>
-        <<run _messages.push("你发现了" + $map_OriginNpc[_i].title + "。")>>
-        <<removeclass "#messages-container" "empty">>
-    <</if>>
-<</for>>
-
-/* 判断是否探索到出入口 */
-<<for _i to 0; _i lt $map_OriginExit.length; _i++>>
-    <<set _included to false>>
-    <<for _j to 0; _j lt $map_OriginMovable.length; _j++>>
-        <<if $map_OriginMovable[_j].passage eq $map_OriginExit[_i].passage>>
-            <<set _included to true>>
-            <<break>>
-        <</if>>
-    <</for>>
-    <<if not _included and random(99) lt $map_OriginExit[_i].odds>>
-        <<run $map_OriginMovable.push($map_OriginExit[_i])>>
-        <<run _messages.push("你发现了" + $map_OriginExit[_i].title + "。")>>
-        <<removeclass "#messages-container" "empty">>
-    <</if>>
-<</for>>
-
-/* 打印信息 */
-<<if _messages.length eq 0>>
-    <<append "#messages-container">>
-        <span class="pure-u-1">没有新的发现。</span>
-    <</append>>
-<<else>>
-    <<for _i to 0; _i lt _messages.length; _i++>>
-        <<append "#messages-container">>
-            <span class="pure-u-1">_messages[_i]</span>
-        <</append>>
-    <</for>>
-<</if>>
-
-/* 刷新数据 */
-<<goto "MapOrigin">>

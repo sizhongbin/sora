@@ -14,5 +14,9 @@ $(document).on(":passagedisplay", () => {
     State.expired.splice(0, Math.max(State.expired.length - 100, 0));
 }); // 限制过期历史数
 $(document).one(':storyready', function (ev) {
-	Save.autosave.load();
-}); // 刷新浏览器强制读档
+    if (Save.autosave.has()) Save.autosave.load(); // 刷新浏览器强制读档
+    if (Story.get(State.passage).tags.includes("chat")) {
+        $("#main-menu").toggleClass("hide");
+        $("#sub-menu").toggleClass("hide");
+    } // 如果读档时是对话窗口，需要显示子菜单隐藏主菜单
+}); 

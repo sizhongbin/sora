@@ -2,7 +2,7 @@ if (!setup.map) setup.map = new Object();
 setup.map.origin = new Object();
 
 /* 地图ID */
-setup.map.origin.id = "MapOrigin"
+setup.map.origin.id = "mapOrigin"
 
 /* 地图名 */
 setup.map.origin.name = "？？？";
@@ -19,7 +19,8 @@ setup.map.origin.status.push("你不知道这里是哪里，但显然不是你�
 /* 地图NPC */
 setup.map.origin.npc = new Array();
 setup.map.origin.npc.push({
-  title: "卫兵",
+  id: "OriginGuardian",
+  name: "卫兵",
   odds: 100,
   desc: [
       "一名站得笔直的卫兵，身上穿着你没见过的军服，手中拿着一根款式简朴的长枪。",
@@ -58,8 +59,8 @@ setup.map.origin.npc.push({
 /* 地图出入口 */
 setup.map.origin.exit = new Array();
 setup.map.origin.exit.push({
-  title: "奇怪的城堡",
-  passage: "Training",
+  id: "MapTraining",
+  name: "奇怪的城堡",
   odds: 100
 });
 
