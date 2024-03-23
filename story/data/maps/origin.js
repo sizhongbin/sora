@@ -11,10 +11,12 @@ setup.map.origin.name = "？？？";
 setup.map.origin.type = "field";
 
 /* 地图状态描述 */
-setup.map.origin.desc = new Array();
-setup.map.origin.desc.push("眼前是一片阳光下的原野。");
-setup.map.origin.desc.push("地上长满了草，嫩嫩的、绿绿的，看不到边。");
-setup.map.origin.desc.push("你不知道这里是哪里，但显然不是你的房间。");
+setup.map.origin.desc = [
+  "眼前是一片阳光下的原野。",
+  "地上长满了嫩绿的草，一眼看不到边。",
+  "天空也很蓝，是在你居住的城市里不可能有的蓝。",
+  "睁开双眼时，你就发现自己来到了这里。",
+  "你不知道这里是哪里，但显然不可能是你的房间。"];
 
 /* 地图NPC */
 setup.map.origin.npc = new Array();
@@ -23,13 +25,17 @@ setup.map.origin.npc.push({
   name: "卫兵",
   odds: 100,
   desc: [
-      "一名站得笔直的卫兵，身上穿着你没见过的军服，手中拿着一根款式简朴的长枪。",
-      "枪尖在阳光下反射着刺眼的光，看起来不像是Cosplay道具。"
+      "一名在城门外站得笔直的卫兵。",
+      "他的身上穿着你从未见过的军服。",
+      "手中拄着的长枪款式简朴，枪尖反射着阳光。",
+      "你可以确定这绝对不是Cosplay道具。",
+      "这让你感到更加混乱。"  
     ],
   chat: [{
       question: "这里是哪儿？",
       answer: [
-          "你迷路了吗？",
+          "你也迷路了吗？",
+          "最近在这附近迷路的人也太多了。",
           "这里是卢恩·米德加兹王国的初心者修炼场。"
         ],
       pre: function() {
@@ -42,8 +48,9 @@ setup.map.origin.npc.push({
     }, {
       question: "初心者修炼场？",
       answer: [
-          "你不知道吗？",
-          "初心者修炼场是免费的冒险者培育设施。如果你也想成为冒险者的话，不妨进去看看。"
+          "你果然也不知道，和其他迷路的人一样。",
+          "初心者修炼场是免费的冒险者培育设施。",
+          "如果你也想成为冒险者的话，不妨进去看看。"
         ],
       pre: function() {
         return State.getVar("$mapOriginToggle1");
@@ -63,8 +70,11 @@ setup.map.origin.exit.push({
   name: "奇怪的城堡",
   odds: 100,
   desc: [
-    "一座中世纪时期的欧洲风格城堡，你只在影视作品里见过。",
-    "在你居住的地方不可能有这样的城堡。"
+    "一座中世纪时期的欧洲风格城堡。",
+    "你只在影视作品里见过这样的城堡。",
+    "它突兀地耸立在原野上，被护城河环绕着。",
+    "城门大开，仿佛在欢迎任何人到来。",
+    "在你居住的城市里不可能有这样的城堡。"
   ],
   pre: function() {
     return State.getVar("$mapOriginToggle2");
@@ -72,7 +82,7 @@ setup.map.origin.exit.push({
   post: function() {
 
   },
-  refuse: "门口站着卫兵，你不敢直接进去。"
+  refuse: "城门外站着卫兵，让你不敢直接进去。"
 });
 
 /* 地图魔物 */
