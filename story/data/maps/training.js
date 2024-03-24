@@ -19,9 +19,9 @@ setup.map.training.desc = [
   "你不知道这是哪里，但不可能是你的房间。"];
 
 /* 地图NPC */
-setup.map.origin.npc = new Array();
-setup.map.origin.npc.push({
-  id: "npcOriginGuardian",
+setup.map.training.npc = new Array();
+setup.map.training.npc.push({
+  id: "npcTrainingGuardian",
   name: "卫兵",
   odds: 100,
   desc: [
@@ -42,7 +42,7 @@ setup.map.origin.npc.push({
         return true;
       },
       post: function() {
-        State.setVar("$mapOriginToggle1", true);
+        State.setVar("$mapTrainingToggle1", true);
       },
       forwarding: "Chat"
     }, {
@@ -53,10 +53,10 @@ setup.map.origin.npc.push({
           "如果你也想成为冒险者的话，不妨进去看看。"
         ],
       pre: function() {
-        return State.getVar("$mapOriginToggle1");
+        return State.getVar("$mapTrainingToggle1");
       },
       post: function() {
-        State.setVar("$mapOriginToggle2", true);
+        State.setVar("$mapTrainingToggle2", true);
       },
       forwarding: "Chat"
     },
@@ -64,8 +64,8 @@ setup.map.origin.npc.push({
 });
 
 /* 地图出入口 */
-setup.map.origin.exit = new Array();
-setup.map.origin.exit.push({
+setup.map.training.exit = new Array();
+setup.map.training.exit.push({
   id: "mapTraining",
   name: "奇怪的城堡",
   odds: 100,
@@ -77,7 +77,7 @@ setup.map.origin.exit.push({
     "在你居住的城市里不可能有这样的城堡。"
   ],
   pre: function() {
-    return State.getVar("$mapOriginToggle2");
+    return State.getVar("$mapTrainingToggle2");
   },
   post: function() {
 
@@ -86,4 +86,4 @@ setup.map.origin.exit.push({
 });
 
 /* 地图魔物 */
-setup.map.origin.mobs = new Array();
+setup.map.training.mobs = new Array();
