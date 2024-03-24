@@ -1,20 +1,22 @@
 if (!setup.map) setup.map = new Object();
-setup.map.origin = new Object();
+setup.map.training = new Object();
 
 /* 地图ID */
-setup.map.origin.id = "mapOrigin"
+setup.map.training.id = "mapTraining"
 
 /* 地图名 */
-setup.map.origin.name = "？？？";
+setup.map.training.name = "初心者修炼场";
 
 /* 地图类型 */
-setup.map.origin.type = "field";
+setup.map.training.type = "safe";
 
 /* 地图状态描述 */
-setup.map.origin.desc = [
-  "睁开双眼，你发现自己来到了这里——",
-  "一片原野，长满了嫩草，一眼看不到边。",
-  "太阳懒躺在白云上，向大地倾倒着金黄色。"];
+setup.map.training.desc = [
+  "修炼场的内部完全出乎你的意料。",
+  "这里几乎没有半点贵族生活的气息。",
+  "天空很蓝，是大城市里不可能有的蓝。",
+  "睁开双眼时，你就发现自己来到了这里。",
+  "你不知道这是哪里，但不可能是你的房间。"];
 
 /* 地图NPC */
 setup.map.origin.npc = new Array();
@@ -23,15 +25,17 @@ setup.map.origin.npc.push({
   name: "卫兵",
   odds: 100,
   desc: [
-      "一名卫兵站在城门外，目不斜视。",
-      "他穿着你没见过的军服，手中拄着长矛。",
-      "矛尖反射着阳光，看起来不像Cosplay道具。"
+      "一名在城门外站得笔直的卫兵。",
+      "他的身上穿着你从未见过的军服。",
+      "手中拄着的长枪款式简朴，枪尖反射着阳光。",
+      "你可以确定这绝对不是Cosplay道具。",
+      "这让你感到更加混乱。"  
     ],
   chat: [{
       question: "这里是哪儿？",
       answer: [
           "你也迷路了吗？",
-          "最近在这附近迷路的人很多。",
+          "最近在这附近迷路的人也太多了。",
           "这里是卢恩·米德加兹王国的初心者修炼场。"
         ],
       pre: function() {

@@ -1,2 +1,19 @@
 :: mapTraining [nosave]
 <<run console.debug("> Enter mapTraining")>>
+<<run console.debug("Map Data Object:")>>
+<<run console.debug(setup.map.training)>>
+
+/* 地图探索记录初始化 */
+<<if !$mapTrainingRecord>>
+    <<run console.debug("Init $mapTrainingRecord")>>
+    <<set $mapTrainingRecord to {chatable:[],movable:[],fightable:[]}>>
+<</if>>
+
+/* 地图设定 */
+<<run console.debug("Set $gameMap and $gameMapRecord")>>
+<<set $gameMap to setup.map.training>>
+<<set $gameMapRecord to $mapTrainingRecord>>
+
+/* 展示地图 */
+<<run console.debug("> Goto Map")>>
+<<goto "Map">>
