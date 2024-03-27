@@ -46,7 +46,7 @@ setup.map.origin.npc.push({
       answer: [
           "初心者修炼场是免费的冒险者培育设施。",
           "如果你不知道该去哪儿，不妨进去看看。",
-          "至少，教官能指引你走上冒险者的道路。"
+          "至少，教官能为你指路。"
         ],
       pre: function() {
         return State.getVar("$mapOriginToggle1");

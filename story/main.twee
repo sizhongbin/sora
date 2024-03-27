@@ -143,7 +143,7 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
       <</button>>
   </div></div>
   <div class="pure-u-1-2"><div id="menu-5" class="main-menu-box">
-      <<button "系统">>
+      <<button "更多">>
 
       <</button>>
   </div></div>
