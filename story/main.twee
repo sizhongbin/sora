@@ -409,6 +409,8 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
         <ul><li>
             <<link "前往" $gameMoving.id>>
               <<run $gameMoving.post()>>
+              <<toggleclass "#main-menu" "hide">>
+              <<toggleclass "#sub-menu" "hide">>
             <</link>>
         </li></ul>
       <<else>>
