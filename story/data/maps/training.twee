@@ -6,7 +6,7 @@
 /* 地图探索记录初始化 */
 <<if !$mapTrainingRecord>>
     <<run console.debug("Init $mapTrainingRecord")>>
-    <<set $mapTrainingRecord to {chatable:[],movable:[],fightable:[]}>>
+    <<set $mapTrainingRecord to {chatable:setup.map.training.npc,movable:setup.map.training.exit,fightable:setup.map.training.mobs}>>
 <</if>>
 
 /* 地图设定 */
