@@ -34,14 +34,20 @@ Sora V0.1
 </div>
 
 :: StoryInit
-<<set $gameVersion to "0.1">>
-<<set $gameLocation to "">>
-<<set $gameHpLeft to 30>>
-<<set $gameHpMax to 30>>
-<<set $gameSpLeft to 30>>
-<<set $gameSpMax to 30>>
-<<set $gameFpLeft to 300>>
-<<set $gameFpMax to 300>>
+<<set $gameVersion to 1>>
+<<set $statLv to 0>>
+<<set $statStr to 0>>
+<<set $statAgi to 0>>
+<<set $statVit to 0>>
+<<set $statInt to 0>>
+<<set $statDex to 0>>
+<<set $statLuk to 0>>
+<<set $gameHpMax to setup.stat.getMaxHp()>>
+<<set $gameHpLeft to $gameHpMax>>
+<<set $gameSpMax to setup.stat.getMaxSp()>>
+<<set $gameSpLeft to $gameSpMax>>
+<<set $gameFpMax to setup.stat.getMaxFp()>>
+<<set $gameFpLeft to $gameFpMax>>
 <<set $gameNetwork to "离线">>
 <<set $gameMap to new Object()>>
 <<set $gameMapRecord to new Object()>>
@@ -144,15 +150,23 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
   </div></div>
   <div class="pure-u-1-2"><div id="menu-5" class="main-menu-box">
       <<button "更多">>
-
+        <<append "#sub-menu-container">>
+            <div class="pure-u-1-2"><div class="sub-menu-box">
+              <<button "素质点" "Stat">>
+                <<run $("#sub-menu-container").empty()>>
+              <</button>>
+            </div></div>
+          <</append>>
+          <<toggleclass "#main-menu" "hide">>
+          <<toggleclass "#sub-menu" "hide">>
       <</button>>
   </div></div>
 
 :: SubMenuBack
 <<run console.debug("> Apply Sub Menu Back Button")>>
 <div class="pure-u-1"><div id="sub-menu-back" class="sub-menu-box">
-    <<if tags().includes("chat")>>
-      <<button "结束对话" $gameMap.id>>
+    <<if tags().includesAny("chat", "storage", "stat")>>
+      <<button "结束" $gameMap.id>>
         <<toggleclass "#main-menu" "hide">>
         <<toggleclass "#sub-menu" "hide">>
         <<run $("#sub-menu-container").empty()>>
@@ -162,13 +176,7 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
         <<toggleclass "#main-menu" "hide">>
         <<toggleclass "#sub-menu" "hide">>
         <<run $("#sub-menu-container").empty()>>
-      <</button>>   
-    <<elseif tags().includes("storage")>>
-      <<button "关闭仓库" $gameMap.id>>
-        <<toggleclass "#main-menu" "hide">>
-        <<toggleclass "#sub-menu" "hide">>
-        <<run $("#sub-menu-container").empty()>>
-      <</button>>   
+      <</button>>     
     <<else>>
       <<button "返回">>
         <<toggleclass "#main-menu" "hide">>
@@ -459,3 +467,7 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
 
 /* 仓库 */
 :: Storage [storage sub]
+
+/* 加点 */
+:: Stat [stat sub]
+STR<<= $statStr>> AGI<<= $statAgi>> VIT<<= $statVit>> INT<<= $statInt>> DEX<<= $statDex>> LUK<<= $statLuk>>

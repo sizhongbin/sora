@@ -63,7 +63,7 @@ setup.map.training.npc.push({
           "在你决定前行时，你已经有了成长。",
           "我会先指导你如何激发你的潜能。",
           "&nbsp;",
-          "【请通过[更多]——[素质]菜单分配潜能。】"
+          "提示：请通过【更多】——【素质点】菜单分配潜能。"
         ],
       pre: function() {
         return State.getVar("$mapTrainingToggle2");
