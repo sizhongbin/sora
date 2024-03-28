@@ -104,6 +104,7 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
               <<capture _i>>
                 <<button $gameMapRecord.chatable[_i].name "Chat">>
                   <<run $("#sub-menu-container").empty()>>
+                  <<run $("#messages-container").empty()>>
                   <<set $gameChatting to $gameMapRecord.chatable[_i]>>
                   <<set $gameChattingContents to $gameMapRecord.chatable[_i].desc>>
                 <</button>>
@@ -125,6 +126,7 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
               <<capture _i>>
                 <<button $gameMapRecord.movable[_i].name "Move">>
                   <<run $("#sub-menu-container").empty()>>
+                  <<run $("#messages-container").empty()>>
                   <<set $gameMoving to $gameMapRecord.movable[_i]>>
                   <<set $gameMovingDesc to $gameMapRecord.movable[_i].desc>>
                 <</button>>
