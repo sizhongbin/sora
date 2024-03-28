@@ -69,9 +69,12 @@ setup.map.training.npc.push({
         return State.getVar("$mapTrainingToggle2");
       },
       post: function() {
-        $("#messages-container").empty();
-        $("#messages-container").append("<span class=\"pure-u-1 yellow\">你升级了。</span>");
-        $("#messages-container").append("<span class=\"pure-u-1 yellow\">你得到了 3 点潜能。</span>");   
+        if(State.getVar("$statLv") == 0) {
+          $("#messages-container").empty();
+          $("#messages-container").append("<span class=\"pure-u-1 yellow\">你升级了。</span>");
+          $("#messages-container").append("<span class=\"pure-u-1 yellow\">你得到了 3 点潜能。</span>");
+          State.setVar("$statLv", 1);
+        }
       },
       forwarding: "Chat"
     },
