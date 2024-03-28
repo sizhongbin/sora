@@ -15,8 +15,9 @@ $(document).on(":passagedisplay", () => {
 }); // 限制过期历史数
 $(document).one(':storyready', function (ev) {
     if (Save.autosave.has()) {
-        console.debug("Force loading");
+        console.debug("> Force loading");
         Save.autosave.load(); // 刷新浏览器强制读档
+        Engine.play(State.getVar("$gameMap.id"), true);
     }
     if (Story.get(State.passage).tags.includes("sub")) {
         $("#main-menu").toggleClass("hide");
