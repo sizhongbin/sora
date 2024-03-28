@@ -473,7 +473,7 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
 /* 加点 */
 :: Stat [stat sub]
 <div class="pure-g">
-  <span class="pure-u-1-8">&nbsp;</span>
+  <span class="pure-u-1-8">&bsp;</span>
   <span class="pure-u-1-8">STR</span>
   <span class="pure-u-1-8">
     <<button "-">>
@@ -497,5 +497,5 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
   </span>
   <span class="pure-u-1-8">WT</span>
   <span class="pure-u-1-8"><<= setup.stat.getMaxWt()>></span>
-
+</div>
 AGI<<= $statAgi>> VIT<<= $statVit>> INT<<= $statInt>> DEX<<= $statDex>> LUK<<= $statLuk>> POINT<<= setup.stat.getPoint()>> HP<<= setup.stat.getMaxHp()>> SP<<= setup.stat.getMaxSp()>> AP<<= setup.stat.getMaxAp()>> DP<<= setup.stat.getMaxDp()>> WT<<= setup.stat.getMaxWt()>> CRIT<<= setup.stat.getCrit()>>
