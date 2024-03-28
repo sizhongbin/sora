@@ -22,5 +22,5 @@ $(document).one(':storyready', function (ev) {
     // if (Story.get(State.passage).tags.includes("sub")) {
     //     $("#main-menu").toggleClass("hide");
     //     $("#sub-menu").toggleClass("hide");
-    } // 如果读档时是对话窗口，需要显示子菜单隐藏主菜单
+    //} // 如果读档时是对话窗口，需要显示子菜单隐藏主菜单
 }); 
