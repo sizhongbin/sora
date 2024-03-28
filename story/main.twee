@@ -474,7 +474,7 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
 :: Stat [stat sub]
 <div class="pure-g">
   <span class="pure-u-1">【素质】</span>
-  <span class="pure-u-1-8">&nbsp;</span>
+  <span class="pure-u-1-8">？</span>
   <span class="pure-u-1-8">STR</span>
   <span class="pure-u-1-8">
     <<button "-">>
