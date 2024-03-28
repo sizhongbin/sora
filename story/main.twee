@@ -470,32 +470,37 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
 /* 仓库 */
 :: Storage [storage sub]
 
-/* 加点 */
+/* 素质 */
 :: Stat [stat sub]
 <div class="pure-g">
+  <span class="pure-u-1">【素质】</span>
   <span class="pure-u-1-8">&nbsp;</span>
   <span class="pure-u-1-8">STR</span>
   <span class="pure-u-1-8">
     <<button "-">>
-      <<set $statStr-->>
-      <<replace "#stat-str">>
-        <<= $statStr>>
-      <</replace>>
-      <<replace "#stat-wt">>
-        <<= setup.stat.getMaxWt()>>
-      <</replace>>
+      <<if $statStr lt 0>>
+        <<set $statStr-->>
+        <<replace "#stat-str">>
+          <<= $statStr>>
+        <</replace>>
+        <<replace "#stat-wt">>
+          <<= setup.stat.getMaxWt()>>
+        <</replace>>
+      <</if>>
     <</button>>
   </span>
   <span class="pure-u-1-8" id="stat-str"><<= $statStr>></span>
   <span class="pure-u-1-8">
     <<button "+">>
-      <<set $statStr++>>
-      <<replace "#stat-str">>
-        <<= $statStr>>
-      <</replace>>
-      <<replace "#stat-wt">>
-        <<= setup.stat.getMaxWt()>>
-      <</replace>>
+      <<if setup.stat.getPoint() lt 0>>
+        <<set $statStr++>>
+        <<replace "#stat-str">>
+          <<= $statStr>>
+        <</replace>>
+        <<replace "#stat-wt">>
+          <<= setup.stat.getMaxWt()>>
+        <</replace>>
+      <</if>>
     <</button>>
   </span>
   <span class="pure-u-1-8 green">
