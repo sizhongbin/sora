@@ -521,6 +521,44 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
   <span class="pure-u-1-12">&nbsp;</span> 
   <span class="pure-u-1-6" aria-label="+ 每个回合的行动点" data-cooltipz-dir="left">AP ⓘ</span>
   <span class="pure-u-1-6" id="stat-ap"><<= setup.stat.getMaxAp()>></span>
+
+  /* VIT和HP */
+  <span class="pure-u-1-6" aria-label="+ VIT依存的攻击、技能效果&#xa;+ 物理伤害减免&#xa;+ 最大生命值HP" data-cooltipz-dir="right" data-cooltipz-size="custom">VIT ⓘ
+  </span>
+  <span class="pure-u-1-12">
+    <<button "-">>  
+      <<if $statVit gt 0>>
+        <<set $statVit-->>
+        <<replace "#stat-vit">>
+          <<= $statVit>>
+        <</replace>>
+        <<replace "#stat-hp">>
+          <<= setup.stat.getMaxHp()>>
+        <</replace>>
+      <</if>>
+    <</button>>
+  </span>
+  <span class="pure-u-1-12" id="stat-vit"><<= $statVit>></span>
+  <span class="pure-u-1-12">
+    <<button "+">>
+      <<if setup.stat.getPoint() gt 0>>
+        <<set $statVit++>>
+        <<replace "#stat-vit">>
+          <<= $statVit>>
+        <</replace>>
+        <<replace "#stat-hp">>
+          <<= setup.stat.getMaxHp()>>
+        <</replace>>
+      <</if>>
+    <</button>>
+  </span>
+  <span class="pure-u-1-6 green">
+    (+<<= setup.stat.getStatMod().vit>>)
+  </span>
+  <span class="pure-u-1-12">&nbsp;</span> 
+  <span class="pure-u-1-6" aria-label="+ 最大生命值" data-cooltipz-dir="left">HP ⓘ</span>
+  <span class="pure-u-1-6" id="stat-hp"><<= setup.stat.getMaxHp()>></span>
 </div>
+
 
 AGI<<= $statAgi>> VIT<<= $statVit>> INT<<= $statInt>> DEX<<= $statDex>> LUK<<= $statLuk>> POINT<<= setup.stat.getPoint()>> HP<<= setup.stat.getMaxHp()>> SP<<= setup.stat.getMaxSp()>> AP<<= setup.stat.getMaxAp()>> DP<<= setup.stat.getMaxDp()>> WT<<= setup.stat.getMaxWt()>> CRIT<<= setup.stat.getCrit()>>

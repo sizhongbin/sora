@@ -3,8 +3,13 @@ setup.stat = new Object();
 setup.stat.getPoint = function () {
     let lv = State.getVar("$statLv");
     let str = State.getVar("$statStr");
-    let point = lv * 3 - str;
-    console.debug(`getPoint: ${lv} * 3 - STR${State.getVar("$statStr")}`);
+    let agi = State.getVar("$statAgi");
+    let vit = State.getVar("$statVit");
+    let int = State.getVar("$statInt");
+    let dex = State.getVar("$statDex");
+    let luk = State.getVar("$statLuk");
+    let point = lv * 3 - str - agi - vit - int - dex - luk;
+    console.debug(`getPoint: ${lv} * 3 - STR${State.getVar("$statStr")} - AGI${State.getVar("$statAgi")} - VIT${State.getVar("$statVit")} - INT${State.getVar("$statInt")} - DEX${State.getVar("$statDex")} - LUL${State.getVar("$statLuk")}`);
     return point;
 }
 
