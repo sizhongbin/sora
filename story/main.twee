@@ -227,7 +227,7 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
           <</for>>
         <</if>>
         <<if not _included>>
-              <span class="pure-u-1-3">- ？？？</span>
+              <span class="pure-u-1-3">- ？</span>
         <</if>>
       <</for>>
       <<if $gameMap.npc.length eq 0>>
@@ -256,7 +256,7 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
           <</for>>
         <</if>>
         <<if not _included>>
-          <span class="pure-u-1">- ？？？</span>
+          <span class="pure-u-1">- ？</span>
         <</if>>
       <</for>>
       <<if $gameMap.mobs.length eq 0>>
@@ -285,7 +285,7 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
           <</for>>
         <</if>>
         <<if not _included>>
-          <span class="pure-u-1-3">- ？？？</span>
+          <span class="pure-u-1-3">- ？</span>
         <</if>>
       <</for>>
       <<if $gameMap.exit.length eq 0>>
