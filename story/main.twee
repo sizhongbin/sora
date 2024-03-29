@@ -97,71 +97,71 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
   </div></div>
 <</if>>
   <div class="pure-u-1-2"><div id="menu-1" class="main-menu-box">
-      <<button "对话">>
-        <<for _i to 0; _i lt $gameMapRecord.chatable.length; _i++>>
-          <<append "#sub-menu-container">>
-            <div class="pure-u-1-2"><div class="sub-menu-box">
-              <<capture _i>>
-                <<button $gameMapRecord.chatable[_i].name "Chat">>
-                  <<run $("#sub-menu-container").empty()>>
-                  <<run $("#messages-container").empty()>>
-                  <<set $gameChatting to $gameMapRecord.chatable[_i]>>
-                  <<set $gameChattingContents to $gameMapRecord.chatable[_i].desc>>
-                <</button>>
-              <</capture>>
-            </div></div>
-          <</append>>
-        <</for>>
-        <<run console.log($("#sub-menu").offset().top)>>
-        <<toggleclass "#main-menu" "hide">>
-        <<toggleclass "#sub-menu" "hide">>
-        <<run $("#sub-menu").scrollTop(0)>>
-      <</button>>
+    <<button "对话">>
+      <<for _i to 0; _i lt $gameMapRecord.chatable.length; _i++>>
+        <<append "#sub-menu-container">>
+          <div class="pure-u-1-2"><div class="sub-menu-box">
+            <<capture _i>>
+              <<button $gameMapRecord.chatable[_i].name "Chat">>
+                <<run $("#sub-menu-container").empty()>>
+                <<run $("#messages-container").empty()>>
+                <<set $gameChatting to $gameMapRecord.chatable[_i]>>
+                <<set $gameChattingContents to $gameMapRecord.chatable[_i].desc>>
+              <</button>>
+            <</capture>>
+          </div></div>
+        <</append>>
+      <</for>>
+      <<run console.log($("#sub-menu").offset().top)>>
+      <<toggleclass "#main-menu" "hide">>
+      <<toggleclass "#sub-menu" "hide">>
+      <<run $("#sub-menu").scrollTop(0)>>
+    <</button>>
   </div></div>
   <div class="pure-u-1-2"><div id="menu-2" class="main-menu-box">
-      <<button "移动">>
-        <<for _i to 0; _i lt $gameMapRecord.movable.length; _i++>>
-          <<append "#sub-menu-container">>
-            <div class="pure-u-1-2"><div class="sub-menu-box">
-              <<capture _i>>
-                <<button $gameMapRecord.movable[_i].name "Move">>
-                  <<run $("#sub-menu-container").empty()>>
-                  <<run $("#messages-container").empty()>>
-                  <<set $gameMoving to $gameMapRecord.movable[_i]>>
-                  <<set $gameMovingDesc to $gameMapRecord.movable[_i].desc>>
-                <</button>>
-              <</capture>>
-            </div></div>
-          <</append>>
-        <</for>>
-        <<run console.log($("#sub-menu").offset().top)>>
-        <<toggleclass "#main-menu" "hide">>
-        <<toggleclass "#sub-menu" "hide">>
-        <<run $("#sub-menu").scrollTop(0)>>
-      <</button>>
+    <<button "移动">>
+      <<for _i to 0; _i lt $gameMapRecord.movable.length; _i++>>
+        <<append "#sub-menu-container">>
+          <div class="pure-u-1-2"><div class="sub-menu-box">
+            <<capture _i>>
+              <<button $gameMapRecord.movable[_i].name "Move">>
+                <<run $("#sub-menu-container").empty()>>
+                <<run $("#messages-container").empty()>>
+                <<set $gameMoving to $gameMapRecord.movable[_i]>>
+                <<set $gameMovingDesc to $gameMapRecord.movable[_i].desc>>
+              <</button>>
+            <</capture>>
+          </div></div>
+        <</append>>
+      <</for>>
+      <<run console.log($("#sub-menu").offset().top)>>
+      <<toggleclass "#main-menu" "hide">>
+      <<toggleclass "#sub-menu" "hide">>
+      <<run $("#sub-menu").scrollTop(0)>>
+    <</button>>
   </div></div>
   <div class="pure-u-1-2"><div id="menu-3" class="main-menu-box">
-      <<button "技能">>
+    <<button "技能">>
 
-      <</button>>
+    <</button>>
   </div></div>
   <div class="pure-u-1-2"><div id="menu-4" class="main-menu-box">
-      <<button "道具">>
+    <<button "道具">>
 
-      <</button>>
+    <</button>>
   </div></div>
   <div class="pure-u-1-2"><div id="menu-5" class="main-menu-box">
-      <<button "更多">>
-        <<append "#sub-menu-container">>
-            <div class="pure-u-1-2"><div class="sub-menu-box">
-              <<button "素质" "Stat">>
-                <<run $("#sub-menu-container").empty()>>
-              <</button>>
-            </div></div>
-          <</append>>
-          <<toggleclass "#main-menu" "hide">>
-          <<toggleclass "#sub-menu" "hide">>
-      <</button>>
+    <<button "更多">>
+      <<append "#sub-menu-container">>
+        <div class="pure-u-1-2"><div class="sub-menu-box">
+          <<button "素质" "Stat">>
+            <<run $("#sub-menu-container").empty()>>
+          <</button>>
+        </div></div>
+        <</append>>
+        <<toggleclass "#main-menu" "hide">>
+        <<toggleclass "#sub-menu" "hide">>
+    <</button>>
   </div></div>
 
 :: SubMenuBack
@@ -444,10 +444,11 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
 :: Stat [stat sub]
 <div class="pure-g">
   <span class="pure-u-1">【素质】</span>
-  <span class="pure-u-1-12">STR</span>
-  <span class="pure-u-1-24 tips" title="- 影响STR依存的攻击、技能效果&#10;- 影响WT">？</span>
+  <span class="pure-u-1">&nbsp;</span> 
+  <span class="pure-u-1-8" aria-label="+ STR依存的攻击、技能效果&#xa;+ 最大负重量WT" data-cooltipz-dir="right" data-cooltipz-size="custom">STR ⓘ
+  </span>
   <span class="pure-u-1-12">
-    <<button "-">>
+    <<button "-">>  
       <<if $statStr gt 0>>
         <<set $statStr-->>
         <<replace "#stat-str">>
@@ -477,8 +478,7 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
     (+<<= setup.stat.getStatMod().str>>)
   </span>
   <span class="pure-u-1-12">&nbsp;</span>
-  <span class="pure-u-1-12">WT</span>
-  <span class="pure-u-1-24 tips" title="- 影响可携带物品重量">？</span>
+  <span class="pure-u-1-8" aria-label="+ 可携带物品重量" data-cooltipz-dir="left">WT ⓘ</span>
   <span class="pure-u-1-12" id="stat-wt"><<= setup.stat.getMaxWt()>></span>
 </div>
 AGI<<= $statAgi>> VIT<<= $statVit>> INT<<= $statInt>> DEX<<= $statDex>> LUK<<= $statLuk>> POINT<<= setup.stat.getPoint()>> HP<<= setup.stat.getMaxHp()>> SP<<= setup.stat.getMaxSp()>> AP<<= setup.stat.getMaxAp()>> DP<<= setup.stat.getMaxDp()>> WT<<= setup.stat.getMaxWt()>> CRIT<<= setup.stat.getCrit()>>
