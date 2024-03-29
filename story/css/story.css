@@ -90,6 +90,7 @@ body,
 .passage {
   overflow-y: auto;
   height: 100%;
+  line-height: 22px;
 }
 
 .map-desc,
