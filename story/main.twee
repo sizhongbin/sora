@@ -451,7 +451,8 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
   <div class="pure-g stat-list">
   
   /* STR和WT */
-  <span class="pure-u-1-6" aria-label="+ STR依存的攻击、技能效果&#xa;+ 最大负重量WT" data-cooltipz-dir="right" data-cooltipz-size="custom">STR<span class="stat-tips">ⓘ&nbsp;</span>
+  <span class="pure-u-1-12">STR</span>
+  <span class="pure-u-1-12" aria-label="+ STR依存的攻击、技能效果&#xa;+ 最大负重量WT" data-cooltipz-dir="right" data-cooltipz-size="custom">ⓘ</span>
   </span>
   <span class="pure-u-1-12">
     <<button "-">>  
