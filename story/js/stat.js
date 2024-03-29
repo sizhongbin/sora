@@ -13,9 +13,9 @@ setup.stat.getPoint = function () {
     return point;
 }
 
-setup.stat.getStatMod = function () {
-    let statMod = {str:0,agi:0,vit:0,int:0,dex:0,luk:0};
-    return statMod;
+setup.stat.getStatMod = function() {
+  let statMod = { str: 0, agi: 0, vit: 0, int: 0, dex: 0, luk: 0, wt: 0 };
+  return statMod;
 }
 
 setup.stat.getMaxHp = function () {

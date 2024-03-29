@@ -449,42 +449,45 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
   <span class="pure-u-1">&nbsp;</span> 
   
   <div class="pure-g stat-list">
-    /* STR和WT */
-    <span class="pure-u-1-6" aria-label="+ STR依存的攻击、技能效果&#xa;+ 最大负重量WT" data-cooltipz-dir="right" data-cooltipz-size="custom">STR<span class="stat-tips">ⓘ&nbsp;</span>
-    </span>
-    <span class="pure-u-1-12">
-      <<button "-">>  
-        <<if $statStr gt 0>>
-          <<set $statStr-->>
-          <<replace "#stat-str">>
-            <<= $statStr>>
-          <</replace>>
-          <<replace "#stat-wt">>
-            <<= setup.stat.getMaxWt()>>
-          <</replace>>
-        <</if>>
-      <</button>>
-    </span>
-    <span class="pure-u-1-12" id="stat-str"><<= $statStr>></span>
-    <span class="pure-u-1-12">
-      <<button "+">>
-        <<if setup.stat.getPoint() gt 0>>
-          <<set $statStr++>>
-          <<replace "#stat-str">>
-            <<= $statStr>>
-          <</replace>>
-          <<replace "#stat-wt">>
-            <<= setup.stat.getMaxWt()>>
-          <</replace>>
-        <</if>>
-      <</button>>
-    </span>
-    <span class="pure-u-1-6 green">
-      (+<<= setup.stat.getStatMod().str>>)
-    </span>
-    <span class="pure-u-1-12">&nbsp;</span> 
-    <span class="pure-u-1-6" aria-label="+ 可携带物品重量" data-cooltipz-dir="left">WT ⓘ</span>
-    <span class="pure-u-1-6" id="stat-wt"><<= setup.stat.getMaxWt()>></span>
+  
+  /* STR和WT */
+  <span class="pure-u-1-6" aria-label="+ STR依存的攻击、技能效果&#xa;+ 最大负重量WT" data-cooltipz-dir="right" data-cooltipz-size="custom">STR ⓘ
+  </span>
+  <span class="pure-u-1-12">
+    <<button "-">>  
+      <<if $statStr gt 0>>
+        <<set $statStr-->>
+        <<replace "#stat-str">>
+          <<= $statStr>>
+        <</replace>>
+        <<replace "#stat-wt">>
+          <<= setup.stat.getMaxWt()>>
+        <</replace>>
+      <</if>>
+    <</button>>
+  </span>
+  <span class="pure-u-1-12" id="stat-str"><<= $statStr>></span>
+  <span class="pure-u-1-12">
+    <<button "+">>
+      <<if setup.stat.getPoint() gt 0>>
+        <<set $statStr++>>
+        <<replace "#stat-str">>
+          <<= $statStr>>
+        <</replace>>
+        <<replace "#stat-wt">>
+          <<= setup.stat.getMaxWt()>>
+        <</replace>>
+      <</if>>
+    <</button>>
+  </span>
+  <span class="pure-u-1-6 green">
+    + <<= setup.stat.getStatMod().str>>
+  </span>
+  <span class="pure-u-1-6" aria-label="+ 可携带物品重量" data-cooltipz-dir="left">WT ⓘ</span>
+  <span class="pure-u-1-12" id="stat-wt"><<= setup.stat.getMaxWt()>></span>
+  <span class="pure-u-1-6 green">
+    + <<= setup.stat.getStatMod().wt>>
+  </span>
     
     /* AGI和AP */
     <span class="pure-u-1-6" aria-label="+ AGI依存的攻击、技能效果&#xa;+ 回避率&#xa;+ 最大行动点AP" data-cooltipz-dir="right" data-cooltipz-size="custom">AGI ⓘ
