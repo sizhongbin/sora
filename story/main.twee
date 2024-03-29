@@ -451,7 +451,7 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
   <div class="pure-g stat-list">
   
   /* STR和WT */
-  <span class="pure-u-1-6" aria-label="+ STR依存的攻击、技能效果&#xa;+ 最大负重量WT" data-cooltipz-dir="right" data-cooltipz-size="custom">STR ⓘ
+  <span class="pure-u-1-6" aria-label="+ STR依存的攻击、技能效果&#xa;+ 最大负重量WT" data-cooltipz-dir="right" data-cooltipz-size="custom">STR<span class="stat-tips">ⓘ&nbsp;</span>
   </span>
   <span class="pure-u-1-12">
     <<button "-">>  
@@ -483,7 +483,7 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
   <span class="pure-u-1-6 green">
     + <<= setup.stat.getStatMod().str>>
   </span>
-  <span class="pure-u-1-6" aria-label="+ 可携带物品重量" data-cooltipz-dir="left">WT ⓘ</span>
+  <span class="pure-u-1-6" aria-label="+ 可携带物品重量" data-cooltipz-dir="left">WT<span class="stat-tips">ⓘ&nbsp;</span></span>
   <span class="pure-u-1-12" id="stat-wt"><<= setup.stat.getMaxWt()>></span>
   <span class="pure-u-1-6 green">
     + <<= setup.stat.getStatMod().wt>>

@@ -134,6 +134,10 @@ body,
   align-items: center;
 }
 
+.stat-tips {
+  float: right;
+}
+
 #stat button {
     height: 1.5em;
     width: 1.5em;
