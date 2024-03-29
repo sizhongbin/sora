@@ -395,7 +395,7 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
 <<else>>
     <<for _i to 0; _i lt _messages.length; _i++>>
         <<append "#messages-container">>
-            <span class="pure-u-1 yellow">_messages[_i]</span>
+            <span class="pure-u-1 yellow message-content">_messages[_i]</span>
         <</append>>
     <</for>>
 <</if>>
