@@ -445,7 +445,7 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
 <div class="pure-g">
   <span class="pure-u-1">【素质】</span>
   <span class="pure-u-1">&nbsp;</span> 
-  <span class="pure-u-1-8" aria-label="+ STR依存的攻击、技能效果&#xa;+ 最大负重量WT" data-cooltipz-dir="right" data-cooltipz-size="custom">STR ⓘ
+  <span class="pure-u-1-6" aria-label="+ STR依存的攻击、技能效果&#xa;+ 最大负重量WT" data-cooltipz-dir="right" data-cooltipz-size="custom">STR ⓘ
   </span>
   <span class="pure-u-1-12">
     <<button "-">>  
@@ -474,11 +474,11 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
       <</if>>
     <</button>>
   </span>
-  <span class="pure-u-1-12 green">
+  <span class="pure-u-1-6 green">
     (+<<= setup.stat.getStatMod().str>>)
   </span>
-  <span class="pure-u-1-12">&nbsp;</span>
-  <span class="pure-u-1-8" aria-label="+ 可携带物品重量" data-cooltipz-dir="left">WT ⓘ</span>
-  <span class="pure-u-1-12" id="stat-wt"><<= setup.stat.getMaxWt()>></span>
+  <span class="pure-u-1-12">&nbsp;</span> 
+  <span class="pure-u-1-6" aria-label="+ 可携带物品重量" data-cooltipz-dir="left">WT ⓘ</span>
+  <span class="pure-u-1-6" id="stat-wt"><<= setup.stat.getMaxWt()>></span>
 </div>
 AGI<<= $statAgi>> VIT<<= $statVit>> INT<<= $statInt>> DEX<<= $statDex>> LUK<<= $statLuk>> POINT<<= setup.stat.getPoint()>> HP<<= setup.stat.getMaxHp()>> SP<<= setup.stat.getMaxSp()>> AP<<= setup.stat.getMaxAp()>> DP<<= setup.stat.getMaxDp()>> WT<<= setup.stat.getMaxWt()>> CRIT<<= setup.stat.getCrit()>>
