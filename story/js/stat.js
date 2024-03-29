@@ -2,8 +2,10 @@ setup.stat = new Object();
 
 setup.stat.getPoint = function () {
     let lv = State.getVar("$statLv");
+    let str = State.getVar("$statStr");
+    let point = lv * 3 - str;
     console.debug(`getPoint: ${lv} * 3 - STR${State.getVar("$statStr")}`);
-    return lv * 3;
+    return point;
 }
 
 setup.stat.getStatMod = function () {

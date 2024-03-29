@@ -194,135 +194,105 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
 /* 地图信息展示 */
 <div class="pure-g">
 
-    /* 所在地名 */
-    <span class="pure-u-1">【所在地】<<= $gameMap.name>></span>
+  /* 所在地名 */
+  <span class="pure-u-1">【所在地】<<= $gameMap.name>></span>
+  <span class="pure-u-1">&nbsp;</span>
 
-    /* 所在地简介 */
-    <div class="map-desc pure-g">
-        <<for _i to 0; _i < $gameMap.desc.length; _i++>>
-          <span class="pure-u-1">$gameMap.desc[_i]</span>
-        <</for>>
-    </div>
+  /* 所在地简介 */
+  <div class="map-desc pure-g">
+    <<for _i to 0; _i < $gameMap.desc.length; _i++>>
+      <span class="pure-u-1">$gameMap.desc[_i]</span>
+    <</for>>
+  </div>
 
-    /* 所在地信息 */
-    <span class="pure-u-2-5">【所在地信息】</span>
+  <span class="pure-u-1">&nbsp;</span>
 
-    /* 人物标签 */
-    <div class="pure-u-1-5">
-        <<link "人物">>
-            <<run $("#map-info").empty()>>
-            <<append "#map-info">>
-                <span class="pure-u-1"><ul><li>人物：</li></ul></span>        
-            <</append>>
-            <<for _i to 0; _i lt $gameMap.npc.length; _i++>>
-                <<set _included to false>>
-                <<if $gameMap.type eq "safe">>
-                  <<set _included to true>>
-                  <<append "#map-info">>
-                    <span class="pure-u-1-3">- <<= $gameMap.npc[_i].name>></span>
-                  <</append>>
-                <<else>>
-                  <<for _j to 0; _j lt $gameMapRecord.chatable.length; _j++>>
-                      <<if $gameMapRecord.chatable[_j].id eq $gameMap.npc[_i].id>>
-                          <<set _included to true>>
-                          <<append "#map-info">>
-                              <span class="pure-u-1-3">- <<= $gameMap.npc[_i].name>></span>
-                          <</append>>
-                          <<break>>
-                      <</if>>
-                  <</for>>
-                <</if>>
-                <<if not _included>>
-                    <<append "#map-info">>
-                      <span class="pure-u-1-3">- ？？？</span>
-                    <</append>>
-                <</if>>
-            <</for>>
-            <<if $gameMap.npc.length eq 0>>
-                <<append "#map-info">>
-                    <span class="pure-u-1-3">无</span>
-                <</append>>
+  /* 人物标签 */
+  <div class="pure-u-1-3">
+    <div class="pure-g map-info-list">
+      <span class="pure-u-1">【人物】</span> 
+      <span class="pure-u-1">&nbsp;</span> 
+      <<for _i to 0; _i lt $gameMap.npc.length; _i++>>
+        <<set _included to false>>
+        <<if $gameMap.type eq "safe">>
+          <<set _included to true>>
+          <span class="pure-u-1">- <<= $gameMap.npc[_i].name>></span>
+        <<else>>
+          <<for _j to 0; _j lt $gameMapRecord.chatable.length; _j++>>
+            <<if $gameMapRecord.chatable[_j].id eq $gameMap.npc[_i].id>>
+              <<set _included to true>>
+              <span class="pure-u-1">- <<= $gameMap.npc[_i].name>></span>
+              <<break>>
             <</if>>
-        <</link>>
+          <</for>>
+        <</if>>
+        <<if not _included>>
+              <span class="pure-u-1-3">- ？？？</span>
+        <</if>>
+      <</for>>
+      <<if $gameMap.npc.length eq 0>>
+        <span class="pure-u-1">无</span>
+      <</if>>
     </div>
+  </div>
 
-    /* 魔物标签 */
-    <div class="pure-u-1-5">
-        <<link "魔物">>
-          <<run $("#map-info").empty()>>
-              <<append "#map-info">>
-                  <span class="pure-u-1"><ul><li>魔物：</li></ul></span>        
-              <</append>>
-              <<for _i to 0; _i lt $gameMap.mobs.length; _i++>>
-                  <<set _included to false>>
-                  <<if $gameMap.type eq "safe">>
-                    <<set _included to true>>
-                    <<append "#map-info">>
-                      <span class="pure-u-1-3">- <<= $gameMap.mobs[_i].name>></span>
-                    <</append>>
-                  <<else>>
-                    <<for _j to 0; _j lt $gameMapRecord.fightable.length; _j++>>
-                        <<if $gameMap.type eq "safe" or $gameMapRecord.fightable[_j].id eq $gameMap.mobs[_i].id>>
-                            <<set _included to true>>
-                            <<append "#map-info">>
-                                <span class="pure-u-1-3">- <<= $gameMap.mobs[_i].name>></span>
-                            <</append>>
-                            <<break>>
-                        <</if>>
-                    <</for>>
-                  <</if>>
-                  <<if not _included>>
-                      <<append "#map-info">>
-                        <span class="pure-u-1-3">- ？？？</span>
-                      <</append>>
-                  <</if>>
-              <</for>>
-              <<if $gameMap.mobs.length eq 0>>
-                  <<append "#map-info">>
-                      <span class="pure-u-1-3">无</span>
-                  <</append>>
-              <</if>>
-        <</link>>
-    </div>
-
-    /* 出入口标签 */
-    <div class="pure-u-1-5">
-        <<link "出入口">>
-            <<run $("#map-info").empty()>>
-            <<append "#map-info">>
-                <span class="pure-u-1"><ul><li>出入口：</li></ul></span>        
-            <</append>>
-            <<for _i to 0; _i lt $gameMap.exit.length; _i++>>
-                <<set _included to false>>
-                <<if $gameMap.type eq "safe">>
-                  <<set _included to true>>
-                  <<append "#map-info">>
-                    <span class="pure-u-1-3">- <<= $gameMap.exit[_i].name>></span>
-                  <</append>>
-                <<else>>
-                  <<for _j to 0; _j lt $gameMapRecord.movable.length; _j++>>
-                      <<if $gameMap.type eq "safe" or $gameMapRecord.movable[_j].id eq $gameMap.exit[_i].id>>
-                          <<set _included to true>>
-                          <<append "#map-info">>
-                              <span class="pure-u-1-3">- <<= $gameMap.exit[_i].name>></span>
-                          <</append>>
-                          <<break>>
-                      <</if>>
-                  <</for>>
-                <</if>>
-                <<if not _included>>
-                    <<append "#map-info">>
-                      <span class="pure-u-1-3">- ？？？</span>
-                    <</append>>
-                <</if>>
-            <</for>>
-            <<if $gameMap.exit.length eq 0>>
-                <<append "#map-info">>
-                    <span class="pure-u-1-3">无</span>
-                <</append>>
+  /* 魔物标签 */
+  <div class="pure-u-1-3">
+    <div class="pure-g map-info-list">
+      <span class="pure-u-1">【魔物】</span> 
+      <span class="pure-u-1">&nbsp;</span> 
+      <<for _i to 0; _i lt $gameMap.mobs.length; _i++>>
+        <<set _included to false>>
+        <<if $gameMap.type eq "safe">>
+          <<set _included to true>>
+          <span class="pure-u-1">- <<= $gameMap.mobs[_i].name>></span>
+        <<else>>
+          <<for _j to 0; _j lt $gameMapRecord.fightable.length; _j++>>
+            <<if $gameMap.type eq "safe" or $gameMapRecord.fightable[_j].id eq $gameMap.mobs[_i].id>>
+              <<set _included to true>>
+              <span class="pure-u-1">- <<= $gameMap.mobs[_i].name>></span>
+              <<break>>
             <</if>>
-        <</link>>
+          <</for>>
+        <</if>>
+        <<if not _included>>
+          <span class="pure-u-1">- ？？？</span>
+        <</if>>
+      <</for>>
+      <<if $gameMap.mobs.length eq 0>>
+        <span class="pure-u-1">无</span>
+      <</if>>
     </div>
+  </div>
+
+  /* 出入口标签 */
+  <div class="pure-u-1-3">
+    <div class="pure-g map-info-list">
+      <span class="pure-u-1">【出入口】</span>  
+      <span class="pure-u-1">&nbsp;</span>   
+      <<for _i to 0; _i lt $gameMap.exit.length; _i++>>
+        <<set _included to false>>
+        <<if $gameMap.type eq "safe">>
+          <<set _included to true>>
+          <span class="pure-u-1">- <<= $gameMap.exit[_i].name>></span>
+        <<else>>
+          <<for _j to 0; _j lt $gameMapRecord.movable.length; _j++>>
+            <<if $gameMap.type eq "safe" or $gameMapRecord.movable[_j].id eq $gameMap.exit[_i].id>>
+              <<set _included to true>>
+              <span class="pure-u-1">- <<= $gameMap.exit[_i].name>></span>
+              <<break>>
+            <</if>>
+          <</for>>
+        <</if>>
+        <<if not _included>>
+          <span class="pure-u-1-3">- ？？？</span>
+        <</if>>
+      <</for>>
+      <<if $gameMap.exit.length eq 0>>
+        <span class="pure-u-1-3">无</span>
+      <</if>>
+    </div>
+  </div>
 </div>
 
 /* 地图信息子栏目展示 */
@@ -334,6 +304,7 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
 
   /* NPC名 */
   <span class="pure-u-1">【<<= $gameChatting.name>>】</span>
+  <span class="pure-u-1">&nbsp;</span>
 
   /* 聊天内容 */
   <div class="chat-contents pure-g">
@@ -346,20 +317,19 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
 
     /* 选项 */
   <div class="chat-contents pure-g">
-    <span class="pure-u-1">
       <<for _i to 0; _i < $gameChatting.chat.length; _i++>>
         <<capture _i>>
           <<if $gameChatting.chat[_i].pre()>>
-            <ul><li>
-                <<link $gameChatting.chat[_i].question $gameChatting.chat[_i].forwarding>>
+            <span class="pure-u-1">
+                <<set _questionText to "> " + $gameChatting.chat[_i].question>>
+                <<link _questionText $gameChatting.chat[_i].forwarding>>
                   <<set $gameChattingContents to $gameChatting.chat[_i].answer>>
                   <<run $gameChatting.chat[_i].post()>>
                 <</link>>
-            </li></ul>
+            </span>
           <</if>>
         <</capture>>
       <</for>>
-    </span>
   </div>
 </div>
 
@@ -474,11 +444,11 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
 :: Stat [stat sub]
 <div class="pure-g">
   <span class="pure-u-1">【素质】</span>
-  <span class="pure-u-1-8">？</span>
-  <span class="pure-u-1-8">STR</span>
-  <span class="pure-u-1-8">
+  <span class="pure-u-1-12">STR</span>
+  <span class="pure-u-1-24 tips" title="- 影响STR依存的攻击、技能效果&#10;- 影响WT">？</span>
+  <span class="pure-u-1-12">
     <<button "-">>
-      <<if $statStr lt 0>>
+      <<if $statStr gt 0>>
         <<set $statStr-->>
         <<replace "#stat-str">>
           <<= $statStr>>
@@ -489,10 +459,10 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
       <</if>>
     <</button>>
   </span>
-  <span class="pure-u-1-8" id="stat-str"><<= $statStr>></span>
-  <span class="pure-u-1-8">
+  <span class="pure-u-1-12" id="stat-str"><<= $statStr>></span>
+  <span class="pure-u-1-12">
     <<button "+">>
-      <<if setup.stat.getPoint() lt 0>>
+      <<if setup.stat.getPoint() gt 0>>
         <<set $statStr++>>
         <<replace "#stat-str">>
           <<= $statStr>>
@@ -503,10 +473,12 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
       <</if>>
     <</button>>
   </span>
-  <span class="pure-u-1-8 green">
+  <span class="pure-u-1-12 green">
     (+<<= setup.stat.getStatMod().str>>)
   </span>
-  <span class="pure-u-1-8">WT</span>
-  <span class="pure-u-1-8" id="stat-wt"><<= setup.stat.getMaxWt()>></span>
+  <span class="pure-u-1-12">&nbsp;</span>
+  <span class="pure-u-1-12">WT</span>
+  <span class="pure-u-1-24 tips" title="- 影响可携带物品重量">？</span>
+  <span class="pure-u-1-12" id="stat-wt"><<= setup.stat.getMaxWt()>></span>
 </div>
 AGI<<= $statAgi>> VIT<<= $statVit>> INT<<= $statInt>> DEX<<= $statDex>> LUK<<= $statLuk>> POINT<<= setup.stat.getPoint()>> HP<<= setup.stat.getMaxHp()>> SP<<= setup.stat.getMaxSp()>> AP<<= setup.stat.getMaxAp()>> DP<<= setup.stat.getMaxDp()>> WT<<= setup.stat.getMaxWt()>> CRIT<<= setup.stat.getCrit()>>

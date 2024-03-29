@@ -97,8 +97,8 @@ body,
   text-indent: 2em;
 }
 
-#map-info {
-  padding-left: 2em;
+.map-info-list {
+  margin: 0 5px;
 }
 
 .hide {
@@ -115,4 +115,8 @@ body,
 
 .green {
   color: green;
+}
+
+.center {
+  text-align: center;
 }
