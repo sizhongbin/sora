@@ -94,8 +94,12 @@ body,
 }
 
 .map-desc,
-.chat-contents{
+.chat-contents {
   text-indent: 2em;
+}
+
+.chat-question {
+  line-height: 2.5
 }
 
 .map-info-list {
