@@ -17,6 +17,10 @@ body,
   padding: 0 5px;
 }
 
+#message-container {
+  line-height: 22px;
+}
+
 #main-menu {
   height: 174px;
   position: fixed;
