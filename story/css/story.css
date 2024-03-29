@@ -124,3 +124,13 @@ body,
 .left {
   text-align: left;
 }
+
+#stat button {
+    height: 1.5em;
+    width: 1.5em;
+    text-align: center;
+    border: solid 1px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: #222;
+}
