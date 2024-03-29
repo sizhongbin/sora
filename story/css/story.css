@@ -1,5 +1,6 @@
 html {
   font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  font-size: 14px
 }
 
 html,
@@ -44,7 +45,6 @@ body,
   border: solid 1px;
   margin: 5px;
   border-radius: 5px;
-  font-size: 14px;
 }
 
 #messages {
