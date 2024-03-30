@@ -526,7 +526,7 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
     </span>
     <span class="pure-u-1-12">AP</span>
     <span class="pure-u-1-12" aria-label="+ 每个回合可执行的行动" data-cooltipz-dir="left">ⓘ</span>
-    <span class="pure-u-1-6" id="stat-ap"><<= setup.stat.getMaxAp()>></span>
+    <span class="pure-u-1-12" id="stat-ap"><<= setup.stat.getMaxAp()>></span>
     <span class="pure-u-1-6 green">
     + <<= setup.stat.getStatMod().ap>>
     </span>
@@ -567,7 +567,7 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
     </span>
     <span class="pure-u-1-12">HP</span>
     <span class="pure-u-1-12" aria-label="+ 最大生命值" data-cooltipz-dir="left">ⓘ</span>
-    <span class="pure-u-1-6" id="stat-hp"><<= setup.stat.getMaxHp()>></span>
+    <span class="pure-u-1-12" id="stat-hp"><<= setup.stat.getMaxHp()>></span>
     <span class="pure-u-1-6 green">
     + <<= setup.stat.getStatMod().hp>>
     </span>
@@ -606,9 +606,9 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
     <span class="pure-u-1-6 green">
       + <<= setup.stat.getStatMod().int>>
     </span>
-    <span class="pure-u-1-6">SP</span>
-    <span class="pure-u-1-6" aria-label="+ 最大法力值" data-cooltipz-dir="left">ⓘ</span>
-    <span class="pure-u-1-6" id="stat-sp"><<= setup.stat.getMaxSp()>></span>
+    <span class="pure-u-1-12">SP</span>
+    <span class="pure-u-1-12" aria-label="+ 最大法力值" data-cooltipz-dir="left">ⓘ</span>
+    <span class="pure-u-1-12" id="stat-sp"><<= setup.stat.getMaxSp()>></span>
     <span class="pure-u-1-6 green">
     + <<= setup.stat.getStatMod().sp>>
     </span>
@@ -647,9 +647,9 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
     <span class="pure-u-1-6 green">
       + <<= setup.stat.getStatMod().dex>>
     </span>
-    <span class="pure-u-1-6">CP</span>
-    <span class="pure-u-1-6" aria-label="+ 每个回合可咏唱的咒语&#xa;+ 透支施法后的CP恢复量" data-cooltipz-dir="left" data-cooltipz-size="custom">ⓘ</span>
-    <span class="pure-u-1-6" id="stat-cp"><<= setup.stat.getMaxCp()>></span>
+    <span class="pure-u-1-12">CP</span>
+    <span class="pure-u-1-12" aria-label="+ 每个回合可咏唱的咒语&#xa;+ 透支施法后的CP恢复量" data-cooltipz-dir="left" data-cooltipz-size="custom">ⓘ</span>
+    <span class="pure-u-1-12" id="stat-cp"><<= setup.stat.getMaxCp()>></span>
     <span class="pure-u-1-6 green">
     + <<= setup.stat.getStatMod().cp>>
     </span>
@@ -688,9 +688,9 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
     <span class="pure-u-1-6 green">
       + <<= setup.stat.getStatMod().int>>
     </span>
-    <span class="pure-u-1-6">SP</span>
-    <span class="pure-u-1-6" aria-label="+ 最大法力值" data-cooltipz-dir="left">ⓘ</span>
-    <span class="pure-u-1-6" id="stat-sp"><<= setup.stat.getMaxSp()>></span>
+    <span class="pure-u-1-12">SP</span>
+    <span class="pure-u-1-12" aria-label="+ 最大法力值" data-cooltipz-dir="left">ⓘ</span>
+    <span class="pure-u-1-12" id="stat-sp"><<= setup.stat.getMaxSp()>></span>
     <span class="pure-u-1-6 green">
     + <<= setup.stat.getStatMod().sp>>
     </span>
@@ -729,9 +729,9 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
     <span class="pure-u-1-6 green">
       + <<= setup.stat.getStatMod().luk>>
     </span>
-    <span class="pure-u-1-6">CRI</span>
-    <span class="pure-u-1-6" aria-label="+ 暴击率" data-cooltipz-dir="left" data-cooltipz-size="custom">ⓘ</span>
-    <span class="pure-u-1-6" id="stat-cri"><<= setup.stat.getCri()>></span>
+    <span class="pure-u-1-12">CRI</span>
+    <span class="pure-u-1-12" aria-label="+ 暴击率" data-cooltipz-dir="left" data-cooltipz-size="custom">ⓘ</span>
+    <span class="pure-u-1-12" id="stat-cri"><<= setup.stat.getCri()>></span>
     <span class="pure-u-1-6 green">
     + <<= setup.stat.getStatMod().cri>>
     </span>
