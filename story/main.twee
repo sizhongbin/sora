@@ -463,6 +463,9 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
         <<replace "#stat-wt">>
           <<= setup.stat.getMaxWt()>>
         <</replace>>
+        <<replace "#stat-point">>
+          <<= setup.stat.getPoint()>>
+        <</replace>>
       <</if>>
     <</button>>
   </span>
@@ -476,6 +479,9 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
         <</replace>>
         <<replace "#stat-wt">>
           <<= setup.stat.getMaxWt()>>
+        <</replace>>
+        <<replace "#stat-point">>
+          <<= setup.stat.getPoint()>>
         <</replace>>
       <</if>>
     <</button>>
@@ -504,6 +510,9 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
           <<replace "#stat-ap">>
             <<= setup.stat.getMaxAp()>>
           <</replace>>
+          <<replace "#stat-point">>
+            <<= setup.stat.getPoint()>>
+          <</replace>>
         <</if>>
       <</button>>
     </span>
@@ -518,6 +527,9 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
           <<replace "#stat-ap">>
             <<= setup.stat.getMaxAp()>>
           <</replace>>
+          <<replace "#stat-point">>
+          <<= setup.stat.getPoint()>>
+        <</replace>>
         <</if>>
       <</button>>
     </span>
@@ -525,7 +537,7 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
       + <<= setup.stat.getStatMod().agi>>
     </span>
     <span class="pure-u-1-12">AP</span>
-    <span class="pure-u-1-12" aria-label="+ 每个回合可执行的行动" data-cooltipz-dir="left">ⓘ</span>
+    <span class="pure-u-1-12" aria-label="+ 每回合动作量值" data-cooltipz-dir="left">ⓘ</span>
     <span class="pure-u-1-12" id="stat-ap"><<= setup.stat.getMaxAp()>></span>
     <span class="pure-u-1-6 green">
     + <<= setup.stat.getStatMod().ap>>
@@ -545,6 +557,9 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
           <<replace "#stat-hp">>
             <<= setup.stat.getMaxHp()>>
           <</replace>>
+          <<replace "#stat-point">>
+            <<= setup.stat.getPoint()>>
+          <</replace>>
         <</if>>
       <</button>>
     </span>
@@ -558,6 +573,9 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
           <</replace>>
           <<replace "#stat-hp">>
             <<= setup.stat.getMaxHp()>>
+          <</replace>>
+          <<replace "#stat-point">>
+            <<= setup.stat.getPoint()>>
           <</replace>>
         <</if>>
       <</button>>
@@ -586,6 +604,9 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
           <<replace "#stat-sp">>
             <<= setup.stat.getMaxSp()>>
           <</replace>>
+          <<replace "#stat-point">>
+            <<= setup.stat.getPoint()>>
+          <</replace>>
         <</if>>
       <</button>>
     </span>
@@ -599,6 +620,9 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
           <</replace>>
           <<replace "#stat-sp">>
             <<= setup.stat.getMaxSp()>>
+          <</replace>>
+          <<replace "#stat-point">>
+            <<= setup.stat.getPoint()>>
           <</replace>>
         <</if>>
       <</button>>
@@ -627,6 +651,9 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
           <<replace "#stat-cp">>
             <<= setup.stat.getMaxCp()>>
           <</replace>>
+          <<replace "#stat-point">>
+            <<= setup.stat.getPoint()>>
+          <</replace>>
         <</if>>
       <</button>>
     </span>
@@ -641,6 +668,9 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
           <<replace "#stat-cp">>
             <<= setup.stat.getMaxCp()>>
           <</replace>>
+          <<replace "#stat-point">>
+            <<= setup.stat.getPoint()>>
+          <</replace>>
         <</if>>
       <</button>>
     </span>
@@ -648,7 +678,7 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
       + <<= setup.stat.getStatMod().dex>>
     </span>
     <span class="pure-u-1-12">CP</span>
-    <span class="pure-u-1-12" aria-label="+ 每个回合可咏唱的咒语&#xa;+ 透支施法后的CP恢复量" data-cooltipz-dir="left" data-cooltipz-size="custom">ⓘ</span>
+    <span class="pure-u-1-12" aria-label="+ 每回合施法量值&#xa;+ 透支施法后的CP恢复量" data-cooltipz-dir="left" data-cooltipz-size="custom">ⓘ</span>
     <span class="pure-u-1-12" id="stat-cp"><<= setup.stat.getMaxCp()>></span>
     <span class="pure-u-1-6 green">
     + <<= setup.stat.getStatMod().cp>>
@@ -668,6 +698,9 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
           <<replace "#stat-cri">>
             <<= setup.stat.getCri()>>
           <</replace>>
+          <<replace "#stat-point">>
+            <<= setup.stat.getPoint()>>
+          <</replace>>
         <</if>>
       <</button>>
     </span>
@@ -682,6 +715,9 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
           <<replace "#stat-cri">>
             <<= setup.stat.getCri()>>
           <</replace>>
+          <<replace "#stat-point">>
+            <<= setup.stat.getPoint()>>
+          <</replace>>
         <</if>>
       <</button>>
     </span>
@@ -695,8 +731,7 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
     + <<= setup.stat.getStatMod().cri>>
     </span>
     
+    <span class="pure-u-1-4">潜能点：</span>
+    <span class="pure-u-1-4" id="stat-point"><<= setup.stat.getPoint()>></span>
   </div>
 </div>
-
-
-POINT<<= setup.stat.getPoint()>>
