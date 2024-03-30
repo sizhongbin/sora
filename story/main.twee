@@ -42,12 +42,9 @@ Sora V0.1
 <<set $statInt to 0>>
 <<set $statDex to 0>>
 <<set $statLuk to 0>>
-<<set $gameHpMax to setup.stat.getMaxHp()>>
-<<set $gameHpLeft to $gameHpMax>>
-<<set $gameSpMax to setup.stat.getMaxSp()>>
-<<set $gameSpLeft to $gameSpMax>>
-<<set $gameFpMax to setup.stat.getMaxFp()>>
-<<set $gameFpLeft to $gameFpMax>>
+<<set $gameHpLeft to setup.stat.getMaxHp()>>
+<<set $gameSpLeft to setup.stat.getMaxSp()>>
+<<set $gameFpLeft to setup.stat.getMaxFp()>>
 <<set $gameNetwork to "离线">>
 <<set $gameMap to new Object()>>
 <<set $gameMapRecord to new Object()>>
@@ -66,15 +63,15 @@ Sora V0.1
 
 :: SP
 <<run console.debug("> Display SP")>>
-SP: <<= $gameSpLeft>> / <<= $gameSpMax>>
+SP: <<= $gameSpLeft>> / <<= setup.stat.getMaxSp()>>
 
 :: HP
 <<run console.debug("> Display HP")>>
-HP: <<= $gameHpLeft>> / <<= $gameHpMax>>
+HP: <<= $gameHpLeft>> / <<= setup.stat.getMaxHp()>>
 
 :: FP
 <<run console.debug("> Display FP")>>
-FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
+FP: <<= $gameFpLeft>> / <<= setup.stat.getMaxFp()>>
 
 :: Patch
 <<run console.debug("> Apply Patch")>>
