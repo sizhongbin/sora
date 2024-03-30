@@ -160,7 +160,7 @@ body,
     justify-content: center;
 }
 
-#stat-reset {
+#stat-reset button{
   height: 3em;
   width: 3em;
 }
