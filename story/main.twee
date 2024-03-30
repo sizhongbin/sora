@@ -322,7 +322,7 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
           <<if $gameChatting.chat[_i].pre()>>
             <span class="pure-u-1 chat-question">
                 <<set _questionText to "> " + $gameChatting.chat[_i].question>>
-                <<link _questionText $gameChatting.chat[_i].forwarding>>
+                <<link `">" + $gameChatting.chat[_i].question` $gameChatting.chat[_i].forwarding>>
                   <<set $gameChattingContents to $gameChatting.chat[_i].answer>>
                   <<run $gameChatting.chat[_i].post()>>
                 <</link>>
