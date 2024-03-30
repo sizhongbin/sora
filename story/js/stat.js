@@ -14,7 +14,7 @@ setup.stat.getPoint = function () {
 }
 
 setup.stat.getStatMod = function() {
-  let statMod = { str: 0, agi: 0, vit: 0, int: 0, dex: 0, luk: 0, wt: 0 };
+  let statMod = { str: 0, agi: 0, vit: 0, int: 0, dex: 0, luk: 0, wt: 0, ap: 0, hp: 0, sp: 0, cp: 0, cri: 0};
   return statMod;
 }
 
@@ -33,9 +33,9 @@ setup.stat.getMaxAp = function () {
     return maxAp;
 }
 
-setup.stat.getMaxDp = function () {
-    let maxDp = 30 + State.getVar("$statDex") + setup.stat.getStatMod().dex;
-    return maxDp;
+setup.stat.getMaxCp = function () {
+    let maxCp = 30 + State.getVar("$statDex") + setup.stat.getStatMod().dex;
+    return maxCp;
 }
 
 setup.stat.getMaxWt = function () {
@@ -43,9 +43,9 @@ setup.stat.getMaxWt = function () {
     return maxWt;
 }
 
-setup.stat.getCrit = function () {
-    let crit = 5 + State.getVar("$statLuk") + setup.stat.getStatMod().luk;
-    return crit;
+setup.stat.getCri = function () {
+    let cri = 5 + State.getVar("$statLuk") + setup.stat.getStatMod().luk;
+    return cri;
 }
 
 setup.stat.getMaxFp = function () {
