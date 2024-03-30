@@ -654,47 +654,6 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
     + <<= setup.stat.getStatMod().cp>>
     </span>
     
-        /* INT和SP */
-    <span class="pure-u-1-12">INT</span>
-    <span class="pure-u-1-12" aria-label="+ INT依存的攻击、技能效果&#xa;+ 魔法伤害减免&#xa;+ 最大法力值SP" data-cooltipz-dir="right" data-cooltipz-size="custom">ⓘ
-    </span>
-    <span class="pure-u-1-12">
-      <<button "-">>  
-        <<if $statInt gt 0>>
-          <<set $statInt-->>
-          <<replace "#stat-int">>
-            <<= $statInt>>
-          <</replace>>
-          <<replace "#stat-sp">>
-            <<= setup.stat.getMaxSp()>>
-          <</replace>>
-        <</if>>
-      <</button>>
-    </span>
-    <span class="pure-u-1-12" id="stat-int"><<= $statInt>></span>
-    <span class="pure-u-1-12">
-      <<button "+">>
-        <<if setup.stat.getPoint() gt 0>>
-          <<set $statInt++>>
-          <<replace "#stat-int">>
-            <<= $statInt>>
-          <</replace>>
-          <<replace "#stat-sp">>
-            <<= setup.stat.getMaxSp()>>
-          <</replace>>
-        <</if>>
-      <</button>>
-    </span>
-    <span class="pure-u-1-6 green">
-      + <<= setup.stat.getStatMod().int>>
-    </span>
-    <span class="pure-u-1-12">SP</span>
-    <span class="pure-u-1-12" aria-label="+ 最大法力值" data-cooltipz-dir="left">ⓘ</span>
-    <span class="pure-u-1-12" id="stat-sp"><<= setup.stat.getMaxSp()>></span>
-    <span class="pure-u-1-6 green">
-    + <<= setup.stat.getStatMod().sp>>
-    </span>
-    
     /* LUK和CRI */
     <span class="pure-u-1-12">LUK</span>
     <span class="pure-u-1-12" aria-label="+ LUK依存的攻击、技能效果&#xa;+ 暴击率CRI" data-cooltipz-dir="right" data-cooltipz-size="custom">ⓘ
