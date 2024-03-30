@@ -731,7 +731,58 @@ FP: <<= $gameFpLeft>> / <<= $gameFpMax>>
     + <<= setup.stat.getStatMod().cri>>
     </span>
     
+    /* 潜能点和重置*/
+    <span class="pure-u-1">&nbsp;</span>
     <span class="pure-u-1-4">潜能点：</span>
     <span class="pure-u-1-4" id="stat-point"><<= setup.stat.getPoint()>></span>
+    <span class="pure-u-1-2" id="stat-reset">
+      <<button "重置">>
+          <<set $statStr to 0>>
+          <<set $statAgi to 0>>
+          <<set $statVit to 0>>
+          <<set $statInt to 0>>
+          <<set $statDex to 0>>
+          <<set $statLuk to 0>>
+          <<replace "#stat-str">>
+            <<= $statStr>>
+          <</replace>>
+          <<replace "#stat-wt">>
+            <<= setup.stat.getMaxWt()>>
+          <</replace>>
+          <<replace "#stat-agi">>
+            <<= $statAgi>>
+          <</replace>>
+          <<replace "#stat-ap">>
+            <<= setup.stat.getMaxAp()>>
+          <</replace>>
+          <<replace "#stat-vit">>
+            <<= $statVit>>
+          <</replace>>
+          <<replace "#stat-hp">>
+            <<= setup.stat.getMaxHp()>>
+          <</replace>>
+          <<replace "#stat-int">>
+            <<= $statInt>>
+          <</replace>>
+          <<replace "#stat-sp">>
+            <<= setup.stat.getMaxSp()>>
+          <</replace>>
+          <<replace "#stat-dex">>
+            <<= $statDex>>
+          <</replace>>
+          <<replace "#stat-cp">>
+            <<= setup.stat.getMaxCp()>>
+          <</replace>>
+          <<replace "#stat-luk">>
+            <<= $statLuk>>
+          <</replace>>
+          <<replace "#stat-cri">>
+            <<= setup.stat.getCri()>>
+          <</replace>>
+          <<replace "#stat-point">>
+            <<= setup.stat.getPoint()>>
+          <</replace>>
+      <</button>>
+    </span>
   </div>
 </div>
