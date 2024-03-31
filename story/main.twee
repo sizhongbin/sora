@@ -187,6 +187,8 @@ FP: <<= $gameFpLeft>> / <<= setup.stat.getMaxFp()>>
 
 :: Map
 <<run console.debug("> Enter Map")>>
+<<run console.debug("gameMap Data Object:")>>
+<<run console.debug($gameMap)>>
 
 /* 地图信息展示 */
 <div class="pure-g">
