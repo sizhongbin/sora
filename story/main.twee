@@ -76,7 +76,11 @@ FP: <<= $gameFpLeft>> / <<= setup.stat.getMaxFp()>>
 :: Patch
 <<run console.debug("> Apply Patch")>>
 <<script>>
-  const response = await fetch("https://soraro.deno.dev/");
+  const response = await fetch("https://soraro.deno.dev/test?param=test", {
+        method: 'POST',
+        body: "test",
+        headers: { 'Accept': 'application/json' }
+      });
   console.debug(response);
 <</script>>
 
