@@ -57,11 +57,11 @@ setup.map.training.npc.push({
       },
       forwarding: "Chat"
     }, {
-      question: "请你指导我。",
+      question: "我想！",
       answer: [
-          "如你所愿，呵呵。",
-          "当你决心前行时，你已有所成长。",
-          "我会先指导你如何激发你的潜能。",
+          "如你所愿。",
+          "坚持好你的决心，它会激发你的潜能。",
+          "首先，我会指导你如何利用你的潜能。",
           "&nbsp;",
           "提示：请通过【更多】——【素质】分配潜能点。"
         ],
@@ -77,6 +77,21 @@ setup.map.training.npc.push({
         }
       },
       forwarding: "Chat"
+    }, {
+      question: "我感觉变强了！",
+      answer: [
+          "很好，身体素质是冒险的基础。",
+          "接下来，兵马未动，粮草先行。",
+          "跟我来，我会指导你冒险前的整备。"
+        ],
+      pre: function() {
+        if (State.getVar("$statLv") == 1 && setup.stat.getPoint() == 0) return true;
+        else return false;
+      },
+      post: function() {
+        State.setVar("$mapTrainingToggle3", true);
+      },
+      forwarding: "Chat"
     },
   ]
 });
@@ -84,23 +99,21 @@ setup.map.training.npc.push({
 /* 地图出入口 */
 setup.map.training.exit = new Array();
 setup.map.training.exit.push({
-  id: "mapTraining",
-  name: "奇怪的城堡",
-  odds: 100,
+  id: "mapTrainingBoxroom",
+  name: "储藏室",
+  odds: 0,
   desc: [
-    "一座中世纪时期的欧洲风格城堡。",
-    "你只在影视作品里见过这样的城堡。",
-    "它突兀地耸立在原野上，被护城河环绕着。",
-    "城门大开，仿佛在欢迎任何人到来。",
-    "在你居住的城市里不可能有这样的城堡。"
+    "一个几乎跟大厅一般大的空间。",
+    "里面存放了各式武器、防具和药瓶。",
+    "以储藏室而言，面积有点过于庞大。"
   ],
   pre: function() {
-    return State.getVar("$mapTrainingToggle2");
+    return State.getVar("$mapTrainingToggle3");
   },
   post: function() {
 
   },
-  refuse: "城门外站着卫兵，让你不敢直接进去。"
+  refuse: "在得到允许前，还是不要擅自进入。"
 });
 
 /* 地图魔物 */
