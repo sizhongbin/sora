@@ -57,7 +57,7 @@ setup.testGit = async function () {
  */
 setup.testDeno = async function () {
     console.debug("> testDeno");
-    let access = {"testid2": "testpass"};
+    let access = {"testid1": "testpass"};
     console.debug("Access:",access);
     const response = await fetch('https://soraserve.deno.dev/signin', {
         method: 'POST',
