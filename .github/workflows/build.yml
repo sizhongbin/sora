@@ -48,10 +48,10 @@ jobs:
           build_dir: dist
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+      
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
-          project: soragame
-          include: dist
-          entrypoint: https://deno.land/std@0.221.0/http/file_server.ts
+          project: "soragame"
+          root: "dist"
+          entrypoint: "https://deno.land/std@0.221.0/http/file_server.ts"
