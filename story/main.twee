@@ -31,10 +31,11 @@ Sora V0.1
     <div class="pure-g" data-passage="SubMenuBack"></div>
   </div>
   <div class="hide" data-passage="Patch"></div>
+  <div class="hide" data-passage="Test"></div>
 </div>
 
 :: StoryInit
-<<set $gameVersion to 1>>
+<<set $gameVersion to 2>>
 <<set $statLv to 0>>
 <<set $statStr to 0>>
 <<set $statAgi to 0>>
@@ -75,14 +76,16 @@ FP: <<= $gameFpLeft>> / <<= setup.stat.getMaxFp()>>
 
 :: Patch
 <<run console.debug("> Apply Patch")>>
-<<script>>
-  const response = await fetch("https://soraro.deno.dev/test?param=test", {
-        method: 'POST',
-        body: "test",
-        headers: { 'Accept': 'application/json' }
-      });
-  console.debug(response);
-<</script>>
+<<if $gameVersion lt 2>>
+  <<run console.debug("> Apply Version 2 Patch")>>
+  <<if $mapTrainingRecord>>
+    <<set $mapTrainingRecord.chatable to setup.map.training.npc>>
+  <</if>>
+  <<set $gameVersion to 2>>
+<</if>>
+
+:: Test
+<<run console.debug("> Test")>>
 
 :: Menu
 <<run console.debug("> Apply Menu")>>
