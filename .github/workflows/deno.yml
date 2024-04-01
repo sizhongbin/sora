@@ -21,9 +21,6 @@ jobs:
         with:
           deno-version: 1.18.2
 
-      - name: Install Ctl
-        run: deno install -Arf https://deno.land/x/deploy/deployctl.ts
-
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
