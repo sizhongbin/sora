@@ -54,4 +54,4 @@ jobs:
         with:
           project: soragame
           include: dist
-          entrypoint: https://deno.land/std/http/file_server.ts
+          entrypoint: https://deno.land/std@0.221.0/http/file_server.ts
