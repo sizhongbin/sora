@@ -10,9 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
-      pull-requests: write
-      issues: write
-      repository-projects: write
+      contents: write
     steps:
       - name: Check out repo
         uses: actions/checkout@v4
