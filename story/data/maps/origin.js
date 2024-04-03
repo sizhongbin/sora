@@ -68,7 +68,7 @@ setup.map.origin.exit.push({
   desc: [
     "一座中世纪时期的欧洲风格城堡。",
     "它被护城河环绕，只有一条木桥通往大门。",
-    "大门敞开着，有一名卫兵在门外把守。"
+    "大门敞开着，只有一名卫兵在门外把守。"
   ],
   pre: function() {
     return State.getVar("$mapOriginToggle2");

@@ -1,0 +1,19 @@
+:: mapTrainingBoxRoom [nosave]
+<<run console.debug("> Enter mapTrainingBoxRoom")>>
+<<run console.debug("Map Data Object:")>>
+<<run console.debug(setup.map.trainingBoxRoom)>>
+
+/* 地图探索记录初始化 */
+<<if !$mapTrainingBoxRoomRecord>>
+    <<run console.debug("Init $mapTrainingBoxRoomRecord")>>
+    <<set $mapTrainingBoxRoomRecord to {chatable:setup.map.trainingBoxRoom.npc,movable:setup.map.trainingBoxRoom.exit,fightable:setup.map.trainingBoxRoom.mobs}>>
+<</if>>
+
+/* 地图设定 */
+<<run console.debug("Set $gameMap and $gameMapRecord")>>
+<<set $gameMap to setup.map.trainingBoxRoom>>
+<<set $gameMapRecord to $mapTrainingBoxRoomRecord>>
+
+/* 展示地图 */
+<<run console.debug("> Goto Map")>>
+<<goto "Map">>

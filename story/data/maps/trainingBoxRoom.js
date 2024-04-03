@@ -1,31 +1,31 @@
 if (!setup.map) setup.map = new Object();
-setup.map.training = new Object();
+setup.map.trainingBoxRoom = new Object();
 
 /* 地图ID */
-setup.map.training.id = "mapTraining"
+setup.map.trainingBoxRoom.id = "mapTrainingBoxRoom"
 
 /* 地图名 */
-setup.map.training.name = "初心者修炼场";
+setup.map.trainingBoxRoom.name = "储藏室";
 
 /* 地图类型 */
-setup.map.training.type = "safe";
+setup.map.trainingBoxRoom.type = "safe";
 
 /* 地图状态描述 */
-setup.map.training.desc = [
-  "修炼场里只有你的脚步声在回响。",
-  "大厅比篮球场还大，没有任何家具或摆设。",
-  "只有一个男人站在正中央，一动不动。"
+setup.map.trainingBoxRoom.desc = [
+    "跟大厅几乎一般大的空间里摆满了木架。",
+    "上面还存放了制式短剑和各式用品。",
+    "有几个木架是空的，但没有灰尘。"
   ];
 
 /* 地图NPC */
-setup.map.training.npc = new Array();
-setup.map.training.npc.push({
-  id: "npcTrainingInstructor",
+setup.map.trainingBoxRoom.npc = new Array();
+setup.map.trainingBoxRoom.npc.push({
+  id: "npcTrainingBoxRoomInstructor",
   name: "教官",
   odds: 100,
   desc: [
-      "一名穿着链甲、背着巨剑的中年男人。",
-      "他肌肉虬张，面容刚硬，脸上却挂着笑。",
+      "教官随手拿起了一柄制式短剑。",
+      "他将短剑。",
       "「欢迎。我是这里的教官。」他说。",
     ],
   chat: [{
@@ -99,15 +99,15 @@ setup.map.training.npc.push({
 });
 
 /* 地图出入口 */
-setup.map.training.exit = new Array();
-setup.map.training.exit.push({
+setup.map.trainingBoxRoom.exit = new Array();
+setup.map.trainingBoxRoom.exit.push({
   id: "mapTrainingBoxroom",
   name: "储藏室",
   odds: 0,
   desc: [
-    "大厅一侧有一扇半开着的门。",
-    "透过门缝，你看到地上有两排木架。",
-    "上面摆满了制式服装。"
+    "一个几乎跟大厅一般大的空间。",
+    "里面似乎存放了各式物品。",
+    "单以储藏室而言，面积有点过于庞大。"
   ],
   pre: function() {
     return State.getVar("$mapTrainingToggle3");
@@ -119,4 +119,4 @@ setup.map.training.exit.push({
 });
 
 /* 地图魔物 */
-setup.map.training.mobs = new Array();
+setup.map.trainingBoxRoom.mobs = new Array();
