@@ -1,8 +1,8 @@
-if (!setup.map) setup.map = new Object();
-setup.map.training = new Object();
+if (!setup.map) setup.map = {};
+setup.map.training = {};
 
 /* 地图ID */
-setup.map.training.id = "mapTraining"
+setup.map.training.id = "mapTraining";
 
 /* 地图名 */
 setup.map.training.name = "初心者修炼场";
@@ -18,7 +18,7 @@ setup.map.training.desc = [
   ];
 
 /* 地图NPC */
-setup.map.training.npc = new Array();
+setup.map.training.npc = [];
 setup.map.training.npc.push({
   id: "npcTrainingInstructor",
   name: "教官",
@@ -99,7 +99,7 @@ setup.map.training.npc.push({
 });
 
 /* 地图出入口 */
-setup.map.training.exit = new Array();
+setup.map.training.exit = [];
 setup.map.training.exit.push({
   id: "mapTrainingBoxroom",
   name: "储藏室",
@@ -107,7 +107,7 @@ setup.map.training.exit.push({
   desc: [
     "大厅一侧有一扇半开着的门。",
     "透过门缝，你看到地上有两排木架。",
-    "上面摆满了制式服装。"
+    "上面摆满了某种制式服装。"
   ],
   pre: function() {
     return State.getVar("$mapTrainingToggle3");
@@ -119,4 +119,4 @@ setup.map.training.exit.push({
 });
 
 /* 地图魔物 */
-setup.map.training.mobs = new Array();
+setup.map.training.mobs = [];

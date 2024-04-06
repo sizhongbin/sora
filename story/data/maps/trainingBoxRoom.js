@@ -1,8 +1,8 @@
-if (!setup.map) setup.map = new Object();
-setup.map.trainingBoxRoom = new Object();
+if (!setup.map) setup.map = {};
+setup.map.trainingBoxRoom = {};
 
 /* 地图ID */
-setup.map.trainingBoxRoom.id = "mapTrainingBoxRoom"
+setup.map.trainingBoxRoom.id = "mapTrainingBoxRoom";
 
 /* 地图名 */
 setup.map.trainingBoxRoom.name = "储藏室";
@@ -18,7 +18,7 @@ setup.map.trainingBoxRoom.desc = [
   ];
 
 /* 地图NPC */
-setup.map.trainingBoxRoom.npc = new Array();
+setup.map.trainingBoxRoom.npc = [];
 setup.map.trainingBoxRoom.npc.push({
   id: "npcTrainingBoxRoomInstructor",
   name: "教官",
@@ -99,7 +99,7 @@ setup.map.trainingBoxRoom.npc.push({
 });
 
 /* 地图出入口 */
-setup.map.trainingBoxRoom.exit = new Array();
+setup.map.trainingBoxRoom.exit = [];
 setup.map.trainingBoxRoom.exit.push({
   id: "mapTrainingBoxroom",
   name: "储藏室",
@@ -119,4 +119,4 @@ setup.map.trainingBoxRoom.exit.push({
 });
 
 /* 地图魔物 */
-setup.map.trainingBoxRoom.mobs = new Array();
+setup.map.trainingBoxRoom.mobs = [];
