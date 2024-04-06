@@ -1,5 +1,4 @@
-setup.battle = new Object();
-
+setup.battle = {};
 setup.battle.getHit = function (enemyLv, enemyAgi) {
     let lv = State.getVar("$statLv");
     let dex = State.getVar("$statDex") + setup.stat.getStatMod().dex;
@@ -8,7 +7,7 @@ setup.battle.getHit = function (enemyLv, enemyAgi) {
     let finalHit = Math.max(Math.min(5, rawHit), 95);
     console.debug(`finalHit: ${finalHit}`);
     return finalHit;
-}
+};
 
 setup.battle.getFlee = function (enemyLv, enemyDex) {
     let lv = State.getVar("$statLv");
@@ -18,4 +17,4 @@ setup.battle.getFlee = function (enemyLv, enemyDex) {
     let finalFlee = Math.max(Math.min(5, rawFlee), 95);
     console.debug(`finalFlee: ${finalFlee}`);
     return finalFlee;
-}
+};
