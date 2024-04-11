@@ -17,7 +17,7 @@ $(document).one(':storyready', function (ev) {
     if (Save.autosave.has()) {
         console.debug("> Force loading");
         Save.autosave.load(); // 刷新浏览器强制读档
-        Engine.play(State.getVar("$gameMap").id);
+        Engine.play(setup.map[State.getVar("$gameMapKey")].id);
     }
     // if (Story.get(State.passage).tags.includes("sub")) {
     //     $("#main-menu").toggleClass("hide");

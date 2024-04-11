@@ -10,9 +10,9 @@
 <</if>>
 
 /* 地图设定 */
-<<run console.debug("Set $gameMap and $gameMapRecord")>>
-<<set $gameMap to setup.map.origin>>
+<<run console.debug("Set $gameMapKey and $gameMapRecord")>>
 <<set $gameMapRecord to $mapOriginRecord>>
+<<set $gameMapKey to setup.map.origin.key>>
 
 /* 展示地图 */
 <<run console.debug("> Goto Map")>>

@@ -6,13 +6,14 @@
 /* 地图探索记录初始化 */
 <<if !$mapTrainingRecord>>
     <<run console.debug("Init $mapTrainingRecord")>>
-    <<set $mapTrainingRecord to {chatable:setup.map.training.npc,movable:setup.map.training.exit,fightable:setup.map.training.mobs}>>
+    
+    <<set $mapTrainingRecord to {chatable:setup.map.training.npc.map(obj=>{return [obj.id]}),movable:setup.map.training.exit.map(obj=>{return [obj.id]}),fightable:setup.map.training.mobs.map(obj=>{return [obj.id]})}>>
 <</if>>
 
 /* 地图设定 */
-<<run console.debug("Set $gameMap and $gameMapRecord")>>
-<<set $gameMap to setup.map.training>>
+<<run console.debug("Set $gameMapKey and $gameMapRecord")>>
 <<set $gameMapRecord to $mapTrainingRecord>>
+<<set $gameMapKey to setup.map.training.key>>
 
 /* 展示地图 */
 <<run console.debug("> Goto Map")>>

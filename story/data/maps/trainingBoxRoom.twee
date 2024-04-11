@@ -6,12 +6,12 @@
 /* 地图探索记录初始化 */
 <<if !$mapTrainingBoxRoomRecord>>
     <<run console.debug("Init $mapTrainingBoxRoomRecord")>>
-    <<set $mapTrainingBoxRoomRecord to {chatable:setup.map.trainingBoxRoom.npc,movable:setup.map.trainingBoxRoom.exit,fightable:setup.map.trainingBoxRoom.mobs}>>
+    <<set $mapTrainingBoxRoomRecord to {chatable:setup.map.trainingBoxRoom.npc.map(obj=>{return [obj.id]}),movable:setup.map.trainingBoxRoom.exit.map(obj=>{return [obj.id]}),fightable:setup.map.trainingBoxRoom.mobs.map(obj=>{return [obj.id]})}>>
 <</if>>
 
 /* 地图设定 */
-<<run console.debug("Set $gameMap and $gameMapRecord")>>
-<<set $gameMap to setup.map.trainingBoxRoom>>
+<<run console.debug("Set $gameMapKey and $gameMapRecord")>>
+<<set $gameMapKey to setup.map.trainingBoxRoom.key>>
 <<set $gameMapRecord to $mapTrainingBoxRoomRecord>>
 
 /* 展示地图 */
