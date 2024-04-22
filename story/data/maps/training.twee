@@ -1,19 +1,19 @@
-:: mapTraining [nosave]
-<<run console.debug("> Enter mapTraining")>>
+:: training [nosave]
+<<run console.debug("> Enter map training")>>
 <<run console.debug("Map Data Object:")>>
 <<run console.debug(setup.map.training)>>
 
 /* 地图探索记录初始化 */
-<<if !$mapTrainingRecord>>
-    <<run console.debug("Init $mapTrainingRecord")>>
+<<if !$trainingRecord>>
+    <<run console.debug("Init $trainingRecord")>>
     
-    <<set $mapTrainingRecord to {chatable:setup.map.training.npc.map(obj=>{return [obj.id]}),movable:setup.map.training.exit.map(obj=>{return [obj.id]}),fightable:setup.map.training.mobs.map(obj=>{return [obj.id]})}>>
+    <<set $trainingRecord to {chatable:setup.map.training.npc.map(obj=>{return [obj.id]}),movable:setup.map.training.exit.map(obj=>{return [obj.id]}),fightable:setup.map.training.mobs.map(obj=>{return [obj.id]})}>>
 <</if>>
 
 /* 地图设定 */
 <<run console.debug("Set $gameMapKey and $gameMapRecord")>>
-<<set $gameMapRecord to $mapTrainingRecord>>
-<<set $gameMapKey to setup.map.training.key>>
+<<set $gameMapRecord to $trainingRecord>>
+<<set $gameMapKey to setup.map.training.id>>
 
 /* 展示地图 */
 <<run console.debug("> Goto Map")>>

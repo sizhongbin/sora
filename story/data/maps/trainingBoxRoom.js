@@ -2,23 +2,24 @@ if (!setup.map) setup.map = {};
 setup.map.trainingBoxRoom = {};
 
 /* 地图ID */
-setup.map.trainingBoxRoom.id = 'mapTrainingBoxRoom';
-
-/* 地图key */
-setup.map.trainingBoxRoom.key = 'trainingBoxRoom';
+setup.map.trainingBoxRoom.id = 'trainingBoxRoom';
 
 /* 地图名 */
-setup.map.trainingBoxRoom.name = '储藏室';
+setup.map.trainingBoxRoom.name = function () {
+  return '储藏室';
+};
 
 /* 地图类型 */
 setup.map.trainingBoxRoom.type = 'safe';
 
 /* 地图状态描述 */
-setup.map.trainingBoxRoom.desc = [
-  '跟大厅几乎一般大的空间里摆满了木架，',
-  '存放着制式短剑、服装和格式用品。',
-  '有几个木架已经空了，但没有落灰。'
-];
+setup.map.trainingBoxRoom.desc = function () {
+  return [
+    '跟大厅几乎一般大的空间里摆满了木架，',
+    '存放着制式短剑、服装和格各式用品。',
+    '有几个木架已经空了，但没有落灰。'
+  ];
+};
 
 /* 地图NPC */
 setup.map.trainingBoxRoom.npc = [];
@@ -26,11 +27,13 @@ setup.map.trainingBoxRoom.npc.push({
   id: 'npcTrainingBoxRoomInstructor',
   name: '教官',
   odds: 100,
-  desc: [
-    '教官随手拿起了一柄制式短剑。',
-    '他将短剑。',
-    '「欢迎。我是这里的教官。」他说。'
-  ],
+  desc: function () {
+    [
+      '教官从木架上拿起了一柄制式短剑，',
+      '放在眼前仔细端详，又用手摸了摸剑刃。',
+      '随后又拿起一套制式服装，检查了起来。'
+    ];
+  },
   chat: [
     {
       question: '我好像迷路了。',
@@ -114,13 +117,17 @@ setup.map.trainingBoxRoom.npc.push({
 setup.map.trainingBoxRoom.exit = [];
 setup.map.trainingBoxRoom.exit.push({
   id: 'mapTrainingBoxroom',
-  name: '储藏室',
+  name: function () {
+    return '储藏室';
+  },
   odds: 0,
-  desc: [
-    '一个几乎跟大厅一般大的空间。',
-    '里面似乎存放了各式物品。',
-    '单以储藏室而言，面积有点过于庞大。'
-  ],
+  desc: function () {
+    return [
+      '一个几乎跟大厅一般大的空间。',
+      '里面似乎存放了各式物品。',
+      '单以储藏室而言，面积有点过于庞大。'
+    ];
+  },
   pre: function () {
     return State.getVar('$mapTrainingToggle3');
   },

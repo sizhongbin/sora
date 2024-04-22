@@ -1,0 +1,33 @@
+/* 移动 */
+:: Move [move sub]
+<div class="pure-g">
+
+  /* 出入口名 */
+  <span class="pure-u-1">【<<= $gameMoving.name()>>】</span>
+
+  /* 地图描述 */
+  <div class="map-desc pure-g">
+      <<for _i to 0; _i < $gameMovingDesc.length; _i++>>
+        <span class="pure-u-1">$gameMovingDesc[_i]</span>
+      <</for>>
+  </div>
+
+  <span class="pure-u-1">&nbsp;</span>
+
+    /* 选项 */
+  <div class="chat-contents pure-g">
+    <span class="pure-u-1">
+      <<if $gameMoving.pre()>>
+        <ul><li>
+            <<link "前往" $gameMoving.id>>
+              <<run $gameMoving.post()>>
+              <<toggleclass "#main-menu" "hide">>
+              <<toggleclass "#sub-menu" "hide">>
+            <</link>>
+        </li></ul>
+      <<else>>
+        <span class="red">$gameMoving.refuse</span>
+      <</if>>
+    </span>
+  </div>
+</div>

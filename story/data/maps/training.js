@@ -2,23 +2,24 @@ if (!setup.map) setup.map = {};
 setup.map.training = {};
 
 /* 地图ID */
-setup.map.training.id = 'mapTraining';
-
-/* 地图key */
-setup.map.training.key = 'training';
+setup.map.training.id = 'training';
 
 /* 地图名 */
-setup.map.training.name = '初心者修炼场';
+setup.map.training.name = function () {
+  return '初心者修炼场';
+};
 
 /* 地图类型 */
 setup.map.training.type = 'safe';
 
 /* 地图状态描述 */
-setup.map.training.desc = [
-  '修炼场里只有你的脚步声在回响。',
-  '大厅有五六十步长宽，没有任何家具或摆设。',
-  '只有一个男人站在正中央，定定地看着你。'
-];
+setup.map.training.desc = function () {
+  return [
+    '修炼场里只有你的脚步声在回响。',
+    '大厅有五六十步长宽，没有任何家具或摆设。',
+    '只有一个男人站在正中央，定定地看着你。'
+  ];
+};
 
 /* 地图NPC */
 setup.map.training.npc = [];
@@ -26,11 +27,13 @@ setup.map.training.npc.push({
   id: 'npcTrainingInstructor',
   name: '教官',
   odds: 100,
-  desc: [
-    '一名穿着链甲、背着巨剑的中年男人。',
-    '他肌肉虬张，面容刚硬，脸上却挂着笑。',
-    '「欢迎。我是这里的教官。」他对你说。'
-  ],
+  desc: function () {
+    return [
+      '一名穿着链甲、背着巨剑的中年男人。',
+      '他肌肉虬张，面容刚硬，脸上却挂着笑。',
+      '他站在大厅的正中央，定定地看着你。'
+    ];
+  },
   chat: [
     {
       question: '我迷路了。',
@@ -88,7 +91,7 @@ setup.map.training.npc.push({
       answer: [
         '探险者的成就基本取决于五个基础条件:',
         '身体、知识、物资、技术、精神。缺一不可。',
-        '我会教你提升基础条件的方法，从身体开始。',
+        '首先，你要学会激发身体潜能的方法。',
         '&nbsp;',
         '<span class="yellow">在【更多】——【素质】分配潜能点。</span>'
       ],
@@ -112,11 +115,11 @@ setup.map.training.npc.push({
       forwarding: 'Chat'
     },
     {
-      question: '我明白了。',
+      question: '我似乎变强了一些。',
       answer: [
-        '身体是一切的根本，',
-        '会随着你的探险活动而变得更强。',
-        '剩下的部分，我们换个地方再讲。跟我来。',
+        '探险活动会进一步挖掘出你的身体潜能。',
+        '学会激发潜能，你的身体才会变得越来越强。',
+        '剩下的部分，我们换个地方再说。跟我来。',
         '&nbsp;',
         '<span class="yellow">跟随教官前往【储藏室】。</span>'
       ],
@@ -138,14 +141,18 @@ setup.map.training.npc.push({
 /* 地图出入口 */
 setup.map.training.exit = [];
 setup.map.training.exit.push({
-  id: 'mapTrainingBoxRoom',
-  name: '储藏室',
+  id: 'trainingBoxRoom',
+  name: function () {
+    return '储藏室';
+  },
   odds: 0,
-  desc: [
-    '大厅一侧有一扇半开着的门。',
-    '透过门缝，你看到地上放了几排木架。',
-    '你看不见房间的尽头。'
-  ],
+  desc: function () {
+    return [
+      '大厅一侧有一扇半开着的门。',
+      '透过门缝，你看到地上放了几排木架。',
+      '你看不见房间的尽头。'
+    ];
+  },
   pre: function () {
     return State.getVar('$mapTrainingToggle4');
   },

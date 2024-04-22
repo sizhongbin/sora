@@ -1,0 +1,12 @@
+:: Patch
+<<run console.debug("> Apply Patch")>>
+<<if $gameVersion lt 2>>
+  <<run console.debug("> Apply Version 2 Patch")>>
+  <<if $mapTrainingRecord>>
+    <<set $mapTrainingRecord.chatable to setup.map.training.npc>>
+  <</if>>
+  <<set $gameVersion to 2>>
+<</if>>
+
+:: Test
+<<run console.debug("> Test")>>

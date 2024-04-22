@@ -1,7 +1,7 @@
 html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
-  'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
-  'Noto Color Emoji';
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   font-size: 14px;
   font-variant-numeric: tabular-nums;
 }
@@ -64,7 +64,7 @@ body,
   overflow: hidden;
 }
 
-.main-menu-box button{
+.main-menu-box button {
   height: 48px;
   width: calc(100% - 10px);
   text-align: center;
@@ -75,7 +75,7 @@ body,
   background-color: #222;
 }
 
-.sub-menu-box button{
+.sub-menu-box button {
   height: 48px;
   width: calc(100% - 10px);
   text-align: center;
@@ -94,6 +94,12 @@ body,
   box-sizing: border-box;
 }
 
+.cut {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .passage {
   overflow-y: auto;
   height: 100%;
@@ -106,7 +112,7 @@ body,
 }
 
 .chat-question {
-  line-height: 2.5
+  line-height: 2.5;
 }
 
 .map-info-list {
@@ -151,16 +157,16 @@ body,
 }
 
 #stat button {
-    height: 1.5em;
-    width: 1.5em;
-    text-align: center;
-    border: solid 1px;
-    box-sizing: border-box;
-    border-radius: 5px;
-    background-color: #222;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  height: 1.5em;
+  width: 1.5em;
+  text-align: center;
+  border: solid 1px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  background-color: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 span#stat-reset button {

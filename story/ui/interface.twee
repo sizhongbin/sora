@@ -1,0 +1,161 @@
+:: StoryInterface
+<div id="main" class="pure-g">
+  <div id="top" class="pure-u-1" >
+    <div class="pure-g">
+      <div class="pure-u-7-24 title-box" id="hp" data-passage="HP"></div>
+      <div class="pure-u-7-24 title-box" id="sp" data-passage="SP"></div>
+      <div class="pure-u-7-24 title-box" id="fp" data-passage="FP"></div>
+      <div class="pure-u-3-24 title-box" id="network" data-passage="Network"></div>
+    </div>
+  </div>
+  <div id="messages" class="pure-u-1">
+    <div id="messages-container" class="pure-g"></div>
+  </div>
+  <div id="passages" class="pure-u-1"></div>
+  <div id="main-menu" class="pure-u-1">
+    <div id="main-menu-container" class="pure-g" data-passage="Menu"></div>
+  </div>
+  <div id="sub-menu" class="pure-u-1 hide">
+    <div id="sub-menu-container" class="pure-g"></div>
+    <div class="pure-g" data-passage="SubMenuBack"></div>
+  </div>
+  <div class="hide" data-passage="Patch"></div>
+  <div class="hide" data-passage="Test"></div>
+</div>
+
+:: Network
+<<run console.debug("> Display Network")>>
+<<= $gameNetwork>>
+
+:: SP
+<<run console.debug("> Display SP")>>
+SP: <<= $gameSpLeft>> / <<= setup.stat.getMaxSp()>>
+
+:: HP
+<<run console.debug("> Display HP")>>
+HP: <<= $gameHpLeft>> / <<= setup.stat.getMaxHp()>>
+
+:: FP
+<<run console.debug("> Display FP")>>
+FP: <<= $gameFpLeft>> / <<= setup.stat.getMaxFp()>>
+
+:: Menu
+<<run console.debug("> Apply Menu")>>
+<<if tags().includes("cut")>>
+  <<addclass "#main-menu" "hide">>
+  <<removeclass "#sub-menu" "hide">>
+<<else>>
+  <<if setup.map[$gameMapKey].type eq "field">>
+    <div class="pure-u-1-2"><div id="menu-0" class="main-menu-box">
+      <<button "探索" "Search">>
+        <<run $("#messages-container").empty()>>
+      <</button>>
+    </div></div>
+  <<elseif setup.map[$gameMapKey].type eq "safe">>
+    <div class="pure-u-1-2"><div id="menu-0" class="main-menu-box">
+      <<button "仓库" "Storage">>
+        <<run $("#messages-container").empty()>>
+        <<toggleclass "#main-menu" "hide">>
+        <<toggleclass "#sub-menu" "hide">>
+      <</button>>
+    </div></div>
+  <</if>>
+  <div class="pure-u-1-2"><div id="menu-1" class="main-menu-box">
+    <<button "对话">>
+      <<for _i to 0; _i lt $gameMapRecord.chatable.length; _i++>>
+        <<append "#sub-menu-container">>
+          <div class="pure-u-1-2"><div class="sub-menu-box">
+            <<capture _i>>
+              <<set _name to setup.map[$gameMapKey].npc.find((element)=>element.id==$gameMapRecord.chatable[_i]).name>>
+              <<button setup.map[$gameMapKey].npc.find((element)=>element.id==$gameMapRecord.chatable[_i]).name "Chat">>
+                <<run $("#sub-menu-container").empty()>>
+                <<run $("#messages-container").empty()>>
+                <<set $gameChatting to setup.map[$gameMapKey].npc.find((element)=>element.id==$gameMapRecord.chatable[_i])>>
+                <<set $gameChattingContents to setup.map[$gameMapKey].npc.find((element)=>element.id==$gameMapRecord.chatable[_i]).desc()>>
+              <</button>>
+            <</capture>>
+          </div></div>
+        <</append>>
+      <</for>>
+      <<run console.log($("#sub-menu").offset().top)>>
+      <<toggleclass "#main-menu" "hide">>
+      <<toggleclass "#sub-menu" "hide">>
+      <<run $("#sub-menu").scrollTop(0)>>
+    <</button>>
+  </div></div>
+  <div class="pure-u-1-2"><div id="menu-2" class="main-menu-box">
+    <<button "移动">>
+      <<for _i to 0; _i lt $gameMapRecord.movable.length; _i++>>
+        <<append "#sub-menu-container">>
+          <div class="pure-u-1-2"><div class="sub-menu-box">
+            <<capture _i>>
+              <<button setup.map[$gameMapKey].exit.find((element)=>element.id==$gameMapRecord.movable[_i]).name() "Move">>
+                <<run $("#sub-menu-container").empty()>>
+                <<run $("#messages-container").empty()>>
+                <<set $gameMoving to setup.map[$gameMapKey].exit.find((element)=>element.id==$gameMapRecord.movable[_i])>>
+                <<set $gameMovingDesc to setup.map[$gameMapKey].exit.find((element)=>element.id==$gameMapRecord.movable[_i]).desc()>>
+              <</button>>
+            <</capture>>
+          </div></div>
+        <</append>>
+      <</for>>
+      <<run console.log($("#sub-menu").offset().top)>>
+      <<toggleclass "#main-menu" "hide">>
+      <<toggleclass "#sub-menu" "hide">>
+      <<run $("#sub-menu").scrollTop(0)>>
+    <</button>>
+  </div></div>
+  <div class="pure-u-1-2"><div id="menu-3" class="main-menu-box">
+    <<button "技能">>
+
+    <</button>>
+  </div></div>
+  <div class="pure-u-1-2"><div id="menu-4" class="main-menu-box">
+    <<button "道具">>
+
+    <</button>>
+  </div></div>
+  <div class="pure-u-1-2"><div id="menu-5" class="main-menu-box">
+    <<button "更多">>
+      <<append "#sub-menu-container">>
+        <div class="pure-u-1-2"><div class="sub-menu-box">
+          <<button "素质" "Stat">>
+            <<run $("#sub-menu-container").empty()>>
+          <</button>>
+        </div></div>
+        <</append>>
+        <<toggleclass "#main-menu" "hide">>
+        <<toggleclass "#sub-menu" "hide">>
+    <</button>>
+  </div></div>
+<</if>>
+
+:: SubMenuBack
+<<run console.debug("> Apply Sub Menu Back Button")>>
+<div class="pure-u-1"><div id="sub-menu-back" class="sub-menu-box">
+    <<if tags().includesAny("chat", "storage", "stat")>>
+      <<button "结束" setup.map[$gameMapKey].id>>
+        <<toggleclass "#main-menu" "hide">>
+        <<toggleclass "#sub-menu" "hide">>
+        <<run $("#sub-menu-container").empty()>>
+      <</button>>    
+    <<elseif tags().includes("move")>>
+      <<button "返回" setup.map[$gameMapKey].id>>
+        <<toggleclass "#main-menu" "hide">>
+        <<toggleclass "#sub-menu" "hide">>
+        <<run $("#sub-menu-container").empty()>>
+      <</button>>   
+    <<elseif tags().includes("cut")>>
+      <<button "继续" $gameCutNext>>
+        <<removeclass "#main-menu" "hide">>
+        <<addclass "#sub-menu" "hide">>
+        <<run $("#sub-menu-container").empty()>>
+      <</button>>
+    <<else>>
+      <<button "返回">>
+        <<toggleclass "#main-menu" "hide">>
+        <<toggleclass "#sub-menu" "hide">>
+        <<run $("#sub-menu-container").empty()>>
+      <</button>>
+    <</if>>
+</div></div>
