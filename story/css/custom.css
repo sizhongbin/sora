@@ -1,0 +1,6 @@
+html,
+body,
+#main {
+  height: 100%;
+  max-width: 575px;
+}

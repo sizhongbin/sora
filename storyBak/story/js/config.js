@@ -15,7 +15,6 @@ $(document).on(':passagedisplay', () => {
 }); // 限制过期历史数
 $(document).one(':storyready', function (ev) {
   $('html').attr('data-bs-theme', 'dark');
-  $('html').addClass('mx-auto');
   if (Save.autosave.has()) {
     console.debug('> Force loading');
     Save.autosave.load(); // 刷新浏览器强制读档
@@ -23,4 +22,8 @@ $(document).one(':storyready', function (ev) {
       Engine.play(setup.map[State.getVar('$gameMapKey')].id);
     }
   }
+  // if (Story.get(State.passage).tags.includes("sub")) {
+  //     $("#main-menu").toggleClass("hide");
+  //     $("#sub-menu").toggleClass("hide");
+  //} // 如果读档时是对话窗口，需要显示子菜单隐藏主菜单
 });

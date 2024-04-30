@@ -10,7 +10,7 @@
 Sora V0.1
 
 :: StoryInit
-<<set $gameVersion to 1>>
+<<set $gameVersion to 2>>
 <<set $statLv to 0>>
 <<set $statStr to 0>>
 <<set $statAgi to 0>>
@@ -32,7 +32,7 @@ Sora V0.1
 
 :: Start [nosave]
 <<run console.debug("> Start")>>
-Start
+<<goto "cutBeginning">>
 
 /* 仓库 */
 :: Storage [storage sub]
