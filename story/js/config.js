@@ -14,6 +14,7 @@ $(document).on(':passagedisplay', () => {
   State.expired.splice(0, Math.max(State.expired.length - 100, 0));
 }); // 限制过期历史数
 $(document).one(':storyready', function (ev) {
+  $('html').attr('data-bs-theme', 'dark');
   if (Save.autosave.has()) {
     console.debug('> Force loading');
     Save.autosave.load(); // 刷新浏览器强制读档
