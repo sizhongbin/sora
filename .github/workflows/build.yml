@@ -25,10 +25,10 @@ jobs:
         with:
           deno-version: vx.x.x
           
-      - name: Clone tmedwards/tweego
+      - name: Clone sizhongbin/tweego
         uses: GuillaumeFalourd/clone-github-repo-action@v2.3 
         with:
-          owner: 'tmedwards'
+          owner: 'sizhongbin'
           repository: 'tweego'
           branch: 'master'
           
