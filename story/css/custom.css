@@ -1,3 +1,7 @@
 #menu {
   display: none;
 }
+
+button {
+  background-color: transparent;
+}
