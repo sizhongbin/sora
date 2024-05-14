@@ -7,7 +7,7 @@
 }
 
 :: StoryTitle
-Sora V0.1
+Sora
 
 :: StoryInit
 <<set $gameVersion to 1>>
@@ -32,25 +32,10 @@ Sora V0.1
 
 :: Start [nosave]
 <<run console.debug("> Start")>>
-<div class="container text-center">
-  <div class="row">
-    <span class="mx-auto col-10 sora glitch layers font-monospace fst-italic lh-lg" data-text="Sora">Sora</span>
-  </div>
-</div>
-<br><br>
-<span class="text-danger"><em>本游戏内容纯属虚构，其中涉及的人名、地名等内容不应和现实世界产生直接对应联系。</em></span>
-<br><br>
-<span class="text-warning fw-bold">请选择角色</span>
-<ul>
-  <li>角色一：<span>测测测测测测</span></li>
-    <<button "创建">>
-    <</button>>
-  <li>角色二：<span>测测测测测测</span></li>
-    <<button "选择">>
-    <</button>>
-    <<button "删除">>
-    <</button>>
-  <li>角色三：<span>测测测测测测</span></li>
-</ul>
+<<goto "Patch">>
+
+
+
+
 /* 仓库 */
 :: Storage [storage sub]

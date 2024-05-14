@@ -2,6 +2,20 @@
   display: none;
 }
 
-button {
-  background-color: transparent;
+p {
+  margin-bottom: 0.5rem;
+}
+
+#ui-dialog-close {
+  width: 2em;
+  height: 100%;
+}
+
+#ui-dialog-title {
+  font-size: 1em;
+  text-align: left;
+  position: absolute;
+  height: 100%;
+  line-height: 1;
+  padding: 0;
 }
