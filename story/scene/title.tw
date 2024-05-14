@@ -1,18 +1,13 @@
 :: Title [nosave]
 <<run console.debug("> Title")>>
-<div class="container text-center">
-  <div class="row">
-    <p class="mx-auto col-10 sora glitch layers font-monospace fst-italic lh-lg" data-text="Sora">Sora</p>
-  </div>
-</div>
+<p class="sora glitch layers" data-text="Sora">Sora</p>
+<p class="text-red text-bold"><u>注意</u></p>
+<p class="text-red"><em>本游戏内容纯属虚构，其中涉及的人名、地名等内容不应和现实世界产生直接对应联系。</em></p>
 
-<p class="text-danger"><u>注意</u></p>
-<p class="text-danger"><em>本游戏内容纯属虚构，其中涉及的人名、地名等内容不应和现实世界产生直接对应联系。</em></p>
-
-<p><u>提示</u></p>
+<p class="text-bold"><u>提示</u></p>
 <p><em>本游戏存档功能利用浏览器本地储存机制。清除浏览器历史数据将导致存档消失。请积极使用存档导出功能备份存档。</em></p>
 
-<p class="text-warning fw-bold">请选择角色</p>
+<p class="text-yellow text-bold">请选择角色</p>
 <<for _i to 0; _i lt 3; _i++>>
   <p>
     <span class='font-monospace'>[<<= _i+1>>] </span>

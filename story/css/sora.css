@@ -1,8 +1,14 @@
+
+
 .sora {
   font-size: 20vmin;
   z-index: 2;
   /* Bright things in dark environments usually cast that light, giving off a glow */
   filter: drop-shadow(0 1px 3px);
+  font-family: monospace;
+  text-align: center;
+  font-style: italic;
+  letter-spacing: 1vmin;
 }
 
 .layers {

@@ -1,3 +1,44 @@
+:root {
+  --color-000: #000;
+  --color-111: #111;
+  --color-222: #222;
+  --color-234: #234;
+  --color-282: #282;
+  --color-333: #333;
+  --color-35a: #35a;
+  --color-444: #444;
+  --color-4a4: #4a4;
+  --color-511: #511;
+  --color-555: #555;
+  --color-57c: #57c;
+  --color-68d: #68d;
+  --color-6c6: #6c6;
+  --color-79e: #79e;
+  --color-7f7f7f: #7f7f7f;
+  --color-8af: #8af;
+  --color-999: #999;
+  --color-aaa: #aaa;
+  --color-b44: #b44;
+  --color-c00: #c00;
+  --color-c22: #c22;
+  --color-d66: #d66;
+  --color-e44: #e44;
+  --color-eee: #eee;
+  --color-ff0: #ff0;
+}
+
+.text-yellow {
+  color: var(--color-ff0);
+}
+
+.text-red {
+  color: var(--color-c00);
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
 #menu {
   display: none;
 }
@@ -14,8 +55,14 @@ p {
 #ui-dialog-title {
   font-size: 1em;
   text-align: left;
-  position: absolute;
-  height: 100%;
-  line-height: 1;
-  padding: 0;
+  padding: 0 0 0 .5em;
+}
+
+#ui-dialog-titlebar {
+  display: flex;
+  align-items: center;
+}
+
+.passage {
+  line-height: 1.57;
 }
