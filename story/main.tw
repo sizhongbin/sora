@@ -10,6 +10,8 @@
 Sora
 
 :: StoryInit
+<<run console.debug("> Init")>>
+/*
 <<set $gameVersion to 1>>
 <<set $statLv to 0>>
 <<set $statStr to 0>>
@@ -29,13 +31,11 @@ Sora
 <<set $gameChattingContents to []>>
 <<set $gameMoving to {}>>
 <<set $gameMovingDesc to []>>
+*/
 
 :: Start [nosave]
 <<run console.debug("> Start")>>
 <<goto "Patch">>
-
-
-
 
 /* 仓库 */
 :: Storage [storage sub]

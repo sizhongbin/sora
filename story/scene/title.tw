@@ -1,6 +1,9 @@
-:: Title [nosave]
+:: Title
 <<run console.debug("> Title")>>
-<p class="sora glitch layers" data-text="Sora">Sora</p>
+
+<div class="flex-box h-center">
+  <span class="sora glitch layers" data-text="Sora">Sora</span>
+</div>
 <p class="text-red text-bold"><u>注意</u></p>
 <p class="text-red"><em>本游戏内容纯属虚构，其中涉及的人名、地名等内容不应和现实世界产生直接对应联系。</em></p>
 
@@ -10,22 +13,227 @@
 <p class="text-yellow text-bold">请选择角色</p>
 <<for _i to 0; _i lt 3; _i++>>
   <p>
-    <span class='font-monospace'>[<<= _i+1>>] </span>
+    <span class='text-mono'>[<<= _i+1>>] </span>
     <span @id="'nameSlot'+_i">- 空 -</span>
-    <<if Save.slots.has(_i)>>
-      <<capture _i>>
+    <<capture _i>>
+      <<if Save.slots.has(_i)>>
         <<done>>
-          <<replace `"#nameSlot"+_i`>><<link _i>><</link>><</replace>>
+          <<replace `"#nameSlot"+_i`>><<= Save.slots.get(_i).title>><</replace>>
         <</done>>
-      <</capture>>
-      <<link "删除">>
-        <<run Dialog.open()>>
-      <</link>>
-    <<else>>
-      <<link "创建">>
-        <<run Dialog.open()>>
-        <<run Dialog.setup("创建角色", "modal-dialog modal-dialog-centered")>>
-      <</link>>
-    <</if>>
+        <<link "进入游戏">>
+          <<script>>
+            Dialog.setup("进入游戏");
+            Dialog.append("确定要用角色")
+              .wiki("
+                <span>
+                  <<= Save.slots.get(_i).title>>
+                </span>
+              ")
+              .append("进入游戏吗？");
+            Dialog.append("<p>");
+            Dialog.wiki("
+            <div class='full-width flex-box h-center'>
+                <<button '确定'>>
+                  <<run Dialog.close()>>
+                  <<script>>
+                    console.debug(Save.slots.get(State.getVar('_i')));
+                    if (Save.slots.get(State.getVar('_i')).state.delta[0].title == 'SaveCreate') {
+                      $('#story').hide();
+                      Save.slots.load(State.getVar('_i'));
+                      setTimeout(function() {
+                        Engine.play('Test');
+                        $('#story').show();
+                        },500);
+                    }
+                    else
+                      Save.slots.load(State.getVar('_i'));
+                  <</script>>
+                <</button>>
+                &emsp;
+                <<button '取消'>>
+                  <<run Dialog.close()>>
+                <</button>>
+              </div>
+            ");
+            Dialog.open();
+          <</script>>
+        <</link>>
+        <<link "删除角色">>
+          <<script>>
+            Dialog.setup("删除角色");
+            Dialog.append("确定要删除角色")
+              .wiki("
+                <span>
+                  <<= Save.slots.get(_i).title>>
+                </span>
+              ")
+              .append("吗？");
+            Dialog.append("<p>");
+            Dialog.wiki("
+            <div class='full-width flex-box h-center'>
+                <<button '确定'>>
+                  <<run Save.slots.delete(_i)>>
+                  <<run Dialog.close()>>
+                  <<goto 'Title'>>
+                <</button>>
+                &emsp;
+                <<button '取消'>>
+                  <<run Dialog.close()>>
+                <</button>>
+              </div>
+            ");
+            Dialog.open();
+          <</script>>
+        <</link>>
+      <<else>>
+        <<link "创建">>
+          <<set $pcGender to "男">>
+          <<set $pcHairLength to "短">>
+          <<set $pcHairCurl to "直">>
+          <<set $pcHairColor to "黑">>
+          <<set $saveSlot to _i>>
+          <<script>>
+            Dialog.setup("创建角色");
+            Dialog.append("性别：")
+              .wiki("
+                <label data-pc-create>
+                  <<radiobutton '$pcGender' '男' autocheck>> 男
+                </label>
+                <label data-pc-create>
+                  <<radiobutton '$pcGender' '女' autocheck>> 女
+                </label>
+              ");
+            Dialog.append("<p>发型：</p>");
+            Dialog.append("&emsp;- 长度：")
+              .wiki("
+                <label data-pc-create>
+                  <<radiobutton '$pcHairLength' '短' autocheck>> 短
+                </label>
+                <label data-pc-create>
+                  <<radiobutton '$pcHairLength' '中' autocheck>> 中
+                </label>
+                <label data-pc-create>
+                  <<radiobutton '$pcHairLength' '长' autocheck>> 长
+                </label>
+              ");
+              Dialog.append("<p>");
+              Dialog.append("&emsp;- 卷度：")
+              .wiki("
+                <label data-pc-create>
+                  <<radiobutton '$pcHairCurl' '直' autocheck>> 直
+                </label>
+                <label data-pc-create>
+                  <<radiobutton '$pcHairCurl' '波浪' autocheck>> 波浪
+                </label>
+                <label data-pc-create>
+                  <<radiobutton '$pcHairCurl' '卷' autocheck>> 卷
+                </label>
+              ");
+              Dialog.append("<p>");
+              Dialog.append("&emsp;- 颜色：")
+              .wiki("
+                <label data-pc-create>
+                  <<radiobutton '$pcHairColor' '黑' autocheck>> <span class='text-hair-dark text-stroke'>黑</span>
+                </label>
+                <label data-pc-create>
+                  <<radiobutton '$pcHairColor' '棕' autocheck>> <span class='text-hair-brown text-stroke'>棕</span>
+                </label>
+                <label data-pc-create>
+                  <<radiobutton '$pcHairColor' '白' autocheck>> <span class='text-hair-white text-stroke'>白</span>
+                </label>
+                <label data-pc-create>
+                  <<radiobutton '$pcHairColor' '红' autocheck>> <span class='text-hair-red text-stroke'>红</span>
+                </label>
+                <label data-pc-create>
+                  <<radiobutton '$pcHairColor' '金' autocheck>> <span class='text-hair-blond text-stroke'>金</span>
+                </label>
+              ");
+            Dialog.append("<p>");
+            Dialog.append("角色名：")
+              .wiki("
+                <<textbox '$pcName' ''>>
+                &nbsp;
+                <span class='cooltipz--top' aria-label='不超过5个中文、10个英文或数字'><span class='icon-info'></span></span>
+              ");
+            Dialog.wiki("
+              <p>
+                你叫
+                <span id='pc-create-desc-name'></span>
+                ，是一名
+                <span id='pc-create-desc-gender'>男</span>性
+                ，有一头
+                <span id='pc-create-desc-hair-color' class='text-hair-dark text-stroke'>黑色</span>
+                的
+                <span id='pc-create-desc-hair-length'>短</span><span id='pc-create-desc-hair-curl'>直</span>发。
+              </p>
+            ");
+            Dialog.wiki("
+              <div class='full-width flex-box h-center'>
+                <<button '创建'>>
+                  <<script>>
+                    if ($('#textbox-pcname').val() != '') {       Engine.play('SaveCreate');
+                    }
+                  <</script>>
+                <</button>>
+                &emsp;
+                <<button '取消'>>
+                  <<run Dialog.close()>>
+                <</button>>
+              </div>
+            ");
+            Dialog.open();
+            $("#textbox-pcname").off("input").on("input", function() {
+                $(this).val($(this).val().replace(/[^A-Za-z0-9\u4e00-\u9fa5]/g,''));
+                let length = 0;
+                for (let j = 0; j < $(this).val().length; j++) {
+                  if (/[\u4e00-\u9fa5]/.test($(this).val()[j])) length += 2;
+                  else length++;
+                  if (length > 10) {
+                    $(this).val($(this).val().substr(0,j));
+                    break;
+                  }
+                }
+                $("#pc-create-desc-name").text($(this).val());
+            });
+            $("[data-pc-create]").off("click").on("click", function() {
+              setTimeout(function() {
+                $("#pc-create-desc-gender").html(State.getVar("$pcGender"));
+                $("#pc-create-desc-hair-color").html(State.getVar("$pcHairColor")+"色");
+                switch (State.getVar("$pcHairColor")) {
+                  case "黑":
+                    $("#pc-create-desc-hair-color").attr("class","text-hair-dark");
+                    break;
+                  case "白":
+                    $("#pc-create-desc-hair-color").attr("class","text-hair-white");
+                    break;
+                  case "棕":
+                    $("#pc-create-desc-hair-color").attr("class","text-hair-brown");
+                    break;
+                  case "金":
+                    $("#pc-create-desc-hair-color").attr("class","text-hair-blond");
+                    break;
+                  case "红":
+                    $("#pc-create-desc-hair-color").attr("class","text-hair-red");
+                    break;
+                }
+                $("#pc-create-desc-hair-color").addClass("text-stroke");
+                $("#pc-create-desc-hair-length").html(State.getVar("$pcHairLength"));
+                $("#pc-create-desc-hair-curl").html(State.getVar("$pcHairCurl"));
+              }, 10);
+            });
+          <</script>>
+        <</link>>
+      <</if>>
+    <</capture>>
   </p>
 <</for>>
+
+:: Test
+Test
+
+:: SaveCreate
+<<script>>
+  console.log('Create save to slot '+State.getVar('$saveSlot')+': '+State.getVar('$pcName'));
+  Dialog.close();
+<</script>>
+<<goto "Title">>
