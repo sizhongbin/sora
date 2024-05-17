@@ -37,13 +37,13 @@
                   <<run Dialog.close()>>
                   <<script>>
                     console.debug(Save.slots.get(State.getVar('_i')));
-                    if (Save.slots.get(State.getVar('_i')).state.delta[0].title == 'SaveCreate') {
+                    if (Save.slots.get(State.getVar('_i')).state.delta[0].title == 'CharaCreate') {
                       $('#story').hide();
                       Save.slots.load(State.getVar('_i'));
                       setTimeout(function() {
-                        Engine.play('Test');
+                        Engine.play('Born');
                         $('#story').show();
-                        },500);
+                        },200);
                     }
                     else
                       Save.slots.load(State.getVar('_i'));
@@ -171,7 +171,7 @@
               <div class='full-width flex-box h-center'>
                 <<button '创建'>>
                   <<script>>
-                    if ($('#textbox-pcname').val() != '') {       Engine.play('SaveCreate');
+                    if ($('#textbox-pcname').val() != '') {       Engine.play('CharaCreate');
                     }
                   <</script>>
                 <</button>>
@@ -228,10 +228,7 @@
   </p>
 <</for>>
 
-:: Test
-Test
-
-:: SaveCreate
+:: CharaCreate
 <<script>>
   console.log('Create save to slot '+State.getVar('$saveSlot')+': '+State.getVar('$pcName'));
   Dialog.close();
