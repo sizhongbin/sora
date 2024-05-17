@@ -156,7 +156,17 @@ p {
   font-family: monospace;
 }
 
+[id^="ui-bar-status"] {
+  position: absolute;
+  right: 0;
+  padding-right: 0.25em;
+  font-size: 1.2em;
+}
+
 #textbox-pcname {
   min-width: 0;
   max-width: 6em;
+}
+#ui-bar-body {
+  padding-right: 3em;
 }

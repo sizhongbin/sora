@@ -1,4 +1,4 @@
-:: Title
+:: Title[noui]
 <<run console.debug("> Title")>>
 
 <div class="flex-box h-center">
@@ -228,7 +228,7 @@
   </p>
 <</for>>
 
-:: CharaCreate
+:: CharaCreate[noui]
 <<script>>
   console.log('Create save to slot '+State.getVar('$saveSlot')+': '+State.getVar('$pcName'));
   Dialog.close();
