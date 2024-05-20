@@ -1,0 +1,45 @@
+:: Training
+<<set $pcLocation to "Training">>
+<p>
+  你正待在
+  <span class="icon-castle text-white">初心者修炼场
+  </span>。
+</p>
+<p>
+  教官给了你一身简便的衣服，让你脱离了一丝不挂的窘境。然后塞给你一柄短剑，不由分说地把你推进了战斗训练场。
+</p>
+<p>
+  你的眼前是一些你从未见过的生物，教官称他们为魔物。“就从那只波利开始吧。去干掉它，天禁者。”教官指向一只粉红色的布丁。
+</p>
+<p>
+  你的后脑勺还遗留着针刺般的疼。在你残缺的记忆中，你从未经历过战斗。但你别无选择，除了眼前的教官，没有人能送你离开这片独立的空间。
+</p>
+<p>
+  你紧了紧手中的短剑，祈祷着这只魔物的力量和它的外表一样软绵绵。
+</p>
+<p class="text-yellow text-bold">对话</p>
+<p>
+  <<link "教官">>
+    <<goto "Training">>
+  <</link>>
+</p>
+<p class="text-yellow text-bold">战斗</p>
+<p>
+  <<link "波利">>
+    <<goto "Training">>
+  <</link>>
+</p>
+
+/*
+<div class="grid3">
+  <div class="square" data-coord="0,0"><span></span></div>
+  <div class="square" data-coord="0,1"><span></span></div>
+  <div class="square" data-coord="0,2"><span></span></div>
+  <div class="square" data-coord="1,0"><span></span></div>
+  <div class="square" data-coord="1,1" data-exit><span>╔</span></div>
+  <div class="square" data-coord="1,2"><span>═</span></div>
+  <div class="square" data-coord="2,0"><span></span></div>
+  <div class="square" data-coord="2,1" data-here><span>╨</span></div>
+  <div class="square" data-coord="2,2"><span></span></div>
+</div>
+*/

@@ -41,7 +41,7 @@
                       $('#story').hide();
                       Save.slots.load(State.getVar('_i'));
                       setTimeout(function() {
-                        Engine.play('Born');
+                        Engine.play('Training');
                         $('#story').show();
                         },200);
                     }

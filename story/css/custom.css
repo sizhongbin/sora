@@ -50,6 +50,10 @@ p {
 .text-white {
   color: var(--color-eee);
 }
+.text-blue {
+  color: var(--color-8af);
+}
+
 
 .text-hair-dark {
   color: #1f160c;
