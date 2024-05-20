@@ -1,0 +1,162 @@
+:: Battle [nosave]
+/* <div class="player-box">
+    <div class="grid plater-1"> P1</div>
+    <div class="grid player-1-name"> 我我我我我</div>
+    <div class="grid player-1-status"> 力速敏</div>
+    <div class="grid player-1-hp"> 30</div>
+    <div class="grid player-1-mp"> 30</div>
+    <div class="grid player-1-ap"> 30</div>
+    <div class="grid player-1-cp"> 30</div>
+    <div class="grid plater-2"> P2</div>
+    <div class="grid player-2-name"> GGGGGGGGGG</div>
+    <div class="grid player-2-status"> 力力力力力力</div>
+    <div class="grid player-2-hp"> 30</div>
+    <div class="grid player-2-mp"> 30</div>
+    <div class="grid player-2-ap"> 30</div>
+    <div class="grid player-2-cp"> 30</div>
+    <div class="grid plater-3"> </div>
+    <div class="grid player-3-name"> </div>
+    <div class="grid player-3-status"> </div>
+    <div class="grid player-3-hp"> </div>
+    <div class="grid player-3-mp"> </div>
+    <div class="grid player-3-ap"> </div>
+    <div class="grid player-3-cp"> </div>
+    <div class="grid plater-4"> </div>
+    <div class="grid player-4-name"> </div>
+    <div class="grid player-4-status"> </div>
+    <div class="grid player-4-hp"> </div>
+    <div class="grid player-4-mp"> </div>
+    <div class="grid player-4-ap"> </div>
+    <div class="grid player-4-cp"> </div>
+</div> */
+<p class="text-yellow text-bold">我方：</p>
+<ul>
+<li>P1：GM01 <span class="text-yellow">速</span><span class="text-red">负</span><br>
+<div style="display:flex;gap:1em"> 
+<div class="player-gauge" style="line-height:1em;width:20%;height:1em;position:relative">
+    <span style="font-size:0.7em;position:absolute;top:0;right:0;z-index:1">30</span>
+    <div id="p1-hp-gauge" class="gauge" style="width:100%;height:33%;background-color:#222;position:absolute;bottom:0;left:0;z-index:-1"></div>
+    <div id="p1-hp" class="hp" style="width:50%;height:33%;background-color:#e00;position:absolute;bottom:0;left:0;z-index:0"></div>
+</div>
+<div class="player-gauge" style="line-height:1em;width:20%;height:1em;position:relative">
+    <span style="font-size:0.7em;position:absolute;top:0;right:0;z-index:1">30</span>
+    <div id="p1-sp-gauge" class="gauge" style="width:100%;height:33%;background-color:#222;position:absolute;bottom:0;left:0;z-index:-1"></div>
+    <div id="p1-sp" class="sp" style="width:65%;height:33%;background-color:#00e;position:absolute;bottom:0;left:0;z-index:0"></div>
+</div>
+<div class="player-gauge" style="line-height:1em;width:20%;height:1em;position:relative">
+    <span style="font-size:0.7em;position:absolute;top:0;right:0;z-index:1">30</span>
+    <div id="p1-ap-gauge" class="gauge" style="width:100%;height:33%;background-color:#222;position:absolute;bottom:0;left:0;z-index:-1"></div>
+    <div id="p1-ap" class="ap" style="width:80%;height:33%;background-color:#0e0;position:absolute;bottom:0;left:0;z-index:0"></div>
+</div>
+<div class="player-gauge" style="line-height:1em;width:20%;height:1em;position:relative">
+    <span style="font-size:0.7em;position:absolute;top:0;right:0;z-index:1">30</span>
+    <div id="p1-cp-gauge" class="gauge" style="width:100%;height:33%;background-color:#222;position:absolute;bottom:0;left:0;z-index:-1"></div>
+    <div id="p1-cp" class="cp" style="width:95%;height:33%;background-color:#999;position:absolute;bottom:0;left:0;z-index:0"></div>
+</div>
+</div>
+</li>
+<li>P2：GM02 <span class="text-yellow">速</span><span class="text-red">负</span><br>
+<div style="display:flex;gap:1em"> 
+<div class="player-gauge" style="line-height:1em;width:20%;height:1em;position:relative">
+    <span style="font-size:0.7em;position:absolute;top:0;right:0;z-index:1">30</span>
+    <div id="p2-hp-gauge" class="gauge" style="width:100%;height:33%;background-color:#222;position:absolute;bottom:0;left:0;z-index:-1"></div>
+    <div id="p2-hp" class="hp" style="width:50%;height:33%;background-color:#e00;position:absolute;bottom:0;left:0;z-index:0"></div>
+</div>
+<div class="player-gauge" style="line-height:1em;width:20%;height:1em;position:relative">
+    <span style="font-size:0.7em;position:absolute;top:0;right:0;z-index:1">30</span>
+    <div id="p2-sp-gauge" class="gauge" style="width:100%;height:33%;background-color:#222;position:absolute;bottom:0;left:0;z-index:-1"></div>
+    <div id="p2-sp" class="sp" style="width:65%;height:33%;background-color:#00e;position:absolute;bottom:0;left:0;z-index:0"></div>
+</div>
+<div class="player-gauge" style="line-height:1em;width:20%;height:1em;position:relative">
+    <span style="font-size:0.7em;position:absolute;top:0;right:0;z-index:1">30</span>
+    <div id="p2-ap-gauge" class="gauge" style="width:100%;height:33%;background-color:#222;position:absolute;bottom:0;left:0;z-index:-1"></div>
+    <div id="p2-ap" class="ap" style="width:80%;height:33%;background-color:#0e0;position:absolute;bottom:0;left:0;z-index:0"></div>
+</div>
+<div class="player-gauge" style="line-height:1em;width:20%;height:1em;position:relative">
+    <span style="font-size:0.7em;position:absolute;top:0;right:0;z-index:1">30</span>
+    <div id="p2-cp-gauge" class="gauge" style="width:100%;height:33%;background-color:#222;position:absolute;bottom:0;left:0;z-index:-1"></div>
+    <div id="p2-cp" class="cp" style="width:95%;height:33%;background-color:#999;position:absolute;bottom:0;left:0;z-index:0"></div>
+</div>
+</div>
+</li>
+<li>P3：GM03 <span class="text-yellow">速</span><span class="text-red">负</span><br>
+<div style="display:flex;gap:1em"> 
+<div class="player-gauge" style="line-height:1em;width:20%;height:1em;position:relative">
+    <span style="font-size:0.7em;position:absolute;top:0;right:0;z-index:1">30</span>
+    <div id="p3-hp-gauge" class="gauge" style="width:100%;height:33%;background-color:#222;position:absolute;bottom:0;left:0;z-index:-1"></div>
+    <div id="p3-hp" class="hp" style="width:50%;height:33%;background-color:#e00;position:absolute;bottom:0;left:0;z-index:0"></div>
+</div>
+<div class="player-gauge" style="line-height:1em;width:20%;height:1em;position:relative">
+    <span style="font-size:0.7em;position:absolute;top:0;right:0;z-index:1">30</span>
+    <div id="p3-sp-gauge" class="gauge" style="width:100%;height:33%;background-color:#222;position:absolute;bottom:0;left:0;z-index:-1"></div>
+    <div id="p3-sp" class="sp" style="width:65%;height:33%;background-color:#00e;position:absolute;bottom:0;left:0;z-index:0"></div>
+</div>
+<div class="player-gauge" style="line-height:1em;width:20%;height:1em;position:relative">
+    <span style="font-size:0.7em;position:absolute;top:0;right:0;z-index:1">30</span>
+    <div id="p3-ap-gauge" class="gauge" style="width:100%;height:33%;background-color:#222;position:absolute;bottom:0;left:0;z-index:-1"></div>
+    <div id="p3-ap" class="ap" style="width:80%;height:33%;background-color:#0e0;position:absolute;bottom:0;left:0;z-index:0"></div>
+</div>
+<div class="player-gauge" style="line-height:1em;width:20%;height:1em;position:relative">
+    <span style="font-size:0.7em;position:absolute;top:0;right:0;z-index:1">30</span>
+    <div id="p3-cp-gauge" class="gauge" style="width:100%;height:33%;background-color:#222;position:absolute;bottom:0;left:0;z-index:-1"></div>
+    <div id="p3-cp" class="cp" style="width:95%;height:33%;background-color:#999;position:absolute;bottom:0;left:0;z-index:0"></div>
+</div>
+</div>
+</li>
+<li>P4：GM04 <span class="text-yellow">速</span><span class="text-red">负</span><br>
+<div style="display:flex;gap:1em"> 
+<div class="player-gauge" style="line-height:1em;width:20%;height:1em;position:relative">
+    <span style="font-size:0.7em;position:absolute;top:0;right:0;z-index:1">30</span>
+    <div id="p4-hp-gauge" class="gauge" style="width:100%;height:33%;background-color:#222;position:absolute;bottom:0;left:0;z-index:-1"></div>
+    <div id="p4-hp" class="hp" style="width:50%;height:33%;background-color:#e00;position:absolute;bottom:0;left:0;z-index:0"></div>
+</div>
+<div class="player-gauge" style="line-height:1em;width:20%;height:1em;position:relative">
+    <span style="font-size:0.7em;position:absolute;top:0;right:0;z-index:1">30</span>
+    <div id="p4-sp-gauge" class="gauge" style="width:100%;height:33%;background-color:#222;position:absolute;bottom:0;left:0;z-index:-1"></div>
+    <div id="p4-sp" class="sp" style="width:65%;height:33%;background-color:#00e;position:absolute;bottom:0;left:0;z-index:0"></div>
+</div>
+<div class="player-gauge" style="line-height:1em;width:20%;height:1em;position:relative">
+    <span style="font-size:0.7em;position:absolute;top:0;right:0;z-index:1">30</span>
+    <div id="p4-ap-gauge" class="gauge" style="width:100%;height:33%;background-color:#222;position:absolute;bottom:0;left:0;z-index:-1"></div>
+    <div id="p4-ap" class="ap" style="width:80%;height:33%;background-color:#0e0;position:absolute;bottom:0;left:0;z-index:0"></div>
+</div>
+<div class="player-gauge" style="line-height:1em;width:20%;height:1em;position:relative">
+    <span style="font-size:0.7em;position:absolute;top:0;right:0;z-index:1">30</span>
+    <div id="p4-cp-gauge" class="gauge" style="width:100%;height:33%;background-color:#222;position:absolute;bottom:0;left:0;z-index:-1"></div>
+    <div id="p4-cp" class="cp" style="width:95%;height:33%;background-color:#999;position:absolute;bottom:0;left:0;z-index:0"></div>
+</div>
+</div>
+</li>
+</ul>
+
+<p class="text-red text-bold">敌方：</p>
+<ul>
+<li>E1：MOB01 <span class="text-yellow">速</span><span class="text-red">负</span><br>
+<div class="player-gauge" style="line-height:1em;width:90%;height:1em;position:relative">
+    <span style="font-size:0.7em;position:absolute;top:0;right:0;z-index:1">300</span>
+    <div id="p1-hp-gauge" class="gauge" style="width:100%;height:33%;background-color:#222;position:absolute;bottom:0;left:0;z-index:-1"></div>
+    <div id="p1-hp" class="hp" style="width:50%;height:33%;background-color:#e00;position:absolute;bottom:0;left:0;z-index:0"></div>
+</div>
+</li>
+</ul>
+
+<div class="battle-field-box">
+    <div class="grid cell00 square"> P1</div>
+    <div class="grid cell01 square"> P2</div>
+    <div class="grid cell02 square"> </div>
+    <div class="grid cell03 square"> </div>
+    <div class="grid cell04 square"> </div>
+    <div class="grid cell05 square"> </div>
+    <div class="grid cell10 square"> </div>
+    <div class="grid cell11 square"> </div>
+    <div class="grid cell12 square"> P3</div>
+    <div class="grid cell13 square"> E1</div>
+    <div class="grid cell14 square"> </div>
+    <div class="grid cell15 square"> </div>
+    <div class="grid cell20 square"> P4</div>
+    <div class="grid cell21 square"> </div>
+    <div class="grid cell22 square"> </div>
+    <div class="grid cell23 square"> </div>
+    <div class="grid cell24 square"> </div>
+    <div class="grid cell25 square"> </div>
+</div>

@@ -26,7 +26,7 @@
 <p class="text-yellow text-bold">战斗</p>
 <p>
   <<link "波利">>
-    <<goto "Training">>
+    <<goto "Battle">>
   <</link>>
 </p>
 
