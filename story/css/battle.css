@@ -5,25 +5,78 @@
     grid-column-gap: 5px;
     grid-row-gap: 5px;
 }
-    
-.cell00 { grid-area: 1 / 1 / 2 / 2; }
-.cell01 { grid-area: 1 / 2 / 2 / 3; }
-.cell02 { grid-area: 1 / 3 / 2 / 4; }
-.cell03 { grid-area: 1 / 4 / 2 / 5; }
-.cell04 { grid-area: 1 / 5 / 2 / 6; }
-.cell05 { grid-area: 1 / 6 / 2 / 7; }
-.cell10 { grid-area: 2 / 1 / 3 / 2; }
-.cell11 { grid-area: 2 / 2 / 3 / 3; }
-.cell12 { grid-area: 2 / 3 / 3 / 4; }
-.cell13 { grid-area: 2 / 4 / 3 / 5; }
-.cell14 { grid-area: 2 / 5 / 3 / 6; }
-.cell15 { grid-area: 2 / 6 / 3 / 7; }
-.cell20 { grid-area: 3 / 1 / 4 / 2; }
-.cell21 { grid-area: 3 / 2 / 4 / 3; }
-.cell22 { grid-area: 3 / 3 / 4 / 4; }
-.cell23 { grid-area: 3 / 4 / 4 / 5; }
-.cell24 { grid-area: 3 / 5 / 4 / 6; }
-.cell25 { grid-area: 3 / 6 / 4 / 7; }
+
+.cell00 {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.cell01 {
+    grid-area: 1 / 2 / 2 / 3;
+}
+
+.cell02 {
+    grid-area: 1 / 3 / 2 / 4;
+}
+
+.cell03 {
+    grid-area: 1 / 4 / 2 / 5;
+}
+
+.cell04 {
+    grid-area: 1 / 5 / 2 / 6;
+}
+
+.cell05 {
+    grid-area: 1 / 6 / 2 / 7;
+}
+
+.cell10 {
+    grid-area: 2 / 1 / 3 / 2;
+}
+
+.cell11 {
+    grid-area: 2 / 2 / 3 / 3;
+}
+
+.cell12 {
+    grid-area: 2 / 3 / 3 / 4;
+}
+
+.cell13 {
+    grid-area: 2 / 4 / 3 / 5;
+}
+
+.cell14 {
+    grid-area: 2 / 5 / 3 / 6;
+}
+
+.cell15 {
+    grid-area: 2 / 6 / 3 / 7;
+}
+
+.cell20 {
+    grid-area: 3 / 1 / 4 / 2;
+}
+
+.cell21 {
+    grid-area: 3 / 2 / 4 / 3;
+}
+
+.cell22 {
+    grid-area: 3 / 3 / 4 / 4;
+}
+
+.cell23 {
+    grid-area: 3 / 4 / 4 / 5;
+}
+
+.cell24 {
+    grid-area: 3 / 5 / 4 / 6;
+}
+
+.cell25 {
+    grid-area: 3 / 6 / 4 / 7;
+}
 
 .player-box {
     display: grid;
@@ -32,40 +85,204 @@
     grid-column-gap: 5px;
     grid-row-gap: 5px;
 }
-    
-.plater-1 { grid-area: 1 / 1 / 3 / 2; }
-.player-1-name { grid-area: 1 / 2 / 2 / 3; }
-.player-1-status { grid-area: 1 / 3 / 2 / 6; }
-.player-1-hp { grid-area: 2 / 2 / 3 / 3; }
-.player-1-mp { grid-area: 2 / 3 / 3 / 4; }
-.player-1-ap { grid-area: 2 / 4 / 3 / 5; }
-.player-1-cp { grid-area: 2 / 5 / 3 / 6; }
-.plater-2 { grid-area: 3 / 1 / 5 / 2; }
-.player-2-name { grid-area: 3 / 2 / 4 / 3; }
-.player-2-status { grid-area: 3 / 3 / 4 / 6; }
-.player-2-hp { grid-area: 4 / 2 / 5 / 3; }
-.player-2-mp { grid-area: 4 / 3 / 5 / 4; }
-.player-2-ap { grid-area: 4 / 4 / 5 / 5; }
-.player-2-cp { grid-area: 4 / 5 / 5 / 6; }
-.plater-3 { grid-area: 5 / 1 / 7 / 2; }
-.player-3-name { grid-area: 5 / 2 / 6 / 3; }
-.player-3-status { grid-area: 5 / 3 / 6 / 6; }
-.player-3-hp { grid-area: 6 / 2 / 7 / 3; }
-.player-3-mp { grid-area: 6 / 3 / 7 / 4; }
-.player-3-ap { grid-area: 6 / 4 / 7 / 5; }
-.player-3-cp { grid-area: 6 / 5 / 7 / 6; }
-.plater-4 { grid-area: 7 / 1 / 9 / 2; }
-.player-4-name { grid-area: 7 / 2 / 8 / 3; }
-.player-4-status { grid-area: 7 / 3 / 8 / 6; }
-.player-4-hp { grid-area: 8 / 2 / 9 / 3; }
-.player-4-mp { grid-area: 8 / 3 / 9 / 4; }
-.player-4-ap { grid-area: 8 / 4 / 9 / 5; }
-.player-4-cp { grid-area: 8 / 5 / 9 / 6; }
 
-.grid {
-    background-color: #999;
+.player-1 {
+    grid-area: 1 / 1 / 3 / 2;
+}
+
+.player-1-name {
+    grid-area: 1 / 2 / 2 / 3;
+}
+
+.player-1-status {
+    grid-area: 1 / 3 / 2 / 6;
+}
+
+.player-1-hp {
+    grid-area: 2 / 2 / 3 / 3;
+}
+
+.player-1-mp {
+    grid-area: 2 / 3 / 3 / 4;
+}
+
+.player-1-ap {
+    grid-area: 2 / 4 / 3 / 5;
+}
+
+.player-1-cp {
+    grid-area: 2 / 5 / 3 / 6;
+}
+
+.plater-2 {
+    grid-area: 3 / 1 / 5 / 2;
+}
+
+.player-2-name {
+    grid-area: 3 / 2 / 4 / 3;
+}
+
+.player-2-status {
+    grid-area: 3 / 3 / 4 / 6;
+}
+
+.player-2-hp {
+    grid-area: 4 / 2 / 5 / 3;
+}
+
+.player-2-mp {
+    grid-area: 4 / 3 / 5 / 4;
+}
+
+.player-2-ap {
+    grid-area: 4 / 4 / 5 / 5;
+}
+
+.player-2-cp {
+    grid-area: 4 / 5 / 5 / 6;
+}
+
+.plater-3 {
+    grid-area: 5 / 1 / 7 / 2;
+}
+
+.player-3-name {
+    grid-area: 5 / 2 / 6 / 3;
+}
+
+.player-3-status {
+    grid-area: 5 / 3 / 6 / 6;
+}
+
+.player-3-hp {
+    grid-area: 6 / 2 / 7 / 3;
+}
+
+.player-3-mp {
+    grid-area: 6 / 3 / 7 / 4;
+}
+
+.player-3-ap {
+    grid-area: 6 / 4 / 7 / 5;
+}
+
+.player-3-cp {
+    grid-area: 6 / 5 / 7 / 6;
+}
+
+.plater-4 {
+    grid-area: 7 / 1 / 9 / 2;
+}
+
+.player-4-name {
+    grid-area: 7 / 2 / 8 / 3;
+}
+
+.player-4-status {
+    grid-area: 7 / 3 / 8 / 6;
+}
+
+.player-4-hp {
+    grid-area: 8 / 2 / 9 / 3;
+}
+
+.player-4-mp {
+    grid-area: 8 / 3 / 9 / 4;
+}
+
+.player-4-ap {
+    grid-area: 8 / 4 / 9 / 5;
+}
+
+.player-4-cp {
+    grid-area: 8 / 5 / 9 / 6;
 }
 
 .square {
     aspect-ratio: 1/ 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #999;
+    color: #fff;
+    container-type: inline-size;
+    padding: 0;
+}
+
+.square[data-ground] {
+    border: 1px solid;
+}
+
+.player-gauge {
+    line-height: 1em;
+    width: 20%;
+    height: 1em;
+    position: relative;
+}
+
+.enemy-gauge {
+    line-height: 1em;
+    width: 90%;
+    height: 1em;
+    position: relative
+}
+
+.gauge-text {
+    font-size: 0.7em;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1
+}
+
+.gauge-background {
+    width: 100%;
+    height: 33%;
+    background-color: #222;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: -1
+}
+
+.gauge-foreground {
+    height: 33%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+}
+
+.gauge-hp {
+    background-color: #e00
+}
+
+.gauge-sp {
+    background-color: #00e
+}
+
+.gauge-ap {
+    background-color: #0e0
+}
+
+.gauge-cp {
+    background-color: #999
+}
+
+.cell-object {
+    font-size: 1em;
+}
+
+.cell-ground {
+    height: 1em;
+    width: 1em;
+    line-height: 0.7em;
+    font-size: 0.7em;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center
 }
