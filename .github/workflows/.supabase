@@ -1,0 +1,10 @@
+name: Supabase
+
+on:
+  push:
+    branches:
+      - dev
+
+steps:
+  - uses: supabase/setup-cli@v1
+  - run: supabase init
