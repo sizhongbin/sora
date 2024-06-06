@@ -6,8 +6,12 @@ on:
       - dev
 
 jobs:
-  build:
+  upload-function:
     runs-on: ubuntu-latest
     steps:
       - uses: supabase/setup-cli@v1
       - run: supabase init
+      - run: supabase functions new hello-world
+      - run: supabase link --project-ref gsxwebojwtxgmtvohfdv
+      - run: supabase functions deploy
+      
