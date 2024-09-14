@@ -1,4 +1,7 @@
-:: Battle [nosave]
+:: Battle
+
+
+:: BattleGround
 <p class="text-yellow text-bold">我方：</p>
 <ul>
 <li>P1：GM01 <span class="text-yellow">速</span><span class="text-red">负</span><br>

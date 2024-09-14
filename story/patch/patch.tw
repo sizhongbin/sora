@@ -1,3 +1,4 @@
-:: Patch [nosave]
-<<run console.debug("> Patch")>>
+:: Patch
+<<run console.log(":: Patch")>>
+<<run console.log(`Current Version: ${setup.displayVersion}`)>>
 <<goto "Title">>

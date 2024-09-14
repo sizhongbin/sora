@@ -1,15 +1,25 @@
 :: Title[noui]
-<<run console.debug("> Title")>>
+<<run console.log(":: Title")>>
 
 <div class="flex-box h-center">
   <span class="sora glitch layers" data-text="Sora">Sora</span>
 </div>
+
 <p class="text-red text-bold"><u>注意</u></p>
-<p class="text-red"><em>本游戏内容纯属虚构，其中涉及的人名、地名等内容不应和现实世界产生直接对应联系。</em></p>
+<p class="text-red"><i>本游戏内容纯属虚构，其中涉及的人名、地名等内容不应和现实世界产生直接对应联系。</i></p>
 
-<p class="text-bold"><u>提示</u></p>
-<p><em>本游戏存档功能利用浏览器本地储存机制。清除浏览器历史数据将导致存档消失。请积极使用存档导出功能备份存档。</em></p>
+<p class="text-yellow text-bold"><u>提示</u></p>
+<p class="text-yellow"><i>1. 清除浏览器数据或更换浏览器会导致本游戏存档消失。请善用云备份功能。</i></p>
+<p class="text-yellow"><i>2.本游戏部分游戏内容和功能需要联网，服务器在海外，不要钱，别嫌慢。</i></p>
+<p class="text-yellow"><i>3. 本游戏为个人业余开发，有Bug很正常，更新慢也很正常。别催更。</i></p>
 
+<p>正在连接服务器……<span id="title-login-status"></span></p>
+
+<<done>>
+  <<run setTimeout(setup.init, 50)>>
+<</done>>
+
+/*
 <p class="text-yellow text-bold">请选择角色</p>
 <<for _i to 0; _i lt 3; _i++>>
   <p>
@@ -41,7 +51,7 @@
                       $('#story').hide();
                       Save.slots.load(State.getVar('_i'));
                       setTimeout(function() {
-                        Engine.play('Training');
+                        Engine.play('Born');
                         $('#story').show();
                         },200);
                     }
@@ -227,6 +237,7 @@
     <</capture>>
   </p>
 <</for>>
+*/
 
 :: CharaCreate[noui]
 <<script>>
@@ -234,3 +245,77 @@
   Dialog.close();
 <</script>>
 <<goto "Title">>
+
+:: TitleW[widget]
+<<widget 'title-login-new'>>
+  <p>请输入账号密码，新账号将自动注册。</p>
+  <p>
+    <label for="textbox-account">账号：</label>
+    <<textbox '$account' ''>>
+  </p>
+  <p>
+    <label class="nowrap" for="textbox-password">密码：</label>
+    <<textbox '$password' ''>>
+    <span id="title-hide-password" class="icon-hide text-green"></span>
+  </p>
+  <p>
+    <<button "登录">>
+      <<run $('input').prop('disabled', true)>>
+      <<run $('button').prop('disabled', true)>>
+      <<run $('#title-login-new-notice').text('登录中……')>>
+      <<run setup.signUp(State.getVar('$account'), State.getVar('$password'))>>
+    <</button>>
+    <span id="title-login-new-notice"></span>
+  </p>
+  <<done>>
+    <<script>>
+      $('#textbox-password').attr('type', 'password');
+      $("#textbox-account").off("input").on("input", function() {
+        $(this).val($(this).val().replace(/[^A-Za-z0-9_]/g,''));
+        let length = 0;
+        for (let i = 0; i < $(this).val().length; i++) {
+          length++;
+          if (length > 15) {
+            $(this).val($(this).val().substr(0,i));
+            break;
+          }
+        }
+      });
+      $("#textbox-password").off("input").on("input", function() {
+        $(this).val($(this).val().replace(/[^A-Za-z0-9,._!@#$%^&*]/g,''));
+        let length = 0;
+        for (let i = 0; i < $(this).val().length; i++) {
+          length++;
+          if (length > 15) {
+            $(this).val($(this).val().substr(0,i));
+            break;
+          }
+        }
+      });
+      $("#title-hide-password").off("click").on("click", function() {
+        if (typeof($('#textbox-password').attr("type"))!="undefined") {
+          $('#textbox-password').removeAttr('type');
+          $('#title-hide-password').removeClass('text-green');
+        }
+        else {
+          $('#textbox-password').attr('type', 'password');
+          $('#title-hide-password').addClass('text-green');
+        }
+      });
+    <</script>>
+  <</done>>
+<</widget>>
+<<widget 'title-login-history'>>
+  <<run console.log(Save.browser.slot.get(0))>>
+  <p>检测到登录记录。要直接登录账号【<<= Save.browser.slot.get(0).metadata.account>>】吗？</p>
+  <p>
+    <<button '是'>>
+      <<run $('input').prop('disabled', true)>>
+      <<run $('button').prop('disabled', true)>>
+      <<run $('#title-login-history-notice').text('登录中……')>>
+      <<run setup.signInWithAutosave()>>
+    <</button>>
+    <span id="title-login-history-notice"></span>
+  </p>
+  <hr>
+<</widget>>

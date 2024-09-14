@@ -1,0 +1,180 @@
+:: Character
+<<run console.log(":: Character")>>
+<<run try { Save.browser.slot.save(0, 'user', {account : State.variables.account, password: State.variables.password})} catch (error) {console.error(error); UI.alert(error);}>>
+<<goto 'CharacterSelect'>>
+
+:: CharacterSelect
+<<run console.log(":: CharacterSelect")>>
+<<run console.log(":: CharacterSelect")>>
+<p class="text-bold">请选择角色</p>
+<<for _i to 1; _i lt 4; _i++>>
+  <p>
+    <span class='text-mono'>[<<= _i>>] </span>
+    <span @id="'nameSlot'+_i">- 空 -</span>
+    <<capture _i>>
+      <<if Save.browser.slot.has(_i)>>
+        <<run console.log(Save.browser.slot.get(_i))>>
+        <<done>>
+          <<replace `"#nameSlot"+_i`>>Lv.<<= Save.browser.slot.get(_i).metadata.level>> <<= Save.browser.slot.get(_i).metadata.name>><</replace>>
+        <</done>>
+        <<link "进入游戏">>
+        <</link>>
+        <<link "删除角色">>
+        <</link>>
+      <<else>>
+        <<link "创建">>
+          <<set $pcGender to 0>>
+          <<set $pcLevel to 0>>
+          <<set $pcHairLength to 0>>
+          <<set $pcHairCurl to 0>>
+          <<set $pcHairColor to 0>>
+          <<set $saveSlot to _i>>
+          <<set $saveTimes to 0>>
+          <<goto "CharacterCreate">>
+        <</link>>
+      <</if>>
+    <</capture>>
+  </p>
+<</for>>
+<hr>
+<p class="text-bold">云备份</p>
+<p>获取中……<span id="character-cloud-fetch-status"></span></p>
+<<done>>
+  <<run setup.fetchCharacter()>>
+<</done>>
+
+:: CharacterCreate
+<<run console.log(":: CharacterCreate")>>
+<p class="text-bold">创建新角色</p>
+<p>性别：
+  <label data-pc-create>
+    <<radiobutton '$pcGender' 0 autocheck>> 男
+  </label>
+  <label data-pc-create>
+    <<radiobutton '$pcGender' 1 autocheck>> 女
+  </label>
+</p>
+<p>发型：</p>
+<p>&emsp;- 长度：
+  <label data-pc-create>
+    <<radiobutton '$pcHairLength' 0 autocheck>> 短
+  </label>
+  <label data-pc-create>
+    <<radiobutton '$pcHairLength' 1 autocheck>> 中
+  </label>
+  <label data-pc-create>
+    <<radiobutton '$pcHairLength' 2 autocheck>> 长
+  </label>
+</p>
+<p>&emsp;- 卷度：
+  <label data-pc-create>
+    <<radiobutton '$pcHairCurl' 0 autocheck>> 直
+  </label>
+  <label data-pc-create>
+    <<radiobutton '$pcHairCurl' 1 autocheck>> 波浪
+  </label>
+  <label data-pc-create>
+    <<radiobutton '$pcHairCurl' 2 autocheck>> 卷
+  </label>
+</p>
+<p>&emsp;- 颜色：
+  <label data-pc-create>
+    <<radiobutton '$pcHairColor' 0 autocheck>> <span class='text-hair-dark text-stroke'>黑</span>
+  </label>
+  <label data-pc-create>
+    <<radiobutton '$pcHairColor' 1 autocheck>> <span class='text-hair-brown text-stroke'>棕</span>
+  </label>
+  <label data-pc-create>
+    <<radiobutton '$pcHairColor' 2 autocheck>> <span class='text-hair-white text-stroke'>白</span>
+  </label>
+  <label data-pc-create>
+    <<radiobutton '$pcHairColor' 3 autocheck>> <span class='text-hair-red text-stroke'>红</span>
+  </label>
+  <label data-pc-create>
+    <<radiobutton '$pcHairColor' 4 autocheck>> <span class='text-hair-blond text-stroke'>金</span>
+  </label>
+</p>
+<p>
+  <label for="textbox-pcname">角色名：</label>
+  <<textbox '$pcName' ''>>
+</p>
+<p>
+  你叫
+  <span id='pc-create-desc-name'></span>
+  ，是一名
+  <span id='pc-create-desc-gender'>男</span>性
+  ，有一头
+  <span id='pc-create-desc-hair-color' class='text-hair-dark text-stroke'>黑色</span>
+  的
+  <span id='pc-create-desc-hair-length'>短</span><span id='pc-create-desc-hair-curl'>直</span>发。
+</p>
+<p>
+  <<button '创建'>>
+    <<script>>
+      if ($('#textbox-pcname').val() != '') {
+        $("#character-create-status").text("创建中……");
+        $('input').prop('disabled', true);
+        $('button').prop('disabled', true);
+        setup.createCharacter();
+      }
+    <</script>>
+  <</button>>
+  &emsp;
+  <<button '取消'>>
+    <<goto 'CharacterSelect'>>
+  <</button>>
+</p>
+<p id="character-create-status"></p>
+<<done>>
+  <<script>>
+    $("#textbox-pcname").off("input").on("input", function() {
+      $(this).val($(this).val().replace(/[^A-Za-z0-9\u4e00-\u9fa5]/g,''));
+      let length = 0;
+      for (let j = 0; j < $(this).val().length; j++) {
+        if (/[\u4e00-\u9fa5]/.test($(this).val()[j])) length += 2;
+        else length++;
+        if (length > 10) {
+          $(this).val($(this).val().substr(0,j));
+          break;
+        }
+      }
+      $("#pc-create-desc-name").text($(this).val());
+    });
+    $("[data-pc-create]").off("click").on("click", function() {
+      setTimeout(function() {
+        $("#pc-create-desc-gender").text(setup.appearance.gender[State.getVar("$pcGender")]);
+        switch (State.getVar("$pcHairColor")) {
+          case 0:
+            $("#pc-create-desc-hair-color").text('黑色').attr("class","text-hair-dark");
+            break;
+          case 1:
+            $("#pc-create-desc-hair-color").text('棕色').attr("class","text-hair-brown");
+            break;
+          case 2:
+            $("#pc-create-desc-hair-color").text('白色').attr("class","text-hair-white");
+            break;
+          case 3:
+            $("#pc-create-desc-hair-color").text('红色').attr("class","text-hair-red");
+            break;
+          case 4:
+            $("#pc-create-desc-hair-color").text('金色').attr("class","text-hair-blond");
+            break;
+        }
+        $("#pc-create-desc-hair-color").addClass("text-stroke");
+        $("#pc-create-desc-hair-length").text(setup.appearance.hairLength[State.getVar("$pcHairLength")]);
+        $("#pc-create-desc-hair-curl").text(setup.appearance.hairCurl[State.getVar("$pcHairCurl")]);
+      }, 50);
+    });
+  <</script>>
+<</done>>
+
+:: CharacterSave
+<<run console.log(":: CharacterSave")>>
+<<script>>
+  console.log('Create save to slot ' + State.getVar('$saveSlot') + ': ' + State.getVar('$pcName'));
+  Save.browser.slot.save(State.getVar('$saveSlot'), 'character', { level: State.getVar('$pcLevel'), name: State.getVar('$pcName'), id: State.getVar('$pcId')});
+  console.log(Save.base64.export());
+<</script>>
+<<done>>
+  <<goto 'CharacterSelect'>>
+<</done>>

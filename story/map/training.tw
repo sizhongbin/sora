@@ -1,5 +1,19 @@
+:: Born
+<<set $pc to {}>>
+<<set $pc.lv to 1>>
+<<set $pc.str to 0>>
+<<set $pc.agi to 0>>
+<<set $pc.vit to 0>>
+<<set $pc.int to 0>>
+<<set $pc.dex to 0>>
+<<set $pc.luk to 0>>
+<<set $pc.luk to 0>>
+<<set $pc.zeny to 0>>
+<<set $pc.gears to {}>>
+<<set $pc.carry to {}>>
+
 :: Training
-<<set $pcLocation to "Training">>
+<<set $pc.location to "Training">>>>
 <p>
   你正待在
   <span class="icon-castle text-white">初心者修炼场

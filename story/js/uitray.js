@@ -1,10 +1,10 @@
 $(document).on(':passagedisplay', () => {
   if (tags() != 'noui') {
-    $('#ui-bar').show();
-    $('#ui-bar-tray').append("<span id='ui-bar-time'>??:??:??</span>");
+    $('#ui-bar-toggle').show(0);
+    /*$('#ui-bar-tray').append("<span id='ui-bar-time'>白天·晴朗</span>");
     $('#ui-bar-tray').append(
       "<span id='ui-bar-status-1' class='text-blue' style='top: 10em'>速</span>"
-    );
+    );*/
     /*
     $('#ui-bar-tray').append(
       "<span id='ui-bar-status-1' style='top: 10em'>力</span>"
@@ -25,9 +25,16 @@ $(document).on(':passagedisplay', () => {
       "<span id='ui-bar-status-1' style='top: 16em'>幸</span>"
     );
     */
-    console.debug('Append Time to UI tray');
+    //console.debug('Append Time to UI tray');
   } else {
-    $('#ui-bar').hide();
-    console.debug('No UI');
+    $('#ui-bar-toggle').hide(0);
+    console.log('No UI');
   }
+});
+
+$(document).one(':storyready', () => {
+  $('#ui-bar').append(`<span id="ver">${setup.displayVersion}</span>`);
+  $('#ui-bar').append(
+    `<span id="connect" class="icon-connect" data-counter="0"></span>`
+  );
 });

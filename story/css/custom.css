@@ -35,6 +35,10 @@ p {
   line-height: 1.57;
 }
 
+.text-green {
+  color: var(--color-4a4);
+}
+
 .text-yellow {
   color: var(--color-ff0);
 }
@@ -53,7 +57,6 @@ p {
 .text-blue {
   color: var(--color-8af);
 }
-
 
 .text-hair-dark {
   color: #1f160c;
@@ -90,12 +93,24 @@ p {
   font-family: monospace;
 }
 
+text-center {
+  text-align: center;
+}
+
 .flex-box {
   display: flex;
 }
 
 .h-center {
   justify-content: center;
+}
+
+.h-right {
+  justify-content: end;
+}
+
+.nowrap {
+  white-space: nowrap;
 }
 
 .full-width {
@@ -106,6 +121,14 @@ p {
   display: grid;
   grid-template-columns: repeat(3, 0.3fr);
   gap: 0.1em;
+}
+
+#title-login {
+  position: fixed;
+  top: 60%;
+  padding-left: 2em;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #menu-item-saves {
@@ -140,17 +163,44 @@ p {
   font-family: monospace;
 }
 
-[id^="ui-bar-status"] {
+[id^='ui-bar-status'] {
   position: absolute;
   right: 0;
   padding-right: 0.25em;
   font-size: 1.2em;
 }
 
+#textbox-account,
+#textbox-password,
 #textbox-pcname {
   min-width: 0;
-  max-width: 6em;
+  max-width: 9em;
 }
 #ui-bar-body {
   padding-right: 3em;
+}
+#ver {
+  position: absolute;
+  bottom: 0.5em;
+  left: 0.5em;
+  color: var(--color-aaa);
+  font-size: 0.5em;
+}
+
+#connect {
+  position: absolute;
+  bottom: 0.5em;
+  right: 0.5em;
+  color: var(--color-aaa);
+  animation: blink 1s infinite;
+}
+
+#connect[data-counter='0'] {
+  display: none;
+}
+
+@keyframes blink {
+  50% {
+    color: transparent;
+  }
 }

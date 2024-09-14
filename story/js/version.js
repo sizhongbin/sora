@@ -1,4 +1,7 @@
-setup.version = 100;
+setup.version = 1;
+setup.displayVersion = `v${parseInt(setup.version / 10000)}.${parseInt(
+  (setup.version % 10000) / 100
+)}.${parseInt(setup.version % 100)}`;
 setup.updateLog = {
   100: '\
   1. 完成标题页面；<br>\

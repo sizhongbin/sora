@@ -1,0 +1,19 @@
+<script type="module">
+    import('https://gcore.jsdelivr.net/npm/@supabase/supabase-js/+esm').then(({
+      createClient
+    }) => {
+      const supabase = createClient('https://gsxwebojwtxgmtvohfdv.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdzeHdlYm9qd3R4Z210dm9oZmR2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTc2NDg2MzAsImV4cCI6MjAzMzIyNDYzMH0.1XhzomAchqFjRrjscXtXIV4KUmnStjxkOF0cV7NLRQY');
+      console.log('Supabase Instance: ', supabase);
+      supabase.auth.signInWithPassword({
+        email: 'test@test',
+        password: 'test1234'
+      }).then(({ data, error }) => {
+        console.log('SUCCEED. Response: ', data);
+        supabase.from('character').select('character_id').then(
+          ({ data, error }) => {
+            console.log('Data: ', data);
+            console.log('Error: ', error);
+          })
+      })
+    })
+</script>
