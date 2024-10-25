@@ -2,7 +2,7 @@
 {
   "ifid": "905862E7-4E79-440E-A878-E36ADDB47AE8",
   "format": "SugarCube",
-	"format-version": "2.37.0",
+	"format-version": "2.37.3",
 	"start": "Start"
 }
 
@@ -12,33 +12,7 @@ Sora
 :: StoryInit
 <<run console.log(":: StoryInit")>>
 <<run window.sessionStorage.clear()>>
-<<set $version to setup.version>>
-
-/*
-<<set $gameVersion to 1>>
-<<set $statLv to 0>>
-<<set $statStr to 0>>
-<<set $statAgi to 0>>
-<<set $statVit to 0>>
-<<set $statInt to 0>>
-<<set $statDex to 0>>
-<<set $statLuk to 0>>
-<<set $gameHpLeft to setup.stat.getMaxHp()>>
-<<set $gameSpLeft to setup.stat.getMaxSp()>>
-<<set $gameFpLeft to setup.stat.getMaxFp()>>
-<<set $gameNetwork to "离线">>
-<<set $gameMapRecord to {}>>
-<<set $gameMapKey to ''>>
-<<set $gameCutNext to ''>>
-<<set $gameChatting to {}>>
-<<set $gameChattingContents to []>>
-<<set $gameMoving to {}>>
-<<set $gameMovingDesc to []>>
-*/
 
 :: Start
 <<run console.log(":: Start")>>
-<<goto "Patch">>
-
-/* 仓库 */
-:: Storage [storage sub]
+Start

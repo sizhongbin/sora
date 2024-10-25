@@ -1,4 +1,0 @@
-:: Patch
-<<run console.log(":: Patch")>>
-<<run console.log(`Current Version: ${setup.displayVersion}`)>>
-<<goto "Title">>
