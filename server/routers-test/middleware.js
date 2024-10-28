@@ -1,6 +1,3 @@
-// Change the path before deploy to PROC
-module.exports.dbPath = './test/data/test.json';
-// module.exports.dbPath = 'PROC DB Path';
 
 // Check if body is empty
 module.exports.isBodyEmpty = (req, res, next) => {
