@@ -2,3 +2,4 @@ tweego/
 .acode/
 storyformats/
 server/node_modules
+test.js

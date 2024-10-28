@@ -43,7 +43,7 @@ jobs:
           go install
           cd ..
           mkdir -p dist && touch dist/index.html
-          tweego story -o dist/index.html
+          tweego client -o dist/index.html
           echo "sora.zsi.us.kg" > dist/CNAME
 
       - name: Deploy to GitHub Pages
